@@ -47,20 +47,25 @@ const Navbar = () => {
           </div>
         </div>
         <div className="flex justify-end items-center gap-4">
-          <Button variant="outline" className="h-8 sm:h-10 text-xs sm:text-base rounded-sm px-3 sm:px-8">
+          <Button
+            variant="outline"
+            className="hidden tablet:block h-8 sm:h-10 text-xs sm:text-base rounded-sm px-3 sm:px-8"
+          >
             SignUp
           </Button>
-          <Button className="h-8 sm:h-10 text-xs sm:text-base rounded-sm px-3 sm:px-8">Login</Button>
+          <Button className="hidden tablet:block h-8 sm:h-10 text-xs sm:text-base rounded-sm px-3 sm:px-8">
+            Login
+          </Button>
           <Sheet>
             <SheetTrigger>
               {/* <Button variant="ghost" className=" block py-0 tablet:hidden"> */}
-                <Image
-                  src="/icons/menu.svg"
-                  alt="logo"
-                  width={0}
-                  height={0}
-                  className="w-10 px-0"
-                />
+              <Image
+                src="/icons/menu.svg"
+                alt="logo"
+                width={0}
+                height={0}
+                className="w-10 px-0 block py-0 tablet:hidden"
+              />
               {/* </Button> */}
             </SheetTrigger>
             <SheetContent className="w-full">
@@ -76,6 +81,18 @@ const Navbar = () => {
                     </Link>
                   );
                 })}
+                <div className="w-full flex justify-center items-center gap-4">
+
+                  <Button className="h-8 sm:h-10 text-xs sm:text-base rounded-sm px-3 sm:px-8">
+                    Login
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="h-8 sm:h-10 text-xs sm:text-base rounded-sm px-3 sm:px-8"
+                  >
+                    SignUp
+                  </Button>
+                </div>
               </div>
             </SheetContent>
           </Sheet>
