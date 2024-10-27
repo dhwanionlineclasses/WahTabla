@@ -47,11 +47,14 @@ const page = () => {
             className="w-6 p-1 sm:hidden bg-tertiary"
           />
           <p className="text-base sm:text-4xl text-center font-semibold">
-            <span className="text-[#FF9500] sm:text-black">Unlock</span> your Musical Potential
+            <span className="text-[#FF9500] sm:text-black">Unlock</span> your
+            Musical Potential
           </p>
         </div>
         <div className="flex flex-col justify-center items-center gap-1">
-          <p className="text-2xl sm:text-3xl text-center">with our curated Tabla Course</p>
+          <p className="text-2xl sm:text-3xl text-center">
+            with our curated Tabla Course
+          </p>
           <p className="text-xs sm:text-sm text-center">
             Learn from the best Gurus and Enhance Your Skills.
           </p>
@@ -72,11 +75,11 @@ const page = () => {
         <CardHeader>
           <CardTitle className="text-2xl">Features</CardTitle>
           <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-2">
-            <p className="max-w-[700px]">
+            <span className="max-w-[700px]">
               Our course offers a range of features tailored to enhance your
               learning experience, from hands-on guidance to performance
               opportunities and flexible learning options.
-            </p>
+            </span>
             <Button variant="secondary">Buy Now</Button>
           </CardDescription>
         </CardHeader>
@@ -132,19 +135,19 @@ const page = () => {
           </ul>
         </CardContent>
       </Card>
-      <Card className="w-full bg-transparent shadow-none border-none mt-6">
-        <CardHeader>
+      <Card className="w-full bg-transparent shadow-none border-none mt-6 px-0">
+        <CardHeader className="px-0">
           <CardTitle className="text-2xl">Benefits</CardTitle>
           <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-2">
-            <p className="max-w-[700px]">
+            <span className="max-w-[700px]">
               Unlock your musical potential with immersive learning, hands-on
               guidance, and opportunities to perform, teach, and grow
               professionally.
-            </p>
+            </span>
             <Button variant="secondary">Buy Now</Button>
           </CardDescription>
         </CardHeader>
-        <CardContent className="">
+        <CardContent className="px-0">
           <Image
             src="/benefits-bg.jpg"
             alt="arrow"
@@ -155,18 +158,18 @@ const page = () => {
         </CardContent>
       </Card>
       <Card className="w-full bg-transparent shadow-none border-none mt-6">
-        <CardHeader>
+        <CardHeader className="px-0">
           <CardTitle className="text-2xl">Course Modules</CardTitle>
           <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-2">
-            <p className="max-w-[700px]">
+            <span className="max-w-[700px]">
               Our Tabla course is structured into progressive modules, each
               designed to guide you step by step from foundational skills to
               advanced mastery.
-            </p>
+            </span>
             <Button variant="secondary">View All</Button>
           </CardDescription>
         </CardHeader>
-        <CardContent className="">
+        <CardContent className="px-0">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-6 md:gap-10 desktop:gap-x-28 desktop:gap-y-10">
             {courses &&
               courses.map((course, index) => {
@@ -216,18 +219,18 @@ const page = () => {
         </CardContent>
       </Card>
       <Card className="w-full bg-transparent shadow-none border-none mt-6">
-        <CardHeader>
+        <CardHeader className="px-0">
           <CardTitle className="text-2xl">Module Features</CardTitle>
           <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-3">
-            <p className="max-w-[700px]">
+            <span className="max-w-[700px]">
               Our Tabla course is include industry first features, designed to
               provide learners the best and world-class experiences, and for
               them to make the most of the learning experience.
-            </p>
+            </span>
             <Button variant="secondary">View All</Button>
           </CardDescription>
         </CardHeader>
-        <CardContent className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 desktop:grid-cols-4 gap-4 md:gap-8">
+        <CardContent className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 desktop:grid-cols-4 gap-4 md:gap-8 px-0">
           {moduleFeatures.map((item, index) => (
             <Badge
               key={index}
@@ -246,14 +249,16 @@ const page = () => {
         </CardContent>
       </Card>
       <Card className="w-full bg-transparent shadow-none border-none mt-6">
-        <CardHeader>
+        <CardHeader className="px-0">
           <CardTitle className="text-2xl">Our Testimonials</CardTitle>
           <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-2">
-            <p className="max-w-[700px]">See What Our Students Are Saying</p>
+            <span className="max-w-[700px]">
+              See What Our Students Are Saying
+            </span>
             <Button variant="secondary">View All</Button>
           </CardDescription>
         </CardHeader>
-        <CardContent className="">
+        <CardContent className="px-0">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-6 md:gap-10 desktop:gap-x-28 desktop:gap-y-10">
             {testimonials &&
               testimonials.map((review, index) => {
@@ -289,7 +294,7 @@ const page = () => {
         <CardHeader className="pb-0">
           <CardTitle className="text-3xl">ABOUT THE INSTRUCTOR</CardTitle>
           <CardDescription className="flex flex-col laptop:flex-row justify-center md:justify-between items-center laptop:items-start gap-2 pt-4 relative">
-            <p className=" laptop:text-base text-white">
+            <span className=" laptop:text-base text-white">
               Abhijit Banerjee is one of the top-ranking Indian musicians of
               present generation. A disciple of the illustrious guru, the late
               Pt. Jnan Prakash Ghosh, featured in all prominent festivals in
@@ -308,7 +313,7 @@ const page = () => {
               literature and postgraduate in Journalism. Abhijit is the founder
               and inspiration of DHWANI ACADEMY in INDIA and the US, started
               with the aim of promotion of Indian cultural heritage.
-            </p>
+            </span>
             <Image
               src="/instructor.png"
               alt="arrow"
@@ -321,20 +326,22 @@ const page = () => {
       </Card>
       <Card className="w-full bg-transparent shadow-none border-none mt-6">
         <Tabs defaultValue="monthly">
-          <CardHeader>
-            <CardTitle className="text-2xl">Our Pricing</CardTitle>
-            <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-2">
-              <p className="max-w-[700px]">
-                We have a comprehensive pricing scheme for courses to be bought
-                monthly, yearly or even module-wise, as per your learning
-                experience.
-              </p>
-              <TabsList>
-                <TabsTrigger value="monthly">Monthly</TabsTrigger>
-                <TabsTrigger value="yearly">Yearly</TabsTrigger>
-              </TabsList>
-            </CardDescription>
-          </CardHeader>
+          <div className="flex flex-col tablet:flex-row justify-between items-end gap-2">
+            <CardHeader className="px-0">
+              <CardTitle className="text-2xl">Our Pricing</CardTitle>
+              <CardDescription className="">
+                <span className="max-w-[700px]">
+                  We have a comprehensive pricing scheme for courses to be
+                  bought monthly, yearly or even module-wise, as per your
+                  learning experience.
+                </span>
+              </CardDescription>
+            </CardHeader>
+            <TabsList>
+              <TabsTrigger value="monthly">Monthly</TabsTrigger>
+              <TabsTrigger value="yearly">Yearly</TabsTrigger>
+            </TabsList>
+          </div>
           <CardContent className="bg-white pt-6 px-10 py-10">
             <TabsContent value="monthly">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-6 md:gap-10 desktop:gap-x-28 desktop:gap-y-10">
@@ -635,86 +642,128 @@ const page = () => {
         <CardHeader className="max-w-[340px]">
           <CardTitle className="text-3xl">Frequently Asked Questions</CardTitle>
           <CardDescription className="flex flex-col justify-between items-start gap-2">
-            <p className="max-w-[700px]">
+            <span className="max-w-[700px]">
               Still you have any questions? Contact our Team via
               courses@dhwaniacademy.net
-            </p>
-            <Button variant='outline' className="mt-6 bg-white">See All FAQ&apos;s</Button>
+            </span>
+            <Button variant="outline" className="mt-6 bg-white">
+              See All FAQ&apos;s
+            </Button>
           </CardDescription>
         </CardHeader>
         <CardContent className="w-full">
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1">
-              <AccordionTrigger className="pb-6 text-base text-left hover:no-underline">Can I buy multiple modules at once?</AccordionTrigger>
+              <AccordionTrigger className="pb-6 text-base text-left hover:no-underline">
+                Can I buy multiple modules at once?
+              </AccordionTrigger>
               <AccordionContent className="flex flex-col justify-start items-start gap-6 pt-6 text-muted-foreground">
-              Absolutely! You can buy all the modules or a selected number of modules at the same time and access them at your convenience.
-              <Button variant='secondary' className="w-full flex justify-between items-center px-4 py-8"><span>Buy all module at once</span>
-              <Image
-                src="/icons/arrow-right.svg"
-                alt="arrow"
-                width={0}
-                height={0}
-                className="w-8 p-2 bg-white text-black rounded-full"
-              /></Button>
+                Absolutely! You can buy all the modules or a selected number of
+                modules at the same time and access them at your convenience.
+                <Button
+                  variant="secondary"
+                  className="w-full flex justify-between items-center px-4 py-8"
+                >
+                  <span>Buy all module at once</span>
+                  <Image
+                    src="/icons/arrow-right.svg"
+                    alt="arrow"
+                    width={0}
+                    height={0}
+                    className="w-8 p-2 bg-white text-black rounded-full"
+                  />
+                </Button>
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">
-              <AccordionTrigger className="pb-6 border-b border-b-muted text-base text-left hover:no-underline">What kind of support can I expect from instructors?</AccordionTrigger>
+              <AccordionTrigger className="pb-6 border-b border-b-muted text-base text-left hover:no-underline">
+                What kind of support can I expect from instructors?
+              </AccordionTrigger>
               <AccordionContent className="flex flex-col justify-start items-start gap-6 pt-6 text-muted-foreground">
-              Absolutely! You can buy all the modules or a selected number of modules at the same time and access them at your convenience.
-              <Button variant='secondary' className="w-full flex justify-between items-center px-4 py-8"><span>Buy all module at once</span>
-              <Image
-                src="/icons/arrow-right.svg"
-                alt="arrow"
-                width={0}
-                height={0}
-                className="w-8 p-2 bg-white text-black rounded-full"
-              /></Button>
+                Absolutely! You can buy all the modules or a selected number of
+                modules at the same time and access them at your convenience.
+                <Button
+                  variant="secondary"
+                  className="w-full flex justify-between items-center px-4 py-8"
+                >
+                  <span>Buy all module at once</span>
+                  <Image
+                    src="/icons/arrow-right.svg"
+                    alt="arrow"
+                    width={0}
+                    height={0}
+                    className="w-8 p-2 bg-white text-black rounded-full"
+                  />
+                </Button>
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
-              <AccordionTrigger className="pb-6 border-b border-b-muted text-base text-left hover:no-underline">Are the courses self-paced or do they have specific start and end dates?</AccordionTrigger>
+              <AccordionTrigger className="pb-6 border-b border-b-muted text-base text-left hover:no-underline">
+                Are the courses self-paced or do they have specific start and
+                end dates?
+              </AccordionTrigger>
               <AccordionContent className="flex flex-col justify-start items-start gap-6 pt-6 text-muted-foreground">
-              Absolutely! You can buy all the modules or a selected number of modules at the same time and access them at your convenience.
-              <Button variant='secondary' className="w-full flex justify-between items-center px-4 py-8"><span>Buy all module at once</span>
-              <Image
-                src="/icons/arrow-right.svg"
-                alt="arrow"
-                width={0}
-                height={0}
-                className="w-8 p-2 bg-white text-black rounded-full"
-              /></Button>
+                Absolutely! You can buy all the modules or a selected number of
+                modules at the same time and access them at your convenience.
+                <Button
+                  variant="secondary"
+                  className="w-full flex justify-between items-center px-4 py-8"
+                >
+                  <span>Buy all module at once</span>
+                  <Image
+                    src="/icons/arrow-right.svg"
+                    alt="arrow"
+                    width={0}
+                    height={0}
+                    className="w-8 p-2 bg-white text-black rounded-full"
+                  />
+                </Button>
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-4">
-              <AccordionTrigger className="pb-6 border-b border-b-muted text-base text-left hover:no-underline">Are there any prerequisites for the courses?</AccordionTrigger>
+              <AccordionTrigger className="pb-6 border-b border-b-muted text-base text-left hover:no-underline">
+                Are there any prerequisites for the courses?
+              </AccordionTrigger>
               <AccordionContent className="flex flex-col justify-start items-start gap-6 pt-6 text-muted-foreground">
-              Absolutely! You can buy all the modules or a selected number of modules at the same time and access them at your convenience.
-              <Button variant='secondary' className="w-full flex justify-between items-center px-4 py-8"><span>Buy all module at once</span>
-              <Image
-                src="/icons/arrow-right.svg"
-                alt="arrow"
-                width={0}
-                height={0}
-                className="w-8 p-2 bg-white text-black rounded-full"
-              /></Button>
+                Absolutely! You can buy all the modules or a selected number of
+                modules at the same time and access them at your convenience.
+                <Button
+                  variant="secondary"
+                  className="w-full flex justify-between items-center px-4 py-8"
+                >
+                  <span>Buy all module at once</span>
+                  <Image
+                    src="/icons/arrow-right.svg"
+                    alt="arrow"
+                    width={0}
+                    height={0}
+                    className="w-8 p-2 bg-white text-black rounded-full"
+                  />
+                </Button>
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-5">
-              <AccordionTrigger className="pb-6 border-b border-b-muted text-base text-left hover:no-underline">Can I download the course materials for offline access?</AccordionTrigger>
+              <AccordionTrigger className="pb-6 border-b border-b-muted text-base text-left hover:no-underline">
+                Can I download the course materials for offline access?
+              </AccordionTrigger>
               <AccordionContent className="flex flex-col justify-start items-start gap-6 pt-6 text-muted-foreground">
-              Absolutely! You can buy all the modules or a selected number of modules at the same time and access them at your convenience.
-              <Button variant='secondary' className="w-full flex justify-between items-center px-4 py-8"><span>Buy all module at once</span>
-              <Image
-                src="/icons/arrow-right.svg"
-                alt="arrow"
-                width={0}
-                height={0}
-                className="w-8 p-2 bg-white text-black rounded-full"
-              /></Button>
+                Absolutely! You can buy all the modules or a selected number of
+                modules at the same time and access them at your convenience.
+                <Button
+                  variant="secondary"
+                  className="w-full flex justify-between items-center px-4 py-8"
+                >
+                  <span>Buy all module at once</span>
+                  <Image
+                    src="/icons/arrow-right.svg"
+                    alt="arrow"
+                    width={0}
+                    height={0}
+                    className="w-8 p-2 bg-white text-black rounded-full"
+                  />
+                </Button>
               </AccordionContent>
             </AccordionItem>
-            
           </Accordion>
         </CardContent>
       </Card>

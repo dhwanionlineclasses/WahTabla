@@ -5,6 +5,9 @@ import Link from "next/link";
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
   // SheetDescription,
   // SheetHeader,
   // SheetTitle,
@@ -50,7 +53,7 @@ const Navbar = () => {
           <Button className="h-8 sm:h-10 text-xs sm:text-base rounded-sm px-3 sm:px-8">Login</Button>
           <Sheet>
             <SheetTrigger>
-              <Button variant="ghost" className=" block py-0 tablet:hidden">
+              {/* <Button variant="ghost" className=" block py-0 tablet:hidden"> */}
                 <Image
                   src="/icons/menu.svg"
                   alt="logo"
@@ -58,9 +61,13 @@ const Navbar = () => {
                   height={0}
                   className="w-10 px-0"
                 />
-              </Button>
+              {/* </Button> */}
             </SheetTrigger>
             <SheetContent className="w-full">
+              <SheetHeader>
+                <SheetTitle>Menu</SheetTitle>
+                <SheetDescription className="sr-only">Menu</SheetDescription>
+              </SheetHeader>
               <div className="flex flex-col justify-start items-start gap-4 font-light text-lg pt-10">
                 {navigation.map((item, index) => {
                   return (
