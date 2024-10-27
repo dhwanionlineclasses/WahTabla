@@ -170,7 +170,7 @@ const page = () => {
           </CardDescription>
         </CardHeader>
         <CardContent className="px-0">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-6 md:gap-10 desktop:gap-x-28 desktop:gap-y-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-6 md:gap-10 desktop:gap-x-10 desktop:gap-y-10">
             {courses &&
               courses.map((course, index) => {
                 return (
@@ -259,7 +259,7 @@ const page = () => {
           </CardDescription>
         </CardHeader>
         <CardContent className="px-0">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-6 md:gap-10 desktop:gap-x-28 desktop:gap-y-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-6 md:gap-10 desktop:gap-x-10 desktop:gap-y-10">
             {testimonials &&
               testimonials.map((review, index) => {
                 return (
