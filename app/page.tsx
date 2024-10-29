@@ -185,7 +185,7 @@ const HomePage = () => {
                     : "animate-fadeOutUp"
                 } `}
                 >
-                  <div className="max-w-[500px] flex justify-start items-center gap-2 py-2 px-4 sm:py-4 sm:px-8 text-sm bg-white rounded-lg shadow-md">
+                  <div className="max-w-[500px] flex justify-start items-center gap-4 py-2 px-4 sm:py-4 sm:px-8 text-xs md:text-sm bg-white rounded-lg shadow-md">
                     <Image
                       src={benifit.icon}
                       alt="arrow"
@@ -874,13 +874,13 @@ const moduleFeatures = [
 const testimonials = [
   {
     review:
-      "The lessons are clear, and the progression is perfect. I&apos;ve grown so much in just a few months!",
+      "The lessons are clear, and the progression is perfect. I've grown so much in just a few months!",
     name: "Aditi S",
     image: "/review-1.jpg",
   },
   {
     review:
-      "The video tutorials and PDFs make learning easy. I&apos;m thrilled with my progress! I&apos;m excited to learn more.",
+      "The video tutorials and PDFs make learning easy. I'm thrilled with my progress! I'm excited to learn more.",
     name: "Jason M",
     image: "/review-2.jpg",
   },
@@ -922,7 +922,7 @@ const benifits = [
   {
     icon: "/benefits/benefit-5.jpg",
     description:
-      "Be a teacher with Dhwani&apos;s certificate and associate yourself with us to teach, perform, and earn.",
+      "Be a teacher with Dhwani's certificate and associate yourself with us to teach, perform, and earn.",
   },
   {
     icon: "/benefits/benefit-6.jpg",
