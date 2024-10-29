@@ -23,7 +23,7 @@ const Footer = () => {
               height={0}
               className='w-4'
             />
-            <span>courses@dhwaniacademy.net</span>
+            <span>onlineclasses@dhwaniacademy.org</span>
             </span>
             <span className='flex justify-start items-center gap-2'>
             <Image
