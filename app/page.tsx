@@ -1,3 +1,5 @@
+"use client";
+
 // import { Button } from '@/components/ui/button'
 // import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from "@/components/ui/badge";
@@ -18,9 +20,25 @@ import {
 } from "@/components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const page = () => {
+const HomePage = () => {
+  const [currentIndex, setCurrentIndex] = useState(0); // Track which badge is active
+  const [isAnimating, setIsAnimating] = useState(true);
+
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimating(false); // Start fade-out
+      setTimeout(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % benifits.length); // Change badge
+        setIsAnimating(true); // Start fade-in
+      }, 500); // 500ms fade-out duration
+    }, 3500); // 3 sec visible + 0.5 sec fade-out
+
+    return () => clearInterval(interval); // Clean up interval on unmount
+  }, []);
+
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
       <section className="w-full flex flex-col justify-start items-center gap-4">
@@ -72,7 +90,7 @@ const page = () => {
         />
       </section>
       <Card className="w-full bg-transparent shadow-none border-none mt-6">
-        <CardHeader>
+        <CardHeader className="px-0">
           <CardTitle className="text-2xl">Features</CardTitle>
           <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-2">
             <span className="max-w-[700px]">
@@ -147,7 +165,7 @@ const page = () => {
             <Button variant="secondary">Buy Now</Button>
           </CardDescription>
         </CardHeader>
-        <CardContent className="px-0">
+        <CardContent className="px-0 relative">
           <Image
             src="/benefits-bg.jpg"
             alt="arrow"
@@ -155,6 +173,32 @@ const page = () => {
             height={0}
             className="w-full object-cover h-[200px] tablet:h-full"
           />
+          <div className="w-full h-full absolute top-0 z-20">
+            <div className="relative flex justify-center items-center h-full mx-auto overflow-hidden">
+              {benifits.map((benifit, index) => (
+                <div
+                  key={index}
+                  className={`absolute w-full h-12 px-2 flex items-center justify-center rounded-lg 
+                ${
+                  isAnimating && index === currentIndex
+                    ? "animate-fadeInUp"
+                    : "animate-fadeOutUp"
+                } `}
+                >
+                  <div className="max-w-[500px] flex justify-start items-center gap-2 py-2 px-4 sm:py-4 sm:px-8 text-sm bg-white rounded-lg shadow-md">
+                    <Image
+                      src={benifit.icon}
+                      alt="arrow"
+                      width={0}
+                      height={0}
+                      className="w-6 h-6"
+                    />
+                    {benifit.description}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </CardContent>
       </Card>
       <Card className="w-full bg-transparent shadow-none border-none mt-6">
@@ -771,7 +815,7 @@ const page = () => {
   );
 };
 
-export default page;
+export default HomePage;
 
 const courses = [
   {
@@ -851,5 +895,38 @@ const testimonials = [
       "The structured modules and expert guidance helped me master Tabla faster than I expected!",
     name: "Michael K",
     image: "/review-4.jpg",
+  },
+];
+
+const benifits = [
+  {
+    icon: "/benefits/benefit-1.jpg",
+    description:
+      "Learn Basics to bachelors standard in five years with theory and practical knowledge.",
+  },
+  {
+    icon: "/benefits/benefit-2.jpg",
+    description:
+      "Experience the stage shows with group performances after two years of learning our courses.",
+  },
+  {
+    icon: "/benefits/benefit-3.jpg",
+    description:
+      "Doubt-clearing sessions that offer personalized support to answer all your questions .",
+  },
+  {
+    icon: "/benefits/benefit-4.jpg",
+    description:
+      "Get the opportunity to attend workshops in different locations and one-on-one help to perfect your artistry.",
+  },
+  {
+    icon: "/benefits/benefit-5.jpg",
+    description:
+      "Be a teacher with Dhwani&apos;s certificate and associate yourself with us to teach, perform, and earn.",
+  },
+  {
+    icon: "/benefits/benefit-6.jpg",
+    description:
+      "All the course materials are available as downloadable PDFs and recordings.",
   },
 ];
