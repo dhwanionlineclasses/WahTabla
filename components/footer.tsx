@@ -1,8 +1,18 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import React from 'react'
 
 const Footer = () => {
+
+  const pathname = usePathname()
+
+  if(pathname.startsWith('/auth')) {
+    return
+  }
+
   return (
     // <div className='w-full bg-white py-4 px-8 flex justify-center'>
       <div className='max-w-[1517px] w-full flex flex-col justify-between items-center gap-12 px-4 pt-12 pb-4'>

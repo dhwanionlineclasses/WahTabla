@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image";
 import React from "react";
 import { Button } from "./ui/button";
@@ -13,8 +15,15 @@ import {
   // SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+  const pathname = usePathname()
+
+  if(pathname.startsWith('/auth')) {
+    return
+  }
+
   return (
     <div className="w-full flex flex-col justify-start items-center gap-2">
       <Button className="w-full flex justify-center items-center py-0 px-4 rounded-none bg-primary text-white text-xs">
@@ -53,9 +62,11 @@ const Navbar = () => {
           >
             SignUp
           </Button>
+          <Link href='/vimeo-test'>
           <Button className="hidden tablet:block h-8 sm:h-10 text-xs sm:text-base rounded-sm px-3 sm:px-8">
             Login
           </Button>
+          </Link>
           <Sheet>
             <SheetTrigger>
               {/* <Button variant="ghost" className=" block py-0 tablet:hidden"> */}

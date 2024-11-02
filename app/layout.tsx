@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
+import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
   title: "Dhwani",
@@ -26,17 +27,19 @@ export default function RootLayout({
           geistMono.variable
         )}
       >
+        <SessionProvider>
         <div className="w-full relative">
           <Navbar />
           </div>
-          <main className="max-w-[1512px] w-full mx-auto px-8 py-20 out:px-0">
+          <main className="min-h-screen flex flex-col justify-center items-center max-w-[1512px] w-full mx-auto px-8 py-20 out:px-0">
           {children}
-          <Toaster />
           </main>
           <div className="bg-white w-full flex justify-center items-center">
 
           <Footer />
           </div>
+          <Toaster />
+          </SessionProvider>
       </body>
     </html>
   );
