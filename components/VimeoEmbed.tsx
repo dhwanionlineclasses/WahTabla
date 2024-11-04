@@ -9,7 +9,7 @@ interface VimeoEmbedProps {
   height?: number;
 }
 
-const VimeoEmbed: React.FC<VimeoEmbedProps> = ({ videoId, width = 640, height = 360 }) => {
+const VimeoEmbed: React.FC<VimeoEmbedProps> = ({ videoId, width = 1000, height = 360 }) => {
   const playerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -19,6 +19,7 @@ const VimeoEmbed: React.FC<VimeoEmbedProps> = ({ videoId, width = 640, height = 
       id: parseInt(videoId, 10),
       width,
       height,
+      responsive: true
     };
 
     const player = new Player(playerRef.current, options);
@@ -31,7 +32,7 @@ const VimeoEmbed: React.FC<VimeoEmbedProps> = ({ videoId, width = 640, height = 
     };
   }, [videoId, width, height]);
 
-  return <div ref={playerRef}></div>;
+  return <div ref={playerRef} className='w-full h-full'></div>;
 };
 
 export default VimeoEmbed;

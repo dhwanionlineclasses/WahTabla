@@ -2,7 +2,8 @@
 
 import { cookies } from 'next/headers'
 import { LoginSchemaType } from '@/schema/auth-schema';
-// import { signIn } from '@/auth';
+import { signIn } from '@/auth';
+import jwt from 'jsonwebtoken'
 
 const baseUrl = process.env.BACKEND_URL ?? 'http://localhost:5842'
 
@@ -35,6 +36,10 @@ export async function login(values: LoginSchemaType) {
                 maxAge: 60 * 60 * 24 * 7 * 4, // 4 week or set according to token expiry
             })
 
+            const info = jwt.decode(data.data.accessToken)
+
+            console.dir(info)
+
             return {
                 success: true,
                 message: data.message,
@@ -47,7 +52,7 @@ export async function login(values: LoginSchemaType) {
         // const email = values.email
         // const password = values.password
 
-        // const res = await signIn("credentials");
+        // const res = await signIn("credentials", values);
         // console.dir(res);
         // return res
 

@@ -1,8 +1,32 @@
-import NextAuth, { User } from "next-auth"
+import NextAuth, { type DefaultSession } from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 import { loginSchema } from "./schema/auth-schema";
 
 const baseUrl = process.env.BACKEND_URL ?? 'http://localhost:5842'
+
+
+declare module "next-auth" {
+  /**
+   * Returned by `auth`, `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
+   */
+  interface Session {
+    user: {
+      /** The user's postal address. */
+      id: string
+      name: string
+      email: string
+      accessToken: string
+      refreshToken: string
+      /**
+       * By default, TypeScript merges new interface properties and overwrites existing ones.
+       * In this case, the default session user properties will be overwritten,
+       * with the new ones defined above. To keep the default session user properties,
+       * you need to add them back into the newly declared interface.
+       */
+    } & DefaultSession["user"]
+  }
+}
+
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -11,7 +35,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         email: {},
         password: {},
       },
-      // @ts-expect-error
       authorize: async (credentials) => {
 
         const values = await loginSchema.parseAsync(credentials)
@@ -30,12 +53,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
           if (response.status === 200 && data.success) {
             return {
-              user: data.data.user as User,
+              id: data.data.user.id,
+              name: data.data.user.username,
+              email: data.data.user.email,
               accessToken: data.data.accessToken,
-              refreshToken: data.data.refreshToken
+              refreshToken: data.data.refreshToken,
             }
           }
-
           return user
         } catch (error) {
           console.error('Login Error:', error)
@@ -47,9 +71,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
     })
   ],
-  // callbacks: {
-  //   async jwt(token, user) {
+  callbacks: {
+   session({ session}) {
+    return {
+      ...session,
+    }
+   },
 
-  //   }
-  // }
+   jwt({token}) {
+    return {
+      
+    }
+   }
+  }
 })

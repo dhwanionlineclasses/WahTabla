@@ -21,6 +21,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 
 const HomePage = () => {
   const [currentIndex, setCurrentIndex] = useState(0); // Track which badge is active
@@ -40,8 +41,8 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center">
-      <section className="w-full flex flex-col justify-start items-center gap-4">
+    <div className="w-full h-full flex flex-col justify-center items-center pt-20">
+      <section id="home" className="w-full flex flex-col justify-start items-center gap-4">
         <div className="flex justify-center items-center gap-2 px-4 py-2 bg-white relative">
           <Image
             src="/icons/abstract-line.svg"
@@ -89,7 +90,7 @@ const HomePage = () => {
           className="w-[1100px] p-2 bg-tertiary pt-4 rounded-lg"
         />
       </section>
-      <Card className="w-full bg-transparent shadow-none border-none mt-6">
+      <Card id="features" className="w-full bg-transparent shadow-none border-none mt-6">
         <CardHeader className="px-0">
           <CardTitle className="text-2xl">Features</CardTitle>
           <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-2">
@@ -153,7 +154,7 @@ const HomePage = () => {
           </ul>
         </CardContent>
       </Card>
-      <Card className="w-full bg-transparent shadow-none border-none mt-6 px-0">
+      <Card id="benefits" className="w-full bg-transparent shadow-none border-none mt-6 px-0">
         <CardHeader className="px-0">
           <CardTitle className="text-2xl">Benefits</CardTitle>
           <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-2">
@@ -201,7 +202,7 @@ const HomePage = () => {
           </div>
         </CardContent>
       </Card>
-      <Card className="w-full bg-transparent shadow-none border-none mt-6">
+      <Card id="module" className="w-full bg-transparent shadow-none border-none mt-6">
         <CardHeader className="px-0">
           <CardTitle className="text-2xl">Course Modules</CardTitle>
           <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-2">
@@ -252,9 +253,11 @@ const HomePage = () => {
                       </CardHeader>
                     </CardContent>
                     <CardFooter>
+                      <Link href='/profile' className="w-full">
                       <Button variant="secondary" className="w-full">
                         Get it Now
                       </Button>
+                      </Link>
                     </CardFooter>
                   </Card>
                 );
@@ -368,7 +371,7 @@ const HomePage = () => {
           </CardDescription>
         </CardHeader>
       </Card>
-      <Card className="w-full bg-transparent shadow-none border-none mt-6">
+      <Card id="pricing" className="w-full bg-transparent shadow-none border-none mt-6">
         <Tabs defaultValue="monthly">
           <div className="flex flex-col tablet:flex-row justify-between items-end gap-2">
             <CardHeader className="px-0">

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { inter, hankenGrotesk, geistSans, geistMono } from '@/app/fonts/font'
+import { inter, hankenGrotesk, geistSans, geistMono } from "@/app/fonts/font";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
 import { SessionProvider } from "next-auth/react";
+import Providers from "./providers";
 
 export const metadata: Metadata = {
   title: "Dhwani",
@@ -20,26 +21,28 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={cn("min-h-screen flex flex-col bg-background font-hankenGrotesk antialiased",
+        className={cn(
+          "min-h-screen flex flex-col bg-background font-hankenGrotesk antialiased",
           hankenGrotesk.variable,
           inter.variable,
           geistSans.variable,
           geistMono.variable
         )}
       >
-        <SessionProvider>
-        <div className="w-full relative">
-          <Navbar />
-          </div>
-          <main className="min-h-screen flex flex-col justify-center items-center max-w-[1512px] w-full mx-auto px-8 py-20 out:px-0">
-          {children}
-          </main>
-          <div className="bg-white w-full flex justify-center items-center">
-
-          <Footer />
-          </div>
-          <Toaster />
+        <Providers>
+          <SessionProvider>
+            <div className="w-full relative">
+              <Navbar />
+            </div>
+            <main className="min-h-screen flex flex-col justify-start items-start max-w-[1512px] w-full mx-auto px-4 pb-10 out:px-0">
+              {children}
+            </main>
+            <div className="bg-white w-full flex justify-center items-center">
+              <Footer />
+            </div>
+            <Toaster />
           </SessionProvider>
+        </Providers>
       </body>
     </html>
   );

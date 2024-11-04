@@ -20,7 +20,7 @@ import { usePathname } from "next/navigation";
 const Navbar = () => {
   const pathname = usePathname()
 
-  if(pathname.startsWith('/auth')) {
+  if(pathname !== '/') {
     return
   }
 
@@ -118,22 +118,22 @@ export default Navbar;
 const navigation = [
   {
     title: "Home",
-    href: "/",
+    href: "#home",
   },
   {
     title: "Features",
-    href: "/",
+    href: "#features",
   },
   {
     title: "Module",
-    href: "/",
+    href: "#module",
   },
   {
     title: "Pricing",
-    href: "/",
+    href: "#pricing",
   },
   {
     title: "Contact",
-    href: "/",
+    href: "#contact",
   },
 ];
