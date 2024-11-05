@@ -46,54 +46,7 @@ const ProfileModuleList = () => {
                   </th>
                 </tr>
               </thead>
-              {modules.data && modules.data.length > 1 ?
-                (
-                  <tbody className="w-full">
-                      <tr
-                        className="cursor-pointer hover:bg-white rounded-lg"
-                        onClick={() =>
-                          router.push(`/course/22629619`)
-                        }
-                      >
-                        <td className="p-4 flex justify-start items-center gap-2">
-                          <Image
-                            src="/module-thumbnail.jpg"
-                            alt="module-thumbnail"
-                            width={0}
-                            height={0}
-                            className="w-14 h-14"
-                          />
-                          <div className="flex flex-col justify-start items-start">
-                            <Button
-                              variant="ghost"
-                              className="text-xl font-semibold capitalize pl-0 hover:bg-white"
-                            >
-                              {modules.data[1].title}
-                            </Button>
-                            <span className="text-xs text-muted-foreground/40">
-                              Pandit Abhijit Banerjee
-                            </span>
-                          </div>
-                        </td>
-                        <td className="p-4">Feb 14</td>{" "}
-                        <td className="p-4">
-                          <Badge className="bg-white text-black hover:bg-white px-2 py-1">
-                            Completed
-                          </Badge>
-                        </td>{" "}
-                        <td className="p-4">
-                          <Badge className="bg-black text-white hover:bg-black px-2 py-1">
-                            Prathama
-                          </Badge>
-                        </td>
-                        <td className="p-4">
-                        <Slider aria-readonly defaultValue={[100]} max={100} step={1} className="cursor-default pointer-events-none" />
-                        </td>{" "}
-                      </tr>
-                  </tbody>
-                )
-              : ""}
-              {/* <tbody className="w-full">
+              <tbody className="w-full">
                 {modules.data.map((item, index) => (
                   <tr
                     key={index}
@@ -138,7 +91,7 @@ const ProfileModuleList = () => {
                     </td>{" "}
                   </tr>
                 ))}
-              </tbody> */}
+              </tbody>
             </table>
           </div>
         ) : (
