@@ -4,7 +4,7 @@ import { GetCourseResponseType } from "@/schema/course";
 import { Button } from "./ui/button";
 import VimeoEmbed from "./VimeoEmbed";
 import { TriangleLeftIcon, TriangleRightIcon } from "@radix-ui/react-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const CourseVideoComponent = ({
   videoId,
@@ -18,6 +18,12 @@ const CourseVideoComponent = ({
   const [currentVideoIndex, setCurrentVideoIndex] = useState(
     videos.findIndex((video) => video.video_id === videoId)
   );
+
+  useEffect(() => {
+    const newIndex = videos.findIndex((video) => video.video_id === videoId);
+    setCurrentVideoIndex(newIndex);
+  }, [videoId, videos]);
+
   const content = videos[currentVideoIndex];
 
     // Function to handle video change

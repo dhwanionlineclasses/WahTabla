@@ -62,11 +62,11 @@ const Navbar = () => {
           >
             SignUp
           </Button>
-          <Link href='/vimeo-test'>
+          {/* <Link href='/vimeo-test'> */}
           <Button className="hidden tablet:block h-8 sm:h-10 text-xs sm:text-base rounded-sm px-3 sm:px-8">
             Login
           </Button>
-          </Link>
+          {/* </Link> */}
           <Sheet>
             <SheetTrigger>
               {/* <Button variant="ghost" className=" block py-0 tablet:hidden"> */}
