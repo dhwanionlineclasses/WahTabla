@@ -10,7 +10,7 @@ import { ExitIcon } from "@radix-ui/react-icons";
 
 const Profile = () => {
   return (
-    <div className="max-w-[600px] w-[500px] max-h-[92vh] min-h-[400px] h-full bg-white shadow-sm rounded-lg flex flex-col justify-between items-center p-4">
+    <div className="max-w-[300px] min-w-[300px] w-full max-h-[92vh] min-h-[400px] h-full bg-white shadow-sm rounded-lg flex flex-col justify-between items-center p-4">
       <Card className="shadow-none border-none flex flex-col justify-center items-center">
         <Image
           src="/profile-pfp.png"

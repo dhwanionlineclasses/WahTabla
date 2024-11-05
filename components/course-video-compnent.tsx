@@ -3,6 +3,8 @@
 import { GetCourseResponseType } from "@/schema/course";
 import { Button } from "./ui/button";
 import VimeoEmbed from "./VimeoEmbed";
+import { TriangleLeftIcon, TriangleRightIcon } from "@radix-ui/react-icons";
+import { useState } from "react";
 
 const CourseVideoComponent = ({
   videoId,
@@ -11,7 +13,21 @@ const CourseVideoComponent = ({
   videoId: string;
   moduleData: GetCourseResponseType;
 }) => {
-  const content = moduleData.videos.find((video) => video.video_id === videoId);
+
+  const videos = moduleData.videos;
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(
+    videos.findIndex((video) => video.video_id === videoId)
+  );
+  const content = videos[currentVideoIndex];
+
+    // Function to handle video change
+    const changeVideo = (increment: number) => {
+      const newIndex = currentVideoIndex + increment;
+      if (newIndex >= 0 && newIndex < videos.length) {
+        setCurrentVideoIndex(newIndex);
+      }
+    };
+
 
   if (!content) {
     return <span>No Such Video Found</span>;
@@ -43,7 +59,7 @@ const CourseVideoComponent = ({
             </Button>
           </div>
           {content.description && (
-            <div className="text-xl px-4 font-medium max-h-[200px] overflow-y-scroll">
+            <div className="text-xl px-4 font-medium">
               Description:{" "}
               <p className="text-sm font-normal text-muted-foreground">
                 {formatContent(content.description)}
@@ -51,9 +67,17 @@ const CourseVideoComponent = ({
             </div>
           )}
         </div>
-        <Button variant="secondary" size="lg" className="w-full">
-          Next
-        </Button>
+        <div className="w-full flex justify-between items-center">
+          <Button variant="secondary" onClick={() => changeVideo(-1)} disabled={currentVideoIndex === 0}>
+            <TriangleLeftIcon />
+            <span>Previous</span>
+          </Button>
+
+          <Button variant="secondary" onClick={() => changeVideo(1)} disabled={currentVideoIndex === videos.length - 1}>
+            <span>Next</span>
+            <TriangleRightIcon />
+          </Button>
+        </div>
       </div>
     </div>
   );
