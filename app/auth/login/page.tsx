@@ -19,13 +19,10 @@ import Image from "next/image";
 import { loginSchema } from "@/schema/auth-schema";
 import { login } from "@/action/auth/login";
 import { toast } from "sonner";
-// import { signIn } from "@/auth";
-// import { useSession } from "next-auth/react"
+import { useRouter } from "next/navigation";
 
 const Login = () => {
-  // const { data: session } = useSession()
-
-  // console.dir(session)
+  const router = useRouter()
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -36,16 +33,21 @@ const Login = () => {
 
   async function onSubmit(values: z.infer<typeof loginSchema>) {
     const res = await login(values)
-    console.dir(res);
-    if(res.success === true) {
+    
+    if(!res.success) {
       toast(res.message)
     } else {
-      toast(res.message)
+      toast('Great',{
+          description: res.message
+        }
+      )
+      router.push('/profile')
     }
+    console.log(res)
   }
 
   return (
-    <div className="h-full flex items-center justify-center py-12">
+    <div className="min-h-screen h-full flex items-center justify-center py-12">
       <div className="mx-auto grid w-[350px] gap-6">
         <div className="grid gap-2 text-center">
           <h1 className="text-3xl font-bold">Login</h1>
@@ -105,7 +107,7 @@ const Login = () => {
           </Button>
           <Button
             variant="outline"
-            className="w-full hover:bg-primary hover:text-white font-semibold"
+            className="w-full hover:bg-primary hover:text-white font-semibold cursor-not-allowed"
           >
             <Image
               src="/icons/google.svg"

@@ -1,21 +1,59 @@
-import Link from "next/link";
-import type { Metadata } from "next";
+'use client'
 
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
+import { signUpSchema } from "@/schema/auth-schema";
+import { register } from "@/action/auth/register";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
-const description = "A Sign Up page with one column for email input and two buttons for auth signup from google and apple.";
-
-  export const metadata: Metadata = {
-    title: "Sign Up - EEG",
-    description: description,
-  };
 
 const SignUp = () => {
+
+  const router = useRouter()
+  const form = useForm<z.infer<typeof signUpSchema>>({
+    resolver: zodResolver(signUpSchema),
+    defaultValues: {
+      username: '',
+      email: "",
+      password: "",
+    },
+  });
+
+  async function onSubmit(values: z.infer<typeof signUpSchema>) {
+    const res = await register(values)
+
+    if(res.success){
+      toast('Successfully registerd!',{
+        description: 'Please login with your new credentials',
+      })
+  
+      router.push('/auth/login')
+    } else {
+      console.log(res.message)
+      toast(res.message,{
+        description: 'Failed to register'
+      })
+    }
+  }
+
   return (
-    <div className="flex items-center justify-center py-12">
+    <div className="min-h-screen h-full flex items-center justify-center py-12">
       <div className="mx-auto grid w-[350px] gap-6">
         <div className="grid gap-2 text-center">
           <h1 className="text-3xl font-bold">Create an account</h1>
@@ -24,20 +62,55 @@ const SignUp = () => {
           </p>
         </div>
         <div className="grid gap-4">
-          <div className="grid gap-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="m@example.com"
-              required
-            />
-          </div>
-          <Link href='/'> 
-          <Button type="submit" className="w-full bg-black font-semibold">
-            Continue
-          </Button>
-          </Link>
+        <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
+              <FormField
+                control={form.control}
+                name='username'
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="john doe" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input placeholder="m@example.com" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <div className="flex items-center">
+                      <FormLabel>Password</FormLabel>
+    
+                    </div>
+                    <FormControl>
+                      <Input placeholder="********" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit" className="w-full bg-black font-semibold">
+                Sign Up
+              </Button>
+            </form>
+          </Form>
           <Button variant='ghost' className="w-full text-muted-foreground pointer-events-none">
             <Separator className="w-1/3 mx-1" />
             or continue with
@@ -46,16 +119,23 @@ const SignUp = () => {
 
           <Button
             variant="outline"
-            className="w-full font-semibold hover:bg-primary hover:text-white"
+            className="w-full hover:bg-primary hover:text-white font-semibold cursor-not-allowed"
           >
-            Google
+            <Image
+              src="/icons/google.svg"
+              alt="google icon"
+              width={0}
+              height={0}
+              className="w-6 h-6"
+            />
+            <span>Google</span>
           </Button>
-          <Button
+          {/* <Button
             variant="outline"
             className="w-full font-semibold hover:bg-primary hover:text-white"
           >
             Apple
-          </Button>
+          </Button> */}
           <div className="text-sm text-muted-foreground text-center">
             By clicking continue, you agree to our{" "}
             <Link href="#" className="underline underline-offset-2 hover:text-black">

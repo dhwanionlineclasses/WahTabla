@@ -12,6 +12,7 @@ import Profile from "@/components/profile";
 const ProfilePage = async () => {
   const queryClient = new QueryClient();
 
+
   await queryClient.prefetchQuery({
     queryKey: ["getAllModule"],
     queryFn: getAllCourse,

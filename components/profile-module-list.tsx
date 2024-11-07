@@ -28,7 +28,7 @@ const ProfileModuleList = () => {
           <div className="w-full flex flex-col gap-6">
             <table className="w-full border-collapse">
               <thead className="w-full">
-                <tr className="">
+                <tr>
                   <th className="p-4 text-left text-muted-foreground/40 font-semibold">
                     Course Name
                   </th>
@@ -75,12 +75,12 @@ const ProfileModuleList = () => {
                         </span>
                       </div>
                     </td>
-                    <td className="p-4">Feb 14</td>{" "}
+                    <td className="p-4">Feb 14</td>
                     <td className="p-4">
                       <Badge className="bg-white text-black hover:bg-white px-2 py-1">
                         Completed
                       </Badge>
-                    </td>{" "}
+                    </td>
                     <td className="p-4">
                       <Badge className="bg-black text-white hover:bg-black px-2 py-1">
                         Prathama
@@ -88,7 +88,7 @@ const ProfileModuleList = () => {
                     </td>
                     <td className="p-4">
                     <Slider aria-readonly defaultValue={[100]} max={100} step={1} className="cursor-default pointer-events-none" />
-                    </td>{" "}
+                    </td>
                   </tr>
                 ))}
               </tbody>

@@ -31,3 +31,34 @@ export const signUpSchema = z.object({
 
 // Type inference for User signup data validation
 export type SignupSchemaType = z.infer<typeof signUpSchema>;
+
+export type AuthLoginApiResponseType = {
+  success: boolean,
+  message: string,
+  statusCode?: number,
+  errors?: [],
+  data?: {
+    user: {
+      id: string,
+      username: string,
+      email: string
+    },
+    accessToken: string,
+    refreshToken: string
+  }
+}
+export type AuthRegisterApiResponseType = {
+  success: boolean,
+  message: string,
+  statusCode?: number,
+  errors?: [],
+  data?: {
+    user: {
+      id: string,
+      username: string,
+      email: string,
+      createdAt: string,
+      updatedAt: string
+    },
+  }
+}

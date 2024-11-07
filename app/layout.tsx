@@ -34,10 +34,10 @@ export default function RootLayout({
             <div className="w-full relative">
               <Navbar />
             </div>
-            <main className="min-h-screen flex flex-col justify-start items-start max-w-[1512px] w-full mx-auto px-4 pb-10">
+            <main className="min-h-screen flex flex-col justify-start items-start max-w-[1512px] w-full mx-auto px-4">
               {children}
             </main>
-            <div className="bg-white w-full flex justify-center items-center">
+            <div className="w-full flex justify-center items-center">
               <Footer />
             </div>
             <Toaster />
