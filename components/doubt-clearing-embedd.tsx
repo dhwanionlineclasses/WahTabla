@@ -2,7 +2,7 @@
 
 import Cal, { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
-export default function Vimeo() {
+export default function DoubtClearingEmbedd() {
   useEffect(() => {
     (async function () {
       const cal = await getCalApi({ namespace: "doubt" });
@@ -14,7 +14,7 @@ export default function Vimeo() {
     })();
   }, []);
   return (
-    <div className="py-10 w-full flex justify-center items-center overflow-scrolls">
+    <div className=" w-full flex justify-center items-start overflow-scrolls">
       <Cal
         namespace="doubt"
         calLink="dhwaniacademy/doubt"
@@ -24,3 +24,4 @@ export default function Vimeo() {
     </div>
   );
 }
+

@@ -67,9 +67,9 @@ const CourseVideoComponent = ({
           {content.description && (
             <div className="text-xl px-4 font-medium">
               Description:{" "}
-              <p className="text-sm font-normal text-muted-foreground">
+              <div className="text-sm font-normal text-muted-foreground">
                 {formatContent(content.description)}
-              </p>
+              </div>
             </div>
           )}
         </div>

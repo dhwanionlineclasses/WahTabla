@@ -15,10 +15,11 @@ import {
   // SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const Navbar = () => {
   const pathname = usePathname()
+  const router = useRouter()
 
   if(pathname !== '/') {
     return
@@ -59,11 +60,14 @@ const Navbar = () => {
           <Button
             variant="outline"
             className="hidden tablet:block h-8 sm:h-10 text-xs sm:text-base rounded-sm px-3 sm:px-8"
+            onClick={() => router.push('/auth/register')}
           >
             SignUp
           </Button>
           {/* <Link href='/vimeo-test'> */}
-          <Button className="hidden tablet:block h-8 sm:h-10 text-xs sm:text-base rounded-sm px-3 sm:px-8">
+          <Button className="hidden tablet:block h-8 sm:h-10 text-xs sm:text-base rounded-sm px-3 sm:px-8"
+          onClick={() => router.push('/auth/login')}
+          >
             Login
           </Button>
           {/* </Link> */}

@@ -12,7 +12,7 @@ import type {
 import type { JWT } from "next-auth/jwt"
 import jwt from 'jsonwebtoken'
 import { AuthLoginApiResponseType } from "./schema/auth-schema"
-import { error } from "console"
+// import { error } from "console"
 
 const baseUrl = process.env.BACKEND_URL ?? 'http://localhost:5842'
 
