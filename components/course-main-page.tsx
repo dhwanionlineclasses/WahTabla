@@ -9,9 +9,7 @@ import { notFound } from "next/navigation";
 
 const CourseMainPage = ({ moduleId }: { moduleId: string }) => {
   const { data: moduleData, isError, error, isPending } = useModuleContent(moduleId);
-  const [currentVideoId, setCurrentVideoId] = useState(
-    moduleData?.data?.videos[0].video_id
-  );
+  const [currentVideoId, setCurrentVideoId] = useState<string | null>(null);
 
  useEffect(() => {
   if (moduleData?.data?.videos) {
@@ -20,7 +18,7 @@ const CourseMainPage = ({ moduleId }: { moduleId: string }) => {
       .sort((a, b) => a.title.localeCompare(b.title)); // Sort by title (A-Z)
 
     // Set the current video ID to the first video's ID after sorting
-    setCurrentVideoId(sortedVideos[0]?.video_id);
+    setCurrentVideoId(sortedVideos[0]?.video_id || null);
   }
 }, [moduleData]);
 
@@ -30,7 +28,7 @@ const CourseMainPage = ({ moduleId }: { moduleId: string }) => {
 
   if(isPending) {
     return (
-      <section className="flex mt-8 relative scroll-smooth">
+      <section className="w-full h-full flex mt-8 relative scroll-smooth">
         <aside className="hidden w-[400px] min-h-[92vh] h-full tablet:flex flex-col justify-start items-start sticky top-8">
           <Skeleton className="min-h-[92vh] h-full max-w-[400px] w-full" /> {/* Sidebar skeleton */}
         </aside>
@@ -55,7 +53,7 @@ const CourseMainPage = ({ moduleId }: { moduleId: string }) => {
 
 
   return (
-    <section className="flex mt-8 relative scroll-smooth">
+    <section className="w-full flex mt-8 relative scroll-smooth">
       <aside className="hidden w-[400px] min-h-[92vh] h-full tablet:flex flex-col justify-start items-start sticky top-8">
         <OverviewSidebar
           moduleId={moduleId}
