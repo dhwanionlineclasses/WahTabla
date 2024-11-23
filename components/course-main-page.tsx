@@ -16,7 +16,6 @@ const CourseMainPage = ({ moduleId }: { moduleId: string }) => {
     const sortedVideos = moduleData.data.videos
       .slice() // Create a copy to avoid mutating the original array
       .sort((a, b) => a.title.localeCompare(b.title)); // Sort by title (A-Z)
-
     // Set the current video ID to the first video's ID after sorting
     setCurrentVideoId(sortedVideos[0]?.video_id || null);
   }
@@ -25,6 +24,8 @@ const CourseMainPage = ({ moduleId }: { moduleId: string }) => {
   function handleSettingVideoId(videoId: string) {
     setCurrentVideoId(videoId);
   }
+
+  console.log(currentVideoId)
 
   if(isPending) {
     return (

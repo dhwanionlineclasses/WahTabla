@@ -14,7 +14,7 @@ const CourseVideoComponent = ({
   moduleData: GetCourseResponseType;
 }) => {
 
-  const videos = moduleData.videos;
+  const videos = moduleData.videos.sort((a, b) => a.title.localeCompare(b.title));
   const [currentVideoIndex, setCurrentVideoIndex] = useState(
     videos.findIndex((video) => video.video_id === videoId)
   );
