@@ -40,7 +40,7 @@ const OverviewSidebar = ({
             <div>
               {moduleData.data?.videos.length ? (
                 <div className="">
-                  {moduleData.data.videos.map((item, index) => (
+                  {moduleData.data.videos.toSorted((a, b) => a.title.localeCompare(b.title)).map((item, index) => (
                     <Button
                       variant="ghost"
                       key={index}
