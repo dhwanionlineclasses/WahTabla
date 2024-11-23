@@ -22,11 +22,21 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { getUserLocation } from "@/action/get-user-location";
 
 const HomePage = () => {
   const [currentIndex, setCurrentIndex] = useState(0); // Track which badge is active
   const [isAnimating, setIsAnimating] = useState(true);
+  const [country, setCountry] = useState<string>('DEFAULT');
 
+
+  useEffect(() => {
+    const fetchLocation = async () => {
+      const location = await getUserLocation();
+      setCountry(location.country);
+    };
+    fetchLocation();
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -398,7 +408,7 @@ const HomePage = () => {
                       Monthly Plan
                     </Button>
                     <span className="drop-shadow-3xl">
-                      <span className="text-5xl font-semibold">$100</span>
+                      <span className="text-5xl font-semibold">{country === 'IN' ? '₹100': '$100'}</span>
                       <span className="text-sm text-muted-foreground">
                         /month
                       </span>
@@ -469,7 +479,7 @@ const HomePage = () => {
                       Module Plan
                     </Button>
                     <span className="drop-shadow-3xl">
-                      <span className="text-5xl font-semibold">$300</span>
+                      <span className="text-5xl font-semibold">{country === 'IN' ? '₹300' : '$300'}</span>
                       <span className="text-sm text-muted-foreground">
                         /month
                       </span>
@@ -544,7 +554,7 @@ const HomePage = () => {
                       Yearly Plan
                     </Button>
                     <span className="drop-shadow-3xl">
-                      <span className="text-5xl font-semibold">$1200</span>
+                      <span className="text-5xl font-semibold">{country === 'IN' ? '₹1200' : '$1200'}</span>
                       <span className="text-sm text-muted-foreground">
                         /year
                       </span>
@@ -615,7 +625,7 @@ const HomePage = () => {
                       Module Plan
                     </Button>
                     <span className="drop-shadow-3xl">
-                      <span className="text-5xl font-semibold">$1100</span>
+                      <span className="text-5xl font-semibold">{country === 'IN' ? '₹1100' : '$1100'}</span>
                       <span className="text-sm text-muted-foreground">
                         /month
                       </span>

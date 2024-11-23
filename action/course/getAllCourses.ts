@@ -17,7 +17,6 @@ export const getAllCourse = async():Promise<GetAllCourseAPIResponse> => {
         const data = await response.json()
 
         if (response.status === 200 && data.success) {
-
             return {
                 success: true,
                 message: data.message,

@@ -5,6 +5,7 @@ import OverviewSidebar from "./overview-sidebar";
 import CourseVideoComponent from "./course-video-compnent";
 import { useModuleContent } from "@/data/get-module-content";
 import { Skeleton } from "./ui/skeleton";
+import { notFound } from "next/navigation";
 
 const CourseMainPage = ({ moduleId }: { moduleId: string }) => {
   const { data: moduleData, isError, error, isPending } = useModuleContent(moduleId);
@@ -44,7 +45,7 @@ const CourseMainPage = ({ moduleId }: { moduleId: string }) => {
   }
 
   if (!moduleData?.data) {
-    return <span className="w-full h-full flex justify-center items-center">No data Found</span>;
+    return notFound()
   }
 
 

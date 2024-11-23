@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen flex flex-col bg-background font-hankenGrotesk antialiased",
+          "min-h-screen w-full flex flex-col bg-background text-black font-hankenGrotesk antialiased",
           hankenGrotesk.variable,
           inter.variable,
           geistSans.variable,

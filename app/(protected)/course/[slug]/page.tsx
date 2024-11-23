@@ -15,7 +15,7 @@ const CourseVideoPage = async ({ params }: { params: { slug: string } }) => {
   await queryClient.prefetchQuery({
     queryKey: ["getModule"],
     // @ts-expect-error: idk why will fix later
-    queryFn: getCourse('12321'),
+    queryFn: getCourse(),
   });
   // const content
   return (
