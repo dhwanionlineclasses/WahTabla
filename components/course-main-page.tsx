@@ -25,7 +25,6 @@ const CourseMainPage = ({ moduleId }: { moduleId: string }) => {
     setCurrentVideoId(videoId);
   }
 
-  console.log(currentVideoId)
 
   if(isPending) {
     return (

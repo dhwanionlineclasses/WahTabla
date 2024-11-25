@@ -53,8 +53,8 @@ const SignUp = () => {
   }
 
   return (
-    <div className="min-h-screen h-full flex items-center justify-center py-12">
-      <div className="mx-auto grid w-[350px] gap-6">
+    <div className="min-h-screen h-full flex items-center justify-center">
+      <div className="mx-auto grid w-[350px] gap-2">
         <div className="grid gap-2 text-center">
           <h1 className="text-3xl font-bold">Create an account</h1>
           <p className="text-balance text-muted-foreground">

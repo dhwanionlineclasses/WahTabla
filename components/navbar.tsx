@@ -98,11 +98,14 @@ const Navbar = () => {
                 })}
                 <div className="w-full flex justify-center items-center gap-4">
 
-                  <Button className="h-8 sm:h-10 text-xs sm:text-base rounded-sm px-3 sm:px-8">
+                  <Button className="h-8 sm:h-10 text-xs sm:text-base rounded-sm px-3 sm:px-8"
+                    onClick={() => router.push('/auth/login')}
+                 >
                     Login
                   </Button>
                   <Button
                     variant="outline"
+                    onClick={() => router.push('/auth/register')}
                     className="h-8 sm:h-10 text-xs sm:text-base rounded-sm px-3 sm:px-8"
                   >
                     SignUp
