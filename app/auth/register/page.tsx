@@ -69,9 +69,9 @@ const SignUp = () => {
                 name='username'
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Name</FormLabel>
+                    <FormLabel>Username</FormLabel>
                     <FormControl>
-                      <Input placeholder="john doe" {...field} />
+                      <Input placeholder="johndoe" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
