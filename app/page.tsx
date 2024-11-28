@@ -20,11 +20,11 @@ import {
 } from "@/components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { getUserLocation } from "@/action/get-user-location";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
-import { Skeleton } from "@/components/ui/skeleton";
+// import { Skeleton } from "@/components/ui/skeleton";
 
 const HomePage = () => {
   const [currentIndex, setCurrentIndex] = useState(0); // Track which badge is active
