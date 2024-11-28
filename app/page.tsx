@@ -20,10 +20,11 @@ import {
 } from "@/components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import { getUserLocation } from "@/action/get-user-location";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const HomePage = () => {
   const [currentIndex, setCurrentIndex] = useState(0); // Track which badge is active
@@ -106,7 +107,8 @@ const HomePage = () => {
           height={0}
           className="w-[1100px] p-2 bg-tertiary pt-4 rounded-lg"
         /> */}
-        <AspectRatio ratio={16 / 9} className="relative pointer-events-none">
+        <AspectRatio ratio={16 / 9} className="relative pointer-events-none bg-black rounded-sm">
+        {/* <Suspense fallback={<Skeleton className="absolute top-0 left-0 w-full h-full" />}> */}
           <iframe
             src="https://player.vimeo.com/video/1025477798?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;mute=1&amp;controls=0&amp;showinfo=0"
             allow="autoplay"
@@ -114,6 +116,7 @@ const HomePage = () => {
             title="Pexels Videos 1851190"
           ></iframe>
           {/* <script src="https://player.vimeo.com/api/player.js"></script> */}
+        {/* </Suspense> */}
         </AspectRatio>
       </section>
       <Card
