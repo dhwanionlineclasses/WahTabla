@@ -59,16 +59,16 @@ const Footer = () => {
           <div className='flex flex-col sm:flex-row justify-start items-start gap-6 sm:gap-2 md:gap-20'>
           <div className='flex flex-col justify-start items-start gap-1 text-sm'>
             <Link href='/' className='text-lg pb-1 font-semibold'>Home</Link>
-            <Link href='#benefits' className='text-muted-foreground'>Benefits</Link>
-            <Link href='#benefits' className='text-muted-foreground'>Our Modules</Link>
-            <Link href='#benefits' className='text-muted-foreground'>Our Testimonials</Link>
-            <Link href='#benefits' className='text-muted-foreground'>Our FAQ</Link>
+            <Link href='/#benefits' className='text-muted-foreground'>Benefits</Link>
+            <Link href='/#benefits' className='text-muted-foreground'>Our Modules</Link>
+            <Link href='/#benefits' className='text-muted-foreground'>Our Testimonials</Link>
+            <Link href='/#benefits' className='text-muted-foreground'>Our FAQ</Link>
           </div>
           <div className='flex flex-col justify-start items-start gap-1 text-sm'>
             <Link href='/' className='text-lg pb-1 font-semibold'>About Us</Link>
-            <Link href='#benefits' className='text-muted-foreground'>TV Dhwani</Link>
-            <Link href='#benefits' className='text-muted-foreground'>Dhwani India</Link>
-            <Link href='#benefits' className='text-muted-foreground'>Dhwani US</Link>
+            <Link href='/#benefits' className='text-muted-foreground'>TV Dhwani</Link>
+            <Link href='/#benefits' className='text-muted-foreground'>Dhwani India</Link>
+            <Link href='/#benefits' className='text-muted-foreground'>Dhwani US</Link>
           </div>
           <div className='flex flex-col justify-start items-start gap-1'>
             <Link href='/' className='text-lg pb-1 font-semibold'>Social Profiles</Link>

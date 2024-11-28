@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetDescription,
   SheetHeader,
@@ -92,7 +93,9 @@ const Navbar = () => {
                 {navigation.map((item, index) => {
                   return (
                     <Link key={index} href={item.href} className="w-full">
+                      <SheetClose>
                       {item.title}
+                      </SheetClose>
                     </Link>
                   );
                 })}
@@ -125,22 +128,22 @@ export default Navbar;
 const navigation = [
   {
     title: "Home",
-    href: "#home",
+    href: "/#home",
   },
   {
     title: "Features",
-    href: "#features",
+    href: "/#features",
   },
   {
     title: "Module",
-    href: "#module",
+    href: "/#module",
   },
   {
     title: "Pricing",
-    href: "#pricing",
+    href: "/#pricing",
   },
   {
     title: "Contact",
-    href: "#contact",
+    href: "/#contact",
   },
 ];
