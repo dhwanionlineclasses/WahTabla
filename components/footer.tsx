@@ -15,7 +15,7 @@ const Footer = () => {
 
   return (
     // <div className='w-full bg-white py-4 px-8 flex justify-center'>
-      <div className='w-full flex flex-col justify-between items-center bg-white gap-12 mt-10 px-4 pt-12 pb-4'>
+      <div className='w-full flex flex-col justify-between items-center bg-primary text-white gap-12 mt-10 px-4 pt-12 pb-4'>
         <div className='max-w-[1517px] w-full flex flex-col sm:flex-row justify-between items-start sm:items-center'>
           <div className='flex flex-col justify-start items-start gap-2 pb-6'>
             <Image
@@ -23,7 +23,7 @@ const Footer = () => {
               alt='logo'
               width={0}
               height={0}
-              className='w-12 mb-4'
+              className='w-12 mb-4 text-white'
             />
             <span className='flex justify-start items-center gap-2'>
             <Image
@@ -59,27 +59,36 @@ const Footer = () => {
           <div className='flex flex-col sm:flex-row justify-start items-start gap-6 sm:gap-2 md:gap-20'>
           <div className='flex flex-col justify-start items-start gap-1 text-sm'>
             <Link href='/' className='text-lg pb-1 font-semibold'>Home</Link>
-            <Link href='/#benefits' className='text-muted-foreground'>Benefits</Link>
-            <Link href='/#benefits' className='text-muted-foreground'>Our Modules</Link>
-            <Link href='/#benefits' className='text-muted-foreground'>Our Testimonials</Link>
-            <Link href='/#benefits' className='text-muted-foreground'>Our FAQ</Link>
+            <Link href='/#benefits' className='text-white'>Benefits</Link>
+            <Link href='/#benefits' className='text-white'>Our Modules</Link>
+            <Link href='/#benefits' className='text-white'>Our Testimonials</Link>
+            <Link href='/#benefits' className='text-white'>Our FAQ</Link>
           </div>
           <div className='flex flex-col justify-start items-start gap-1 text-sm'>
             <Link href='/' className='text-lg pb-1 font-semibold'>About Us</Link>
-            <Link href='/#benefits' className='text-muted-foreground'>TV Dhwani</Link>
-            <Link href='/#benefits' className='text-muted-foreground'>Dhwani India</Link>
-            <Link href='/#benefits' className='text-muted-foreground'>Dhwani US</Link>
+            <Link href='/#benefits' className='text-white'>TV Dhwani</Link>
+            <Link href='/#benefits' className='text-white'>Dhwani India</Link>
+            <Link href='/#benefits' className='text-white'>Dhwani US</Link>
           </div>
           <div className='flex flex-col justify-start items-start gap-1'>
             <Link href='/' className='text-lg pb-1 font-semibold'>Social Profiles</Link>
-            <div className='flex justify-start items-center gap-3 text-sm'>
+            <div className='flex justify-start items-center gap-1 text-sm'>
+              <Link href='/'>
+                <Image
+                  src='/icons/linkedin.svg'
+                  alt='logo'
+                  width={0}
+                  height={0}
+                  className='w-10 p-2.5 rounded-sm'
+                />
+              </Link>
               <Link href='/'>
                 <Image
                   src='/icons/facebook.svg'
                   alt='logo'
                   width={0}
                   height={0}
-                  className='w-10 p-2.5 rounded-sm bg-secondary'
+                  className='w-10 p-2.5 rounded-sm'
                 />
               </Link>
               <Link href='/'>
@@ -88,23 +97,14 @@ const Footer = () => {
                   alt='logo'
                   width={0}
                   height={0}
-                  className='w-10 p-2.5 rounded-sm bg-secondary'
-                />
-              </Link>
-              <Link href='/'>
-                <Image
-                  src='/icons/linkedin.svg'
-                  alt='logo'
-                  width={0}
-                  height={0}
-                  className='w-10 p-2.5 rounded-sm bg-secondary'
+                  className='w-10 p-2.5 rounded-sm'
                 />
               </Link>
             </div>
           </div>
           </div>
         </div>
-        <p className='w-full flex justify-center items-center text-muted-foreground text-sm'>© 2024 Abhijit Banerjee. All rights reserved.</p>
+        <p className='w-full flex justify-center items-center text-white text-sm'>© 2024 Abhijit Banerjee. All rights reserved.</p>
       </div>
     // </div>
   )

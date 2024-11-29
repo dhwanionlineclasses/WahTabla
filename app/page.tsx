@@ -134,8 +134,8 @@ const HomePage = () => {
             <Button variant="secondary">Buy Now</Button>
           </CardDescription>
         </CardHeader>
-        <CardContent className="bg-white px-12 py-10 rounded-sm">
-          {/* <ul className="list-disc text-sm text-muted-foreground leading-6">
+        <CardContent className="bg-primary text-white px-12 py-10 rounded-sm">
+          {/* <ul className="list-disc text-sm text-white leading-6">
             <li>
               The course is designed to make you a{" "}
               <strong>full-fledged Tabla player</strong> with hands-on guidance
@@ -260,7 +260,7 @@ const HomePage = () => {
                     : "animate-fadeOutUp"
                 } `}
                 >
-                  <div className="max-w-[500px] flex justify-start items-center sm:gap-4 py-2 px-4 sm:py-4 sm:px-4 text-xs md:text-sm bg-white rounded-lg shadow-md">
+                  <div className="max-w-[500px] flex justify-start items-center sm:gap-4 py-2 px-4 sm:py-4 sm:px-4 text-xs md:text-sm bg-primary text-white rounded-lg shadow-md">
                     <Image
                       src={benifit.icon}
                       alt="arrow"
@@ -293,7 +293,7 @@ const HomePage = () => {
         </CardHeader>
         <CardContent className="px-0">
           <div className="grid grid-cols-1 gap-10 sm:gap-6 md:gap-10 desktop:gap-x-10 desktop:gap-y-10">
-            <div className="flex flex-col lg:flex-row justify-start items-start lg:items-center gap-4 bg-white p-4 rounded-lg shadow-sm">
+            <div className="flex flex-col lg:flex-row justify-start items-start lg:items-center gap-4 bg-primary p-4 rounded-lg shadow-sm">
               <Card className="h-full bg-transparent border-none shadow-none w-full py-0">
                 <CardHeader className="flex justify-center items-center">
                   <Image
@@ -301,16 +301,16 @@ const HomePage = () => {
                     alt="arrow"
                     width={0}
                     height={0}
-                    className="z-10 w-full bg-primary p-10 py-16 sm:p-12 md:p-20 desktop:px-32 rounded-sm "
+                    className="z-10 w-full bg-primary p-10 py-16 sm:p-12 md:p-20 desktop:px-32 rounded-sm border border-muted/20"
                   />
                 </CardHeader>
-                <CardContent className="py-0">
+                <CardContent className="py-0 text-white">
                   <div className="w-full flex flex-col sm:flex-col lg:flex-row justify-between items-start sm:items-start lg:items-center gap-4">
                     <div className="flex justify-start items-center gap-2">
-                      <Badge variant="outline" className="py-2 px-4">
+                      <Badge variant="outline" className="py-2 px-4 bg-white text-primary">
                         3 Months
                       </Badge>
-                      <Badge variant="outline" className="py-2 px-4">
+                      <Badge variant="outline" className="py-2 px-4 bg-white text-primary">
                         Beginner
                       </Badge>
                     </div>
@@ -332,7 +332,7 @@ const HomePage = () => {
                   </Link>
                 </CardFooter>
               </Card>
-              <div className="w-full h-full flex flex-col justify-start items-start gap-2 px-4 lg:pl-0 py-4">
+              <div className="w-full h-full flex flex-col justify-start items-start text-white gap-2 px-4 lg:pl-0 py-4">
                 <h1 className="text-3xl font-semibold">About the Course</h1>
                 <ul className="list-disc list-inside text-sm">
                   <span className="text-base font-medium">
@@ -466,14 +466,14 @@ const HomePage = () => {
           {moduleFeatures.map((item, index) => (
             <Badge
               key={index}
-              className="bg-white text-black shadow-md px-4 py-2 flex justify-center items-center gap-2 hover:bg-muted text-lg "
+              className="bg-primary text-white shadow-md px-4 py-2 flex justify-center items-center gap-2 hover:bg-primary text-lg "
             >
               <Image
                 src={item.icon}
                 alt={item.name}
                 width={0}
                 height={0}
-                className="w-8"
+                className="w-6 text-white"
               />
               <span>{item.name}</span>
             </Badge>
@@ -495,11 +495,11 @@ const HomePage = () => {
             {testimonials &&
               testimonials.map((review, index) => {
                 return (
-                  <Card key={index} className="pb-0 rounded-sm">
-                    <CardHeader className="border-b border-b-muted">
-                      <CardDescription>{review.review}</CardDescription>
+                  <Card key={index} className="pb-0 rounded-sm bg-primary text-white">
+                    <CardHeader className="border-b border-b-muted/20">
+                      <CardDescription className="text-white">{review.review}</CardDescription>
                     </CardHeader>
-                    <CardContent className="pt-6 bg-muted/50">
+                    <CardContent className="pt-6 bg-primary">
                       <div className="flex justify-between items-center">
                         <div className="flex justify-start items-center gap-4">
                           <Image
@@ -577,27 +577,27 @@ const HomePage = () => {
               <TabsTrigger value="yearly">Yearly</TabsTrigger>
             </TabsList>
           </div>
-          <CardContent className="bg-white pt-6 px-10 py-10">
+          <CardContent className="bg-primary text-white pt-6 px-10 py-10">
             <TabsContent value="monthly">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-6 md:gap-10 desktop:gap-x-28 desktop:gap-y-10">
-                <Card className="pb-0 rounded-sm bg-muted/30 shadow-none ">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-6 md:gap-10 desktop:gap-x-28 desktop:gap-y-10 bg-primary">
+                <Card className="pb-0 rounded-sm bg-primary text-white shadow-none border border-muted/20">
                   <CardHeader className="flezx justify-start items-center gap-4">
-                    <Button className="bg-tertiary w-full rounded-sm text-xs text-tertiary-foreground hover:bg-tertiary cursor-default shadow-none border border-muted">
+                    <Button className="bg-background w-full rounded-sm text-xs text-tertiary-foreground hover:bg-background cursor-default shadow-none ">
                       Monthly Plan
                     </Button>
                     <span className="drop-shadow-3xl">
                       <span className="text-5xl font-semibold">
                         {country === "IN" ? "₹100" : "$100"}
                       </span>
-                      <span className="text-sm text-muted-foreground">
+                      <span className="text-sm">
                         /month
                       </span>
                     </span>
                   </CardHeader>
-                  <CardContent className="pt-6 bg-white flex flex-col justify-center items-center gap-4">
+                  <CardContent className="pt-6 bg-primary text-white flex flex-col justify-center items-center gap-4">
                     <p>Available Features</p>
                     <div className="w-full sm:px-10 flex flex-col justify-center items-center gap-2">
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-muted-foreground text-sm">
+                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
                         <Image
                           src="/icons/tick.svg"
                           alt="tick"
@@ -607,7 +607,7 @@ const HomePage = () => {
                         />
                         <span>Pay as you learn</span>
                       </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-muted-foreground text-sm">
+                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
                         <Image
                           src="/icons/tick.svg"
                           alt="tick"
@@ -617,7 +617,7 @@ const HomePage = () => {
                         />
                         <span>Flexible monthly payments</span>
                       </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-muted-foreground text-sm">
+                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
                         <Image
                           src="/icons/tick.svg"
                           alt="tick"
@@ -627,7 +627,7 @@ const HomePage = () => {
                         />
                         <span>Cancel anytime</span>
                       </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-muted-foreground text-sm">
+                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
                         <Image
                           src="/icons/tick.svg"
                           alt="tick"
@@ -637,7 +637,7 @@ const HomePage = () => {
                         />
                         <span>Access to all current lessons</span>
                       </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-muted-foreground text-sm">
+                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
                         <Image
                           src="/icons/tick.svg"
                           alt="tick"
@@ -650,27 +650,27 @@ const HomePage = () => {
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Button className="w-full">Get Started</Button>
+                    <Button className="w-full bg-white text-primary hover:bg-muted">Get Started</Button>
                   </CardFooter>
                 </Card>
-                <Card className="pb-0 rounded-sm bg-muted/30 shadow-none ">
+                <Card className="pb-0 rounded-sm bg-primary shadow-none border-muted/20">
                   <CardHeader className="flezx justify-start items-center gap-4">
-                    <Button className="bg-tertiary w-full rounded-sm text-xs text-tertiary-foreground hover:bg-tertiary cursor-default shadow-none border border-muted">
+                    <Button className="bg-background w-full rounded-sm text-xs text-tertiary-foreground hover:bg-background cursor-default shadow-none border border-muted/20">
                       Module Plan
                     </Button>
                     <span className="drop-shadow-3xl">
-                      <span className="text-5xl font-semibold">
+                      <span className="text-5xl font-semibold text-white">
                         {country === "IN" ? "₹300" : "$300"}
                       </span>
-                      <span className="text-sm text-muted-foreground">
+                      <span className="text-sm text-white">
                         /month
                       </span>
                     </span>
                   </CardHeader>
-                  <CardContent className="pt-6 bg-white flex flex-col justify-center items-center gap-4">
+                  <CardContent className="pt-6 bg-primary text-white flex flex-col justify-center items-center gap-4">
                     <p>Available Features</p>
                     <div className="w-full sm:px-10 flex flex-col justify-center items-center gap-2">
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-muted-foreground text-sm">
+                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
                         <Image
                           src="/icons/tick.svg"
                           alt="tick"
@@ -680,7 +680,7 @@ const HomePage = () => {
                         />
                         <span>One-time payment per module</span>
                       </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-muted-foreground text-sm">
+                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
                         <Image
                           src="/icons/tick.svg"
                           alt="tick"
@@ -690,7 +690,7 @@ const HomePage = () => {
                         />
                         <span>Save more with bulk purchase</span>
                       </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-muted-foreground text-sm">
+                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
                         <Image
                           src="/icons/tick.svg"
                           alt="tick"
@@ -700,7 +700,7 @@ const HomePage = () => {
                         />
                         <span>Full access for 3 months</span>
                       </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-muted-foreground text-sm">
+                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
                         <Image
                           src="/icons/tick.svg"
                           alt="tick"
@@ -710,7 +710,7 @@ const HomePage = () => {
                         />
                         <span>Progress at your own pace</span>
                       </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-muted-foreground text-sm">
+                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
                         <Image
                           src="/icons/tick.svg"
                           alt="tick"
@@ -723,31 +723,31 @@ const HomePage = () => {
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Button className="w-full">Get Started</Button>
+                    <Button className="w-full bg-white text-primary hover:bg-muted">Get Started</Button>
                   </CardFooter>
                 </Card>
               </div>
             </TabsContent>
             <TabsContent value="yearly">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-6 md:gap-10 desktop:gap-x-28 desktop:gap-y-10">
-                <Card className="pb-0 rounded-sm bg-muted/30 shadow-none ">
+                <Card className="pb-0 rounded-sm bg-primary shadow-none border-muted/20">
                   <CardHeader className="flezx justify-start items-center gap-4">
-                    <Button className="bg-tertiary w-full rounded-sm text-xs text-tertiary-foreground hover:bg-tertiary cursor-default shadow-none border border-muted">
+                    <Button className="bg-background w-full rounded-sm text-xs text-tertiary-foreground hover:bg-background cursor-default shadow-none border border-muted/20">
                       Yearly Plan
                     </Button>
                     <span className="drop-shadow-3xl">
-                      <span className="text-5xl font-semibold">
+                      <span className="text-5xl font-semibold text-white">
                         {country === "IN" ? "₹1200" : "$1200"}
                       </span>
-                      <span className="text-sm text-muted-foreground">
+                      <span className="text-sm text-white">
                         /year
                       </span>
                     </span>
                   </CardHeader>
-                  <CardContent className="pt-6 bg-white flex flex-col justify-center items-center gap-4">
+                  <CardContent className="pt-6 bg-primary text-white flex flex-col justify-center items-center gap-4">
                     <p>Available Features</p>
                     <div className="w-full sm:px-10 flex flex-col justify-center items-center gap-2">
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-muted-foreground text-sm">
+                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
                         <Image
                           src="/icons/tick.svg"
                           alt="tick"
@@ -757,7 +757,7 @@ const HomePage = () => {
                         />
                         <span>Pay as you learn</span>
                       </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-muted-foreground text-sm">
+                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
                         <Image
                           src="/icons/tick.svg"
                           alt="tick"
@@ -767,7 +767,7 @@ const HomePage = () => {
                         />
                         <span>Flexible monthly payments</span>
                       </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-muted-foreground text-sm">
+                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
                         <Image
                           src="/icons/tick.svg"
                           alt="tick"
@@ -777,7 +777,7 @@ const HomePage = () => {
                         />
                         <span>Cancel anytime</span>
                       </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-muted-foreground text-sm">
+                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
                         <Image
                           src="/icons/tick.svg"
                           alt="tick"
@@ -787,7 +787,7 @@ const HomePage = () => {
                         />
                         <span>Access to all current lessons</span>
                       </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-muted-foreground text-sm">
+                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
                         <Image
                           src="/icons/tick.svg"
                           alt="tick"
@@ -800,27 +800,27 @@ const HomePage = () => {
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Button className="w-full">Get Started</Button>
+                    <Button className="w-full bg-white text-primary hover:bg-muted">Get Started</Button>
                   </CardFooter>
                 </Card>
-                <Card className="pb-0 rounded-sm bg-muted/30 shadow-none ">
+                <Card className="pb-0 rounded-sm bg-primary shadow-none border-muted/20">
                   <CardHeader className="flezx justify-start items-center gap-4">
-                    <Button className="bg-tertiary w-full rounded-sm text-xs text-tertiary-foreground hover:bg-tertiary cursor-default shadow-none border border-muted">
+                    <Button className="bg-background w-full rounded-sm text-xs text-tertiary-foreground hover:bg-background cursor-default shadow-none border border-muted/20">
                       Module Plan
                     </Button>
                     <span className="drop-shadow-3xl">
-                      <span className="text-5xl font-semibold">
+                      <span className="text-5xl font-semibold text-white">
                         {country === "IN" ? "₹1100" : "$1100"}
                       </span>
-                      <span className="text-sm text-muted-foreground">
+                      <span className="text-sm text-white">
                         /month
                       </span>
                     </span>
                   </CardHeader>
-                  <CardContent className="pt-6 bg-white flex flex-col justify-center items-center gap-4">
+                  <CardContent className="pt-6 bg-primary text-white flex flex-col justify-center items-center gap-4">
                     <p>Available Features</p>
                     <div className="w-full sm:px-10 flex flex-col justify-center items-center gap-2">
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-muted-foreground text-sm">
+                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
                         <Image
                           src="/icons/tick.svg"
                           alt="tick"
@@ -830,7 +830,7 @@ const HomePage = () => {
                         />
                         <span>One-time payment per module</span>
                       </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-muted-foreground text-sm">
+                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
                         <Image
                           src="/icons/tick.svg"
                           alt="tick"
@@ -840,7 +840,7 @@ const HomePage = () => {
                         />
                         <span>Save more with bulk purchase</span>
                       </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-muted-foreground text-sm">
+                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
                         <Image
                           src="/icons/tick.svg"
                           alt="tick"
@@ -850,7 +850,7 @@ const HomePage = () => {
                         />
                         <span>Full access for 3 months</span>
                       </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-muted-foreground text-sm">
+                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
                         <Image
                           src="/icons/tick.svg"
                           alt="tick"
@@ -860,7 +860,7 @@ const HomePage = () => {
                         />
                         <span>Progress at your own pace</span>
                       </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-muted-foreground text-sm">
+                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
                         <Image
                           src="/icons/tick.svg"
                           alt="tick"
@@ -873,7 +873,7 @@ const HomePage = () => {
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Button className="w-full">Get Started</Button>
+                    <Button className="w-full bg-white text-primary hover:bg-muted">Get Started</Button>
                   </CardFooter>
                 </Card>
               </div>
@@ -881,15 +881,15 @@ const HomePage = () => {
           </CardContent>
         </Tabs>
       </Card>
-      <Card className="w-full flex flex-col md:flex-row lg:gap-32 justify-between items-start bg-white shadow-none border-none mt-6 py-10 laptop:px-10">
+      <Card className="w-full flex flex-col md:flex-row lg:gap-32 justify-between items-start bg-primary text-white shadow-none border-none mt-6 py-10 laptop:px-10">
         <CardHeader className="max-w-[340px]">
           <CardTitle className="text-3xl">Frequently Asked Questions</CardTitle>
           <CardDescription className="flex flex-col justify-between items-start gap-2">
-            <span className="max-w-[700px]">
+            <span className="max-w-[700px] text-primary-foreground">
               Still you have any questions? Contact our Team via
               courses@dhwaniacademy.net
             </span>
-            <Button variant="outline" className="mt-6 bg-white">
+            <Button variant="outline" className="mt-6 bg-white text-primary">
               See All FAQ&apos;s
             </Button>
           </CardDescription>
@@ -900,7 +900,7 @@ const HomePage = () => {
               <AccordionTrigger className="pb-6 text-base text-left hover:no-underline">
                 Can I buy multiple modules at once?
               </AccordionTrigger>
-              <AccordionContent className="flex flex-col justify-start items-start gap-6 pt-6 text-muted-foreground">
+              <AccordionContent className="flex flex-col justify-start items-start gap-6 pt-6 text-white">
                 Absolutely! You can buy all the modules or a selected number of
                 modules at the same time and access them at your convenience.
                 <Button
@@ -913,7 +913,7 @@ const HomePage = () => {
                     alt="arrow"
                     width={0}
                     height={0}
-                    className="w-8 p-2 bg-white text-black rounded-full"
+                    className="w-8 p-2 bg-white text-primary rounded-full"
                   />
                 </Button>
               </AccordionContent>
@@ -922,7 +922,7 @@ const HomePage = () => {
               <AccordionTrigger className="pb-6 border-b border-b-muted text-base text-left hover:no-underline">
                 What kind of support can I expect from instructors?
               </AccordionTrigger>
-              <AccordionContent className="flex flex-col justify-start items-start gap-6 pt-6 text-muted-foreground">
+              <AccordionContent className="flex flex-col justify-start items-start gap-6 pt-6 text-white">
                 Absolutely! You can buy all the modules or a selected number of
                 modules at the same time and access them at your convenience.
                 <Button
@@ -935,7 +935,7 @@ const HomePage = () => {
                     alt="arrow"
                     width={0}
                     height={0}
-                    className="w-8 p-2 bg-white text-black rounded-full"
+                    className="w-8 p-2 bg-white text-primary rounded-full"
                   />
                 </Button>
               </AccordionContent>
@@ -945,7 +945,7 @@ const HomePage = () => {
                 Are the courses self-paced or do they have specific start and
                 end dates?
               </AccordionTrigger>
-              <AccordionContent className="flex flex-col justify-start items-start gap-6 pt-6 text-muted-foreground">
+              <AccordionContent className="flex flex-col justify-start items-start gap-6 pt-6 text-white">
                 Absolutely! You can buy all the modules or a selected number of
                 modules at the same time and access them at your convenience.
                 <Button
@@ -958,7 +958,7 @@ const HomePage = () => {
                     alt="arrow"
                     width={0}
                     height={0}
-                    className="w-8 p-2 bg-white text-black rounded-full"
+                    className="w-8 p-2 bg-white text-primary rounded-full"
                   />
                 </Button>
               </AccordionContent>
@@ -967,7 +967,7 @@ const HomePage = () => {
               <AccordionTrigger className="pb-6 border-b border-b-muted text-base text-left hover:no-underline">
                 Are there any prerequisites for the courses?
               </AccordionTrigger>
-              <AccordionContent className="flex flex-col justify-start items-start gap-6 pt-6 text-muted-foreground">
+              <AccordionContent className="flex flex-col justify-start items-start gap-6 pt-6 text-white">
                 Absolutely! You can buy all the modules or a selected number of
                 modules at the same time and access them at your convenience.
                 <Button
@@ -980,7 +980,7 @@ const HomePage = () => {
                     alt="arrow"
                     width={0}
                     height={0}
-                    className="w-8 p-2 bg-white text-black rounded-full"
+                    className="w-8 p-2 bg-white text-primary rounded-full"
                   />
                 </Button>
               </AccordionContent>
@@ -989,7 +989,7 @@ const HomePage = () => {
               <AccordionTrigger className="pb-6 border-b border-b-muted text-base text-left hover:no-underline">
                 Can I download the course materials for offline access?
               </AccordionTrigger>
-              <AccordionContent className="flex flex-col justify-start items-start gap-6 pt-6 text-muted-foreground">
+              <AccordionContent className="flex flex-col justify-start items-start gap-6 pt-6 text-white">
                 Absolutely! You can buy all the modules or a selected number of
                 modules at the same time and access them at your convenience.
                 <Button
@@ -1002,7 +1002,7 @@ const HomePage = () => {
                     alt="arrow"
                     width={0}
                     height={0}
-                    className="w-8 p-2 bg-white text-black rounded-full"
+                    className="w-8 p-2 bg-white text-primary rounded-full"
                   />
                 </Button>
               </AccordionContent>
