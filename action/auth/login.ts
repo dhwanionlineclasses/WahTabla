@@ -2,7 +2,7 @@
 
 import { LoginSchemaType } from '@/schema/auth-schema';
 import { signIn } from '@/auth';
-import { isRedirectError, redirect } from 'next/dist/client/components/redirect';
+import { isRedirectError } from 'next/dist/client/components/redirect';
 import { AuthError } from 'next-auth';
 
 

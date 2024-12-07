@@ -16,7 +16,8 @@ export async function register(values: SignupSchemaType) {
     try {
         const response = await fetch(`${baseUrl}/users/register`, options)
         const data: AuthRegisterApiResponseType = await response.json()
-        if (response.status === 200 && data.success && data.data) {
+        
+        if (response.status === 201 && data.success && data.data) {
             
             return {
                 success: true,

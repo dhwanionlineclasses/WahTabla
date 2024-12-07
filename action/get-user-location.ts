@@ -1,4 +1,4 @@
-'use server'
+'use client'
 
 const IpInfoApiToken = process.env.IPINFO_API_TOKEN
 

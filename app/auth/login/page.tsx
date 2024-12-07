@@ -43,7 +43,7 @@ const Login = () => {
       )
       router.push('/profile')
     }
-    console.log(res)
+    // console.log(res)
   }
 
   return (

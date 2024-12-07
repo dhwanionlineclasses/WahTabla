@@ -41,6 +41,10 @@ const baseUrl = process.env.BACKEND_URL ?? 'http://localhost:5842'
 // }
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+
+  pages: {
+    signIn: '/auth/login'
+  },
   providers: [
     Credentials({
 

@@ -9,10 +9,32 @@ import {
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ExitIcon } from "@radix-ui/react-icons";
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import { logout } from "@/action/auth/logout";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const Profile = () => {
   const session = useSession()
+  const router = useRouter()
+
+  const handleLogout = async() => {
+    try {
+      const res = await logout()
+      console.log(res)
+      if (res.success) {
+        toast('Successfully logged out!')
+        router.push('/')
+      } else {
+        toast(res.message)
+      }
+    }catch(err) {
+      toast('Something went wrong',{
+        description: 'Check console for more details'
+      })
+      console.log(err)
+    }
+  }
 
   return (
     <div className="desktop:max-w-[300px] desktop:min-w-[300px] w-full max-h-[92vh] min-h-[400px] h-full bg-white shadow-sm rounded-lg flex flex-col justify-between items-center p-4">
@@ -33,7 +55,7 @@ const Profile = () => {
           </CardDescription>
         </CardHeader>
       </Card>
-      <Button variant="secondary" className="w-full" onClick={() => signOut()}>
+      <Button variant="secondary" className="w-full" onClick={() => handleLogout()}>
         <ExitIcon />
         <span>Log Out</span>
       </Button>
