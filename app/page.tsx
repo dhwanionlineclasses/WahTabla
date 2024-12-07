@@ -23,7 +23,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { getUserLocation } from "@/action/get-user-location";
-import { AspectRatio } from "@radix-ui/react-aspect-ratio";
+// import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 // import { Skeleton } from "@/components/ui/skeleton";
 
 const HomePage = () => {
@@ -107,17 +107,16 @@ const HomePage = () => {
           height={0}
           className="w-[1100px] p-2 bg-tertiary pt-4 rounded-lg"
         /> */}
-        <AspectRatio ratio={16 / 9} className="relative pointer-events-none bg-black rounded-sm">
-        {/* <Suspense fallback={<Skeleton className="absolute top-0 left-0 w-full h-full" />}> */}
+        {/* <AspectRatio ratio={16 / 9} className="pointer-events-none max-h-[800px] rounded-sm flex items-start justify-center"> */}
+        <div className="relative w-[80%] max-w-[800px] max-h-[800px] bg-black h-full aspect-video my-8">
           <iframe
             src="https://player.vimeo.com/video/1025477798?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;mute=1&amp;controls=0&amp;showinfo=0"
             allow="autoplay"
             className="absolute top-0 left-0 w-full h-full"
             title="Pexels Videos 1851190"
           ></iframe>
-          {/* <script src="https://player.vimeo.com/api/player.js"></script> */}
-        {/* </Suspense> */}
-        </AspectRatio>
+        </div>
+        {/* </AspectRatio> */}
       </section>
       <Card
         id="features"
@@ -125,14 +124,14 @@ const HomePage = () => {
       >
         <CardHeader className="px-0">
           <CardTitle className="text-2xl">About the Course</CardTitle>
-          <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-2">
+          {/* <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-2">
             <span className="max-w-[700px]">
               Our course offers a range of features tailored to enhance your
               learning experience, from hands-on guidance to performance
               opportunities and flexible learning options.
             </span>
             <Button variant="secondary">Buy Now</Button>
-          </CardDescription>
+          </CardDescription> */}
         </CardHeader>
         <CardContent className="bg-primary text-white px-12 py-10 rounded-sm">
           {/* <ul className="list-disc text-sm text-white leading-6">
@@ -231,14 +230,14 @@ const HomePage = () => {
       >
         <CardHeader className="px-0">
           <CardTitle className="text-2xl">Features & Benefits</CardTitle>
-          <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-2">
+          {/* <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-2">
             <span className="max-w-[700px]">
               Unlock your musical potential with immersive learning, hands-on
               guidance, and opportunities to perform, teach, and grow
               professionally.
             </span>
             <Button variant="secondary">Buy Now</Button>
-          </CardDescription>
+          </CardDescription> */}
         </CardHeader>
         <CardContent className="px-0 relative">
           <Image
@@ -282,14 +281,14 @@ const HomePage = () => {
       >
         <CardHeader className="px-0">
           <CardTitle className="text-2xl">Course Modules</CardTitle>
-          <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-2">
+          {/* <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-2">
             <span className="max-w-[700px]">
               Our Tabla course is structured into progressive modules, each
               designed to guide you step by step from foundational skills to
               advanced mastery.
             </span>
-            {/* <Button variant="secondary">View All</Button> */}
-          </CardDescription>
+            <Button variant="secondary">View All</Button>
+          </CardDescription> */}
         </CardHeader>
         <CardContent className="px-0">
           <div className="grid grid-cols-1 gap-10 sm:gap-6 md:gap-10 desktop:gap-x-10 desktop:gap-y-10">
@@ -453,14 +452,14 @@ const HomePage = () => {
       <Card className="w-full bg-transparent shadow-none border-none mt-6">
         <CardHeader className="px-0">
           <CardTitle className="text-2xl">Module Features</CardTitle>
-          <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-3">
+          {/* <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-3">
             <span className="max-w-[700px]">
               Our Tabla course is include industry first features, designed to
               provide learners the best and world-class experiences, and for
               them to make the most of the learning experience.
             </span>
             <Button variant="secondary">View All</Button>
-          </CardDescription>
+          </CardDescription> */}
         </CardHeader>
         <CardContent className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 desktop:grid-cols-4 gap-4 md:gap-8 px-0">
           {moduleFeatures.map((item, index) => (
@@ -483,12 +482,12 @@ const HomePage = () => {
       <Card className="w-full bg-transparent shadow-none border-none mt-6">
         <CardHeader className="px-0">
           <CardTitle className="text-2xl">Our Testimonials</CardTitle>
-          <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-2">
+          {/* <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-2">
             <span className="max-w-[700px]">
               See What Our Students Are Saying
             </span>
             <Button variant="secondary">View All</Button>
-          </CardDescription>
+          </CardDescription> */}
         </CardHeader>
         <CardContent className="px-0">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-6 md:gap-10 desktop:gap-x-10 desktop:gap-y-10">
@@ -564,13 +563,13 @@ const HomePage = () => {
           <div className="flex flex-col tablet:flex-row justify-between items-end gap-2">
             <CardHeader className="px-0">
               <CardTitle className="text-2xl">Our Pricing</CardTitle>
-              <CardDescription className="">
+              {/* <CardDescription className="">
                 <span className="max-w-[700px]">
                   We have a comprehensive pricing scheme for courses to be
                   bought monthly, yearly or even module-wise, as per your
                   learning experience.
                 </span>
-              </CardDescription>
+              </CardDescription> */}
             </CardHeader>
             <TabsList>
               <TabsTrigger value="monthly">Monthly</TabsTrigger>
