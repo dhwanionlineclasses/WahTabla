@@ -21,10 +21,12 @@ import { signUpSchema } from "@/schema/auth-schema";
 import { register } from "@/action/auth/register";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 
 const SignUp = () => {
 
+  const [ loading, setLoading ] = useState(false)
   const router = useRouter()
   const form = useForm<z.infer<typeof signUpSchema>>({
     resolver: zodResolver(signUpSchema),
@@ -36,19 +38,29 @@ const SignUp = () => {
   });
 
   async function onSubmit(values: z.infer<typeof signUpSchema>) {
-    const res = await register(values)
 
-    if(res.success){
-      toast('Successfully registerd!',{
-        description: 'Please login with your new credentials',
-      })
+    setLoading(true)
+
+    try{
+      const res = await register(values)
   
-      router.push('/auth/login')
-    } else {
-      console.log(res.message)
-      toast(res.message,{
-        description: 'Failed to register'
-      })
+      if(res.success){
+        toast('Successfully registerd!',{
+          description: 'Please login with your new credentials',
+        })
+    
+        router.push('/auth/login')
+      } else {
+        console.log(res.message)
+        toast(res.message,{
+          description: 'Failed to register'
+        })
+      }
+    }catch(err) {
+      console.log('Error while signup: ', err)
+      toast('Something unexpected went wrong!')
+    } finally{
+      setLoading(false)
     }
   }
 
@@ -107,7 +119,7 @@ const SignUp = () => {
                 )}
               />
               <Button type="submit" className="w-full bg-black font-semibold">
-                Sign Up
+                {loading ? 'Loading...' : 'Sign Up'}
               </Button>
             </form>
           </Form>

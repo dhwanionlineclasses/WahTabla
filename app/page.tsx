@@ -2,6 +2,7 @@
 
 // import { Button } from '@/components/ui/button'
 // import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { motion } from "motion/react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -23,6 +24,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { getUserLocation } from "@/action/get-user-location";
+import CaraousalCourseCard from "@/components/caraousal-course-cards";
 // import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 // import { Skeleton } from "@/components/ui/skeleton";
 
@@ -43,7 +45,7 @@ const HomePage = () => {
     const interval = setInterval(() => {
       setIsAnimating(false); // Start fade-out
       setTimeout(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % benifits.length); // Change badge
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % benefits.length); // Change badge
         setIsAnimating(true); // Start fade-in
       }, 500); // 500ms fade-out duration
     }, 3500); // 3 sec visible + 0.5 sec fade-out
@@ -123,7 +125,7 @@ const HomePage = () => {
         className="w-full bg-transparent shadow-none border-none mt-6"
       >
         <CardHeader className="px-0">
-          <CardTitle className="text-2xl">About the Course</CardTitle>
+          <CardTitle className="text-2xl">Introduction</CardTitle>
           {/* <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-2">
             <span className="max-w-[700px]">
               Our course offers a range of features tailored to enhance your
@@ -245,19 +247,20 @@ const HomePage = () => {
             alt="arrow"
             width={0}
             height={0}
-            className="w-full object-cover h-[200px] tablet:h-full"
+            className="w-full object-cover h-[200px] tablet:h-full rounded-lg"
           />
-          <div className="w-full h-full absolute top-0 z-20">
-            <div className="relative flex justify-center items-center h-full mx-auto overflow-hidden">
-              {benifits.map((benifit, index) => (
+          <div className="w-full h-full flex justify-center items-center absolute top-0 z-20">
+            <div className="lg:hidden relative flex justify-center items-center w-full h-full mx-auto overflow-hidden">
+              {benefits.map((benifit, index) => (
                 <div
                   key={index}
-                  className={`absolute w-full h-12 px-2 flex items-center justify-center rounded-lg 
+                  className={`absolute w-full h-12 px-2 flex items-center justify-center rounded-lg
                 ${
                   isAnimating && index === currentIndex
                     ? "animate-fadeInUp"
                     : "animate-fadeOutUp"
-                } `}
+                } 
+                `}
                 >
                   <div className="max-w-[500px] flex justify-start items-center sm:gap-4 py-2 px-4 sm:py-4 sm:px-4 text-xs md:text-sm bg-primary text-white rounded-lg shadow-md">
                     <Image
@@ -272,120 +275,101 @@ const HomePage = () => {
                 </div>
               ))}
             </div>
-          </div>
-        </CardContent>
-      </Card>
-      <Card
-        id="module"
-        className="w-full bg-transparent shadow-none border-none mt-6"
-      >
-        <CardHeader className="px-0">
-          <CardTitle className="text-2xl">Course Modules</CardTitle>
-          {/* <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-2">
-            <span className="max-w-[700px]">
-              Our Tabla course is structured into progressive modules, each
-              designed to guide you step by step from foundational skills to
-              advanced mastery.
-            </span>
-            <Button variant="secondary">View All</Button>
-          </CardDescription> */}
-        </CardHeader>
-        <CardContent className="px-0">
-          <div className="grid grid-cols-1 gap-10 sm:gap-6 md:gap-10 desktop:gap-x-10 desktop:gap-y-10">
-            <div className="flex flex-col lg:flex-row justify-start items-start lg:items-center gap-4 bg-primary p-4 rounded-lg shadow-sm">
-              <Card className="h-full bg-transparent border-none shadow-none w-full py-0">
-                <CardHeader className="flex justify-center items-center">
-                  <Image
-                    src="/course-thumbnail.png"
-                    alt="arrow"
-                    width={0}
-                    height={0}
-                    className="z-10 w-full bg-primary p-10 py-16 sm:p-12 md:p-20 desktop:px-32 rounded-sm border border-muted/20"
-                  />
-                </CardHeader>
-                <CardContent className="py-0 text-white">
-                  <div className="w-full flex flex-col sm:flex-col lg:flex-row justify-between items-start sm:items-start lg:items-center gap-4">
-                    <div className="flex justify-start items-center gap-2">
-                      <Badge variant="outline" className="py-2 px-4 bg-white text-primary">
-                        3 Months
-                      </Badge>
-                      <Badge variant="outline" className="py-2 px-4 bg-white text-primary">
-                        Beginner
-                      </Badge>
-                    </div>
-                    <span className="text-sm tablet:text-base desktop:text-lg">
-                      By Pandit Abhijit Banerjee
-                    </span>
+
+            <div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 relative">
+              {benefits.map((benefit, index) => (
+                <motion.div
+                  key={index}
+                  className="w-full h-auto sm:h-24 md:h-28 px-2 py-2 flex items-stretch justify-center rounded-lg"
+                  initial={{
+                    opacity: 0,
+                    y: 20,
+                    // Initial position is centered in the viewport (not absolute)
+                    transform: "translateY(50%)", // Moves the card down initially
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0, // Animate to original position
+                    transform: "translateY(0)", // Final position at normal grid location
+                  }}
+                  transition={{
+                    duration: 0.6,
+                    ease: "easeOut",
+                    delay: index * 0.1, // Stagger the animations
+                  }}
+                >
+                  <div className="max-w-[450px] flex justify-start items-center sm:gap-4 py-2 px-4 sm:py-4 sm:px-4 text-xs md:text-sm bg-primary text-white rounded-lg shadow-md">
+                    <Image
+                      src={benefit.icon}
+                      alt="icon"
+                      width={0}
+                      height={0}
+                      className="w-6 h-6"
+                    />
+                    {benefit.description}
                   </div>
-                  <CardHeader className="px-0">
-                    <CardTitle className="text-xl">
-                      Prathama (1st Year)
-                    </CardTitle>
-                  </CardHeader>
-                </CardContent>
-                <CardFooter>
-                  <Link href="/profile" className="w-full">
-                    <Button variant="secondary" className="w-full">
-                      Get it Now
-                    </Button>
-                  </Link>
-                </CardFooter>
-              </Card>
-              <div className="w-full h-full flex flex-col justify-start items-start text-white gap-2 px-4 lg:pl-0 py-4">
-                <h1 className="text-3xl font-semibold">About the Course</h1>
-                <ul className="list-disc list-inside text-sm">
-                  <span className="text-base font-medium">
-                    Course Description
-                  </span>
-                  <li className="pl-4">
-                    Introduction to Tabla: Overview of its history, significance
-                    in Indian classical music, and cultural importance.
-                  </li>
-                  <li className="pl-4">
-                    Anatomy of the Tabla: Detailed exploration of the
-                    components, materials, and tuning methods for both Dayan
-                    (right-hand drum) and Bayan (left-hand drum).
-                  </li>
-                  <li className="pl-4">
-                    Basic Hand Techniques: Step-by-step guidance on fundamental
-                    strokes, including Ta, Tin, Tun, and Ghe.
-                  </li>
-                  <li className="pl-4">
-                    Simple Thekas: Introduction to basic rhythmic cycles such as
-                    Teen Taal and Keherwa.
-                  </li>
-                  <li className="pl-4">
-                    Practice Drills: Structured exercises to build hand
-                    coordination, strength, and precision.
-                  </li>
-                  <li className="pl-4">
-                    Tuning Essentials: Methods to achieve perfect pitch and
-                    tonal clarity for your Tabla set.
-                  </li>
-                  <li className="pl-4">
-                    Cultural Insights: Understanding the role of Tabla in
-                    different genres, including classical, semi-classical, and
-                    folk music.
-                  </li>
-                  <span className="text-base font-medium">
-                    Learning Outcomes{" "}
-                  </span>
-                  <br></br>
-                  <span className="text-base font-medium">
-                    By the end of Module 1, learners will:
-                  </span>
-                  <li className="pl-4">
-                    Be familiar with the basic structure and care of Tabla.
-                  </li>
-                  <li className="pl-4">
-                    Master fundamental strokes and rhythms.
-                  </li>
-                </ul>
-              </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </CardContent>
       </Card>
+      <div className="w-full flex flex-col justify-start items-start gap-6 pt-6">
+        {/* <h1 className="text-2xl font-medium">Who & Requirements</h1> */}
+        <div className="w-full flex flex-wrap tableto:flex-nowrap justify-between items-stretch gap-6">
+          <div className="relative min-w-[300px] w-full min-h-[240px] rounded-lg flex flex-col justify-start items-center gap-4 px-6 py-10 text-center text-white bg-primary">
+            <p className="text-2xl font-semibold max-w-[300px]">
+              No preconception of Tabla is necessary.
+            </p>
+            <p className="text-xs max-w-[250px]">
+              Students can pursue this course even if they have no prior
+              knowledge of Tabla.
+            </p>
+            <span className="absolute -bottom-6 w-20 h-20 rounded-full bg-background flex justify-center items-center">
+              <Image
+                src="/star.svg"
+                alt="star"
+                width={0}
+                height={0}
+                className="w-8 h-8"
+              />
+            </span>
+          </div>
+          <div className="min-w-[300px] w-full rounded-lg flex flex-col justify-center items-center gap-4 px-6 py-10 text-center text-white bg-primary">
+            <p className="text-2xl font-semibold">WHO THIS COURSE IS FOR</p>
+            <li className="text-xs text-left list-inside max-w-[600px]">
+              Anyone who wants to learn tabla from the beginning learn, to
+              perform and teach professionally and pursue it more than a hobby
+              and make it a side profession.
+            </li>
+            <li className="text-xs text-left list-inside max-w-[600px]">
+              Having some knowledge of Indian Rhythm and can incorporate the
+              rhythm of Tabla to drums or any other instruments such as Guitar
+              or base Guitar or Zembe or similar percussion instruments
+            </li>
+          </div>
+          <div className="relative min-w-[300px] w-full min-h-[240px] rounded-lg flex flex-col justify-start items-center gap-4 px-6 py-10 text-center text-white bg-primary">
+            <p className="text-2xl font-semibold max-w-[300px]">
+              No preconception of Tabla is necessary.
+            </p>
+            <p className="text-xs max-w-[250px]">
+              Students can pursue this course even if they have no prior
+              knowledge of Tabla.
+            </p>
+            <span className="absolute -bottom-6 w-20 h-20 rounded-full bg-background flex justify-center items-center">
+              <Image
+                src="/star.svg"
+                alt="star"
+                width={0}
+                height={0}
+                className="w-8 h-8"
+              />
+            </span>
+          </div>
+        </div>
+      </div>
+      <CaraousalCourseCard />
+      
       {/* <Card id="module" className="w-full bg-transparent shadow-none border-none mt-6">
         <CardHeader className="px-0">
           <CardTitle className="text-2xl">Course Modules</CardTitle>
@@ -494,9 +478,14 @@ const HomePage = () => {
             {testimonials &&
               testimonials.map((review, index) => {
                 return (
-                  <Card key={index} className="pb-0 rounded-sm bg-primary text-white">
+                  <Card
+                    key={index}
+                    className="pb-0 rounded-sm bg-primary text-white"
+                  >
                     <CardHeader className="border-b border-b-muted/20">
-                      <CardDescription className="text-white">{review.review}</CardDescription>
+                      <CardDescription className="text-white">
+                        {review.review}
+                      </CardDescription>
                     </CardHeader>
                     <CardContent className="pt-6 bg-primary">
                       <div className="flex justify-between items-center">
@@ -576,7 +565,7 @@ const HomePage = () => {
               <TabsTrigger value="yearly">Yearly</TabsTrigger>
             </TabsList>
           </div>
-          <CardContent className="bg-primary text-white pt-6 px-10 py-10">
+          <CardContent className="bg-primary text-white pt-6 px-10 py-10 rounded-xl">
             <TabsContent value="monthly">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-6 md:gap-10 desktop:gap-x-28 desktop:gap-y-10 bg-primary">
                 <Card className="pb-0 rounded-sm bg-primary text-white shadow-none border border-muted/20">
@@ -588,9 +577,7 @@ const HomePage = () => {
                       <span className="text-5xl font-semibold">
                         {country === "IN" ? "₹100" : "$100"}
                       </span>
-                      <span className="text-sm">
-                        /month
-                      </span>
+                      <span className="text-sm">/month</span>
                     </span>
                   </CardHeader>
                   <CardContent className="pt-6 bg-primary text-white flex flex-col justify-center items-center gap-4">
@@ -649,7 +636,9 @@ const HomePage = () => {
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Button className="w-full bg-white text-primary hover:bg-muted">Get Started</Button>
+                    <Button className="w-full bg-white text-primary hover:bg-muted">
+                      Get Started
+                    </Button>
                   </CardFooter>
                 </Card>
                 <Card className="pb-0 rounded-sm bg-primary shadow-none border-muted/20">
@@ -661,9 +650,7 @@ const HomePage = () => {
                       <span className="text-5xl font-semibold text-white">
                         {country === "IN" ? "₹300" : "$300"}
                       </span>
-                      <span className="text-sm text-white">
-                        /month
-                      </span>
+                      <span className="text-sm text-white">/month</span>
                     </span>
                   </CardHeader>
                   <CardContent className="pt-6 bg-primary text-white flex flex-col justify-center items-center gap-4">
@@ -722,7 +709,9 @@ const HomePage = () => {
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Button className="w-full bg-white text-primary hover:bg-muted">Get Started</Button>
+                    <Button className="w-full bg-white text-primary hover:bg-muted">
+                      Get Started
+                    </Button>
                   </CardFooter>
                 </Card>
               </div>
@@ -738,9 +727,7 @@ const HomePage = () => {
                       <span className="text-5xl font-semibold text-white">
                         {country === "IN" ? "₹1200" : "$1200"}
                       </span>
-                      <span className="text-sm text-white">
-                        /year
-                      </span>
+                      <span className="text-sm text-white">/year</span>
                     </span>
                   </CardHeader>
                   <CardContent className="pt-6 bg-primary text-white flex flex-col justify-center items-center gap-4">
@@ -799,7 +786,9 @@ const HomePage = () => {
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Button className="w-full bg-white text-primary hover:bg-muted">Get Started</Button>
+                    <Button className="w-full bg-white text-primary hover:bg-muted">
+                      Get Started
+                    </Button>
                   </CardFooter>
                 </Card>
                 <Card className="pb-0 rounded-sm bg-primary shadow-none border-muted/20">
@@ -811,9 +800,7 @@ const HomePage = () => {
                       <span className="text-5xl font-semibold text-white">
                         {country === "IN" ? "₹1100" : "$1100"}
                       </span>
-                      <span className="text-sm text-white">
-                        /month
-                      </span>
+                      <span className="text-sm text-white">/month</span>
                     </span>
                   </CardHeader>
                   <CardContent className="pt-6 bg-primary text-white flex flex-col justify-center items-center gap-4">
@@ -872,7 +859,9 @@ const HomePage = () => {
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Button className="w-full bg-white text-primary hover:bg-muted">Get Started</Button>
+                    <Button className="w-full bg-white text-primary hover:bg-muted">
+                      Get Started
+                    </Button>
                   </CardFooter>
                 </Card>
               </div>
@@ -1096,7 +1085,7 @@ const testimonials = [
   },
 ];
 
-const benifits = [
+const benefits = [
   {
     icon: "/benefits/benefit-1.jpg",
     description:

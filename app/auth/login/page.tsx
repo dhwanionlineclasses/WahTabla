@@ -20,8 +20,11 @@ import { loginSchema } from "@/schema/auth-schema";
 import { login } from "@/action/auth/login";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const Login = () => {
+
+  const [ loading, setLoading ] = useState(false)
   const router = useRouter()
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -32,16 +35,25 @@ const Login = () => {
   });
 
   async function onSubmit(values: z.infer<typeof loginSchema>) {
-    const res = await login(values)
-    
-    if(!res.success) {
-      toast(res.message)
-    } else {
-      toast('Great',{
-          description: res.message
+
+    setLoading(true)
+    try{
+        const res = await login(values)
+        
+        if(!res.success) {
+          toast(res.message)
+        } else {
+          toast('Great',{
+              description: res.message
+            }
+          )
+          router.push('/profile')
         }
-      )
-      router.push('/profile')
+    } catch(err){
+      console.log('Error while login: ', err)
+      toast('Something unexpected went wrong!')
+    } finally{
+      setLoading(false)
     }
     // console.log(res)
   }
@@ -93,7 +105,7 @@ const Login = () => {
                 )}
               />
               <Button type="submit" className="w-full bg-black font-semibold">
-                Login
+                {loading ? 'Loading...' : 'Login'}
               </Button>
             </form>
           </Form>

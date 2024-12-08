@@ -13,12 +13,15 @@ import { useSession } from "next-auth/react";
 import { logout } from "@/action/auth/logout";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { useState } from "react";
 
 const Profile = () => {
   const session = useSession()
   const router = useRouter()
+  const [ loading, setLoading ] = useState(false)
 
   const handleLogout = async() => {
+    setLoading(true)
     try {
       const res = await logout()
       console.log(res)
@@ -33,6 +36,8 @@ const Profile = () => {
         description: 'Check console for more details'
       })
       console.log(err)
+    } finally{
+      setLoading(false)
     }
   }
 
@@ -57,7 +62,7 @@ const Profile = () => {
       </Card>
       <Button variant="secondary" className="w-full" onClick={() => handleLogout()}>
         <ExitIcon />
-        <span>Log Out</span>
+        <span>{loading ? 'Loading...' : 'Log Out'}</span>
       </Button>
     </div>
   );
