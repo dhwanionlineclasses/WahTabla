@@ -9,7 +9,7 @@ const Footer = () => {
 
   const pathname = usePathname()
 
-  if(pathname.startsWith('/auth')) {
+  if(!pathname || pathname.startsWith('/auth')) {
     return
   }
 

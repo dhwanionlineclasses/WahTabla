@@ -56,9 +56,9 @@ const CaraousalCourseCard = () => {
           </div>
         </CardHeader>
         <CarouselContent className="w-full">
-          {Array.from({ length: 5 }).map((_, index) => (
+          {course.map((item, index) => (
             <CarouselItem key={index} className="w-full">
-              <Content />
+              <Content name={item.name} level={item.level} year={item.year} />
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -69,7 +69,7 @@ const CaraousalCourseCard = () => {
 
 export default CaraousalCourseCard;
 
-const Content = () => {
+const Content = ({name, level, year}: {name: string; level: string; year: string}) => {
   return (
     <CardContent className="px-0">
       <div className="grid grid-cols-1 gap-10 sm:gap-6 md:gap-10 desktop:gap-x-10 desktop:gap-y-10">
@@ -97,7 +97,7 @@ const Content = () => {
                     variant="outline"
                     className="py-2 px-4 bg-white text-primary"
                   >
-                    Beginner
+                    {level}
                   </Badge>
                 </div>
                 <span className="text-sm tablet:text-base desktop:text-lg">
@@ -105,7 +105,10 @@ const Content = () => {
                 </span>
               </div>
               <CardHeader className="px-0">
-                <CardTitle className="text-xl">Prathama (1st Year)</CardTitle>
+                <CardTitle className="text-xl">{name} <span className="text-white/50">
+                  {year ? `(${year})` : ''}
+                  </span>
+                  </CardTitle>
               </CardHeader>
             </CardContent>
             <CardFooter>
@@ -165,3 +168,31 @@ const Content = () => {
     </CardContent>
   );
 };
+
+const course = [
+  {
+    name: 'Dhwani Bhishan I',
+    level: 'Beginners',
+    year: '1st Year',
+  },
+  {
+    name: 'Dhwani Bhishan II',
+    level: 'Beginners',
+    year: '2nd Year',
+  },
+  {
+    name: 'Dhwani Bhishan III',
+    level: 'Beginners',
+    year: '3rd Year',
+  },
+  {
+    name: 'Dhwani Bhushan',
+    level: 'Intermediate',
+    year: '',
+  },
+  {
+    name: 'Dhwani Vibhushan',
+    level: 'Advanced',
+    year: '',
+  }
+]

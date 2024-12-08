@@ -23,35 +23,47 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { getUserLocation } from "@/action/get-user-location";
+// import { getUserLocation } from "@/action/get-user-location";
 import CaraousalCourseCard from "@/components/caraousal-course-cards";
 // import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 // import { Skeleton } from "@/components/ui/skeleton";
 
+
 const HomePage = () => {
-  const [currentIndex, setCurrentIndex] = useState(0); // Track which badge is active
-  const [isAnimating, setIsAnimating] = useState(true);
-  const [country, setCountry] = useState<string>("DEFAULT");
+  // const [currentIndex, setCurrentIndex] = useState(0); // Track which badge is active
+  // const [isAnimating, setIsAnimating] = useState(true);
+  const [country, setCountry] = useState<string>('DEFAULT');
 
   useEffect(() => {
+    // const fetchLocation = async () => {
+    //   const location = await getUserLocation();
+    //   setCountry(location.country);
+
+    // };
+
     const fetchLocation = async () => {
-      const location = await getUserLocation();
-      setCountry(location.country);
+      try {
+        const response = await fetch('/api/location');
+        const data = await response.json();
+        setCountry(data.country);
+      } catch (error) {
+        console.error('Error fetching location:', error);
+      }
     };
     fetchLocation();
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsAnimating(false); // Start fade-out
-      setTimeout(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % benefits.length); // Change badge
-        setIsAnimating(true); // Start fade-in
-      }, 500); // 500ms fade-out duration
-    }, 3500); // 3 sec visible + 0.5 sec fade-out
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setIsAnimating(false); // Start fade-out
+  //     setTimeout(() => {
+  //       setCurrentIndex((prevIndex) => (prevIndex + 1) % benefits.length); // Change badge
+  //       setIsAnimating(true); // Start fade-in
+  //     }, 500); // 500ms fade-out duration
+  //   }, 3500); // 3 sec visible + 0.5 sec fade-out
 
-    return () => clearInterval(interval); // Clean up interval on unmount
-  }, []);
+  //   return () => clearInterval(interval); // Clean up interval on unmount
+  // }, []);
 
   return (
     <div className="w-full h-full flex flex-col justify-center items-center pt-20">
@@ -241,16 +253,16 @@ const HomePage = () => {
             <Button variant="secondary">Buy Now</Button>
           </CardDescription> */}
         </CardHeader>
-        <CardContent className="px-0 relative">
-          <Image
+        <CardContent className="px-0 relative h-full min-h-[400px] sm:min-h-[300px] md:min-h-[300px] lg:min-h-[250px] mb-6">
+          {/* <Image
             src="/benefits-bg.jpg"
             alt="arrow"
             width={0}
             height={0}
             className="w-full object-cover h-[200px] tablet:h-full rounded-lg"
-          />
+          /> */}
           <div className="w-full h-full flex justify-center items-center absolute top-0 z-20">
-            <div className="lg:hidden relative flex justify-center items-center w-full h-full mx-auto overflow-hidden">
+            {/* <div className="lg:hidden relative flex justify-center items-center w-full h-full mx-auto overflow-hidden">
               {benefits.map((benifit, index) => (
                 <div
                   key={index}
@@ -274,9 +286,9 @@ const HomePage = () => {
                   </div>
                 </div>
               ))}
-            </div>
+            </div> */}
 
-            <div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 relative">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-6 relative">
               {benefits.map((benefit, index) => (
                 <motion.div
                   key={index}
