@@ -82,18 +82,12 @@ const DhwaniBhusanCourse = () => {
             </CardHeader>
             <CardContent className="py-0 text-white">
               <div className="w-full flex flex-col sm:flex-col lg:flex-row justify-between items-start sm:items-start lg:items-center gap-4">
-                <div className="grid grid-cols-2 sm:grid-cols-4 justify-start items-start sm:items-center gap-2">
+                <div className="flex justify-start items-start sm:items-center gap-2">
                   <Badge
                     variant="outline"
-                    className="py-2 px-4 bg-white text-primary"
+                    className="w-full flex py-2 px-4 bg-white text-primary"
                   >
-                    1st Year
-                  </Badge>
-                  <Badge
-                    variant="outline"
-                    className="py-2 px-4 bg-white text-primary"
-                  >
-                    2nd Year
+                    1st & 2nd Year
                   </Badge>
                   <Badge
                     variant="outline"
@@ -177,24 +171,12 @@ const DhwaniBibhusanCourse = () => {
             </CardHeader>
             <CardContent className="py-0 text-white">
               <div className="w-full flex flex-col sm:flex-col lg:flex-row justify-between items-start sm:items-start lg:items-center gap-4">
-                <div className="grid grid-cols-2 sm:grid-cols-4 justify-start items-start sm:items-center gap-2">
+                <div className="flex justify-start items-start sm:items-center gap-2">
                   <Badge
                     variant="outline"
                     className="py-2 px-4 bg-white text-primary"
                   >
-                    3rd Year
-                  </Badge>
-                  <Badge
-                    variant="outline"
-                    className="py-2 px-4 bg-white text-primary"
-                  >
-                    4th Year
-                  </Badge>
-                  <Badge
-                    variant="outline"
-                    className="py-2 px-4 bg-white text-primary"
-                  >
-                    5th Year
+                    3rd, 4th & 5th Year
                   </Badge>
                   <Badge
                     variant="outline"
@@ -284,18 +266,12 @@ const DhwaniRatnaCourse = () => {
             </CardHeader>
             <CardContent className="py-0 text-white">
               <div className="w-full flex flex-col sm:flex-col lg:flex-row justify-between items-start sm:items-start lg:items-center gap-4">
-                <div className="grid grid-cols-2 sm:grid-cols-4 justify-start items-start sm:items-center gap-2">
+                <div className="flex justify-start items-start sm:items-center gap-2">
                   <Badge
                     variant="outline"
                     className="py-2 px-4 bg-white text-primary"
                   >
-                    6th Year
-                  </Badge>
-                  <Badge
-                    variant="outline"
-                    className="py-2 px-4 bg-white text-primary"
-                  >
-                    7th Year
+                    6th & 7th Year
                   </Badge>
                   <Badge
                     variant="outline"

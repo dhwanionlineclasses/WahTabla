@@ -51,6 +51,7 @@ const PricingNew = () => {
                   <span className="drop-shadow-3xl">
                     <span className="text-5xl font-semibold">
                       {country === "IN" ? priceModel.priceIn : `${priceModel.priceDefault}`}
+                      <span className="text-sm">{priceModel.unit}</span>
                     </span>
                   </span>
                 </CardHeader>
@@ -94,6 +95,7 @@ export default PricingNew;
 const pricingModel = [
   {
     plan: 'Module Wise',
+    unit: '/module',
     priceDefault: '$330',
     priceIn: '330',
     features: [
@@ -107,6 +109,7 @@ const pricingModel = [
   },
   {
     plan: 'Month Wise',
+    unit: '/month',
     priceDefault: '$120',
     priceIn: '120',
     features: [
@@ -119,6 +122,7 @@ const pricingModel = [
   },
   {
     plan: 'Year Wise',
+    unit: '/year',
     priceDefault: '$1200',
     priceIn: '1200',
     features: [
@@ -131,6 +135,7 @@ const pricingModel = [
   },
   {
     plan: 'Full Course',
+    unit: '',
     priceDefault: 'Flexible',
     priceIn: 'Flexible',
     features: [
