@@ -35,7 +35,7 @@ const Footer = () => {
             />
             <span>onlineclasses@dhwaniacademy.org</span>
             </span>
-            <span className='flex justify-start items-center gap-2'>
+            {/* <span className='flex justify-start items-center gap-2'>
             <Image
               src='/icons/phone.svg'
               alt='logo'
@@ -44,8 +44,8 @@ const Footer = () => {
               className='w-4'
             />
             <span>+91 99999 99999</span>
-            </span>
-            <span className='flex justify-start items-center gap-2'>
+            </span> */}
+            {/* <span className='flex justify-start items-center gap-2'>
             <Image
               src='/icons/location.svg'
               alt='logo'
@@ -54,7 +54,7 @@ const Footer = () => {
               className='w-4'
             />
             <span>Somewhere in the World</span>
-            </span>
+            </span> */}
           </div>
           <div className='flex flex-col sm:flex-row justify-start items-start gap-6 sm:gap-2 md:gap-20'>
           <div className='flex flex-col justify-start items-start gap-1 text-sm'>

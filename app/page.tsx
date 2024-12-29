@@ -1,7 +1,5 @@
 "use client";
 
-// import { Button } from '@/components/ui/button'
-// import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { motion } from "motion/react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -9,7 +7,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -19,52 +16,13 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
 import Link from "next/link";
-// import { getUserLocation } from "@/action/get-user-location";
 import CaraousalCourseCard from "@/components/caraousal-course-cards";
-// import { AspectRatio } from "@radix-ui/react-aspect-ratio";
-// import { Skeleton } from "@/components/ui/skeleton";
-
+// import PricingOld from "@/components/pricing-old";
+import PricingNew from "@/components/pricing-new";
 
 const HomePage = () => {
-  // const [currentIndex, setCurrentIndex] = useState(0); // Track which badge is active
-  // const [isAnimating, setIsAnimating] = useState(true);
-  const [country, setCountry] = useState<string>('DEFAULT');
-
-  useEffect(() => {
-    // const fetchLocation = async () => {
-    //   const location = await getUserLocation();
-    //   setCountry(location.country);
-
-    // };
-
-    const fetchLocation = async () => {
-      try {
-        const response = await fetch('/api/location');
-        const data = await response.json();
-        setCountry(data.country);
-      } catch (error) {
-        console.error('Error fetching location:', error);
-      }
-    };
-    fetchLocation();
-  }, []);
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setIsAnimating(false); // Start fade-out
-  //     setTimeout(() => {
-  //       setCurrentIndex((prevIndex) => (prevIndex + 1) % benefits.length); // Change badge
-  //       setIsAnimating(true); // Start fade-in
-  //     }, 500); // 500ms fade-out duration
-  //   }, 3500); // 3 sec visible + 0.5 sec fade-out
-
-  //   return () => clearInterval(interval); // Clean up interval on unmount
-  // }, []);
-
   return (
     <div className="w-full h-full flex flex-col justify-center items-center pt-20">
       <section
@@ -148,93 +106,32 @@ const HomePage = () => {
           </CardDescription> */}
         </CardHeader>
         <CardContent className="bg-primary text-white px-12 py-10 rounded-sm">
-          {/* <ul className="list-disc text-sm text-white leading-6">
-            <li>
-              The course is designed to make you a{" "}
-              <strong>full-fledged Tabla player</strong> with hands-on guidance
-              if needed.
-            </li>
-            <li>
-              You will gain both <strong>theoretical knowledge</strong> and{" "}
-              <strong>practical proficiency</strong> in playing the Tabla.
-            </li>
-            <li>
-              The course is structured for five years, but dedicated students
-              can complete it faster.
-            </li>
-            <li>
-              Each year is divided into four modules to ensure structured
-              progress.
-            </li>
-            <li>
-              After completing the first year (four modules), you will receive a
-              certificate of completion.
-            </li>
-            <li>
-              After completing the second year, you will receive the{" "}
-              <strong>Dhwani certificate</strong> and become eligible to perform
-              in annual student concerts in Kolkata, Pune, Los Angeles, or New
-              York.
-            </li>
-            <li>
-              By the end of the third year, you will be able to accompany both
-              vocal and instrumental music, including Bhajans and Geets.
-            </li>
-            <li>
-              Completing the fifth year will earn you the Dhwani certificate
-              again, allowing you to perform solo or duet at annual concerts.
-            </li>
-            <li>
-              The full course is{" "}
-              <strong>equivalent to a bachelor&apos;s degree in Tabla.</strong>
-            </li>
-            <li>
-              Graduates can become teachers at the academy and earn through
-              teaching or performing in concerts.
-            </li>
-            <li>
-              You can pursue two additional years of study to reach mastery and
-              teach intermediate students at Dhwani Academy
-            </li>
-          </ul> */}
           <p>
-            The tabla learning course is designed uniquely with hand on help if
-            needed to make you a full-fledged tabla player and nurture your
-            talent of music. After completing this course of five years, you
-            will come to know about the subject theoretically and will be able
-            to play up to your satisfaction. The full course completion needs
-            five years, but you can make it earlier if you are an ardent student
-            and lover of music.
+            Dhwani&apos;s curated tabla course is designed uniquely with the
+            meticulous guidance needed to make you a full-fledged tabla player
+            and nurture your musical talent. The course is made up of 20
+            modules, designed to be completed over 5 years (roughly 4 modules
+            per year). After completing this course, you will learn the theory
+            of tabla and will be able to play to your satisfaction.
             <br></br>
             <br></br>
-            Each year the course is divided into four modules to guide you to
-            reach a standard to go for the next module. After completion of the
-            first year comprised of four modules, we will provide you with a
-            certificate of completion. After completion of 2nd year, you will
-            get a certificate of completion Dhwani ……… This will enable you to
-            participate in one of our annual student concerts held in Kolkata,
-            Pune, Los Angeles and New York (depending on your location)
+            As you complete each year of instruction, your skill level will
+            increase to empower you to reach progressively greater heights. For
+            example, after Year 2, you&apos;ll be able to join our students and
+            participate in one of our annual student concerts held around the
+            world. At the completion of the course, you&apos;ll be adept at
+            performing with Vocal and instrumental music, and will be able to to
+            play with light classical songs like Bhajans and Geets. You will be
+            well equipped with the skill and confidence needed to perform tabla
+            solos by yourself.
             <br></br>
             <br></br>
-            Continuing another three years, you will be in a standard to perform
-            with Vocal and instrumental music of good standard and will be able
-            to to play with light classical songs like Bhajans and Geets.
-            <br></br>
-            <br></br>
-            Completion of 5th year will enable you to achieve Dhwani……. This
-            will give you the coveted chance to perform for our annual concerts,
-            solo/duet depending on time and slots. You will be in a standard to
-            perform by yourself tabla solo in any place. This is a course
-            equivalent to a bachelors degree. You can start teaching under our
-            academy course as one of our teachers and can start earning by
-            teaching and also by organizing and performing for our concerts and
-            outside.
-            <br></br>
-            <br></br>
-            To be a real Master of Art of Tabla, you must carry on your
-            pursuance and performances and have to go through some in person
-            classes along with online classes and can completer two more years
-            and can be a teacher of intermediate students of Dhwani Academy.
+            This is a course equivalent to a bachelors degree. Upon completing
+            the course, You can start teaching under our academy course as one
+            of our teachers. Students of this course are additionally offered
+            the honor of continuing lessons with Pt Abhijit Banerjee to rain to
+            be a real Master of Art of Tabla, and to teach intermediate and
+            advanced students of Dhwani Academy.
           </p>
         </CardContent>
       </Card>
@@ -381,81 +278,10 @@ const HomePage = () => {
         </div>
       </div>
       <CaraousalCourseCard />
-      
-      {/* <Card id="module" className="w-full bg-transparent shadow-none border-none mt-6">
-        <CardHeader className="px-0">
-          <CardTitle className="text-2xl">Course Modules</CardTitle>
-          <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-2">
-            <span className="max-w-[700px]">
-              Our Tabla course is structured into progressive modules, each
-              designed to guide you step by step from foundational skills to
-              advanced mastery.
-            </span>
-            <Button variant="secondary">View All</Button>
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="px-0">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-6 md:gap-10 desktop:gap-x-10 desktop:gap-y-10">
-            {courses &&
-              courses.map((course, index) => {
-                return (
-                  <Card key={index} className="laptop:py-6">
-                    <CardHeader className="flex justify-center items-center">
-                      <Image
-                        src="/course-thumbnail.png"
-                        alt="arrow"
-                        width={0}
-                        height={0}
-                        className="z-10 w-full bg-primary p-10 py-16 sm:p-12 md:p-20 desktop:px-32 rounded-sm "
-                      />
-                    </CardHeader>
-                    <CardContent className="py-0">
-                      <div className="w-full flex flex-col sm:flex-col lg:flex-row justify-between items-start sm:items-start lg:items-center gap-4">
-                        <div className="flex justify-start items-center gap-2">
-                          <Badge variant="outline" className="py-2 px-4">
-                            {course.duration}
-                          </Badge>
-                          <Badge variant="outline" className="py-2 px-4">
-                            {course.level}
-                          </Badge>
-                        </div>
-                        <span className="text-sm tablet:text-base desktop:text-lg">
-                          {course.instructor}
-                        </span>
-                      </div>
-                      <CardHeader className="px-0">
-                        <CardTitle className="text-xl">
-                          {course.title}
-                        </CardTitle>
-                        <CardDescription className="">
-                          {course.description}
-                        </CardDescription>
-                      </CardHeader>
-                    </CardContent>
-                    <CardFooter>
-                      <Link href='/profile' className="w-full">
-                      <Button variant="secondary" className="w-full">
-                        Get it Now
-                      </Button>
-                      </Link>
-                    </CardFooter>
-                  </Card>
-                );
-              })}
-          </div>
-        </CardContent>
-      </Card> */}
+
       <Card className="w-full bg-transparent shadow-none border-none mt-6">
         <CardHeader className="px-0">
           <CardTitle className="text-2xl">Module Features</CardTitle>
-          {/* <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-3">
-            <span className="max-w-[700px]">
-              Our Tabla course is include industry first features, designed to
-              provide learners the best and world-class experiences, and for
-              them to make the most of the learning experience.
-            </span>
-            <Button variant="secondary">View All</Button>
-          </CardDescription> */}
         </CardHeader>
         <CardContent className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 desktop:grid-cols-4 gap-4 md:gap-8 px-0">
           {moduleFeatures.map((item, index) => (
@@ -478,12 +304,6 @@ const HomePage = () => {
       <Card className="w-full bg-transparent shadow-none border-none mt-6">
         <CardHeader className="px-0">
           <CardTitle className="text-2xl">Our Testimonials</CardTitle>
-          {/* <CardDescription className="flex flex-col tablet:flex-row justify-between items-start gap-2">
-            <span className="max-w-[700px]">
-              See What Our Students Are Saying
-            </span>
-            <Button variant="secondary">View All</Button>
-          </CardDescription> */}
         </CardHeader>
         <CardContent className="px-0">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-6 md:gap-10 desktop:gap-x-10 desktop:gap-y-10">
@@ -556,331 +376,8 @@ const HomePage = () => {
           </CardDescription>
         </CardHeader>
       </Card>
-      <Card
-        id="pricing"
-        className="w-full bg-transparent shadow-none border-none mt-6"
-      >
-        <Tabs defaultValue="monthly">
-          <div className="flex flex-col tablet:flex-row justify-between items-end gap-2">
-            <CardHeader className="px-0">
-              <CardTitle className="text-2xl">Our Pricing</CardTitle>
-              {/* <CardDescription className="">
-                <span className="max-w-[700px]">
-                  We have a comprehensive pricing scheme for courses to be
-                  bought monthly, yearly or even module-wise, as per your
-                  learning experience.
-                </span>
-              </CardDescription> */}
-            </CardHeader>
-            <TabsList>
-              <TabsTrigger value="monthly">Monthly</TabsTrigger>
-              <TabsTrigger value="yearly">Yearly</TabsTrigger>
-            </TabsList>
-          </div>
-          <CardContent className="bg-primary text-white pt-6 px-10 py-10 rounded-xl">
-            <TabsContent value="monthly">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-6 md:gap-10 desktop:gap-x-28 desktop:gap-y-10 bg-primary">
-                <Card className="pb-0 rounded-sm bg-primary text-white shadow-none border border-muted/20">
-                  <CardHeader className="flezx justify-start items-center gap-4">
-                    <Button className="bg-background w-full rounded-sm text-xs text-tertiary-foreground hover:bg-background cursor-default shadow-none ">
-                      Monthly Plan
-                    </Button>
-                    <span className="drop-shadow-3xl">
-                      <span className="text-5xl font-semibold">
-                        {country === "IN" ? "₹100" : "$100"}
-                      </span>
-                      <span className="text-sm">/month</span>
-                    </span>
-                  </CardHeader>
-                  <CardContent className="pt-6 bg-primary text-white flex flex-col justify-center items-center gap-4">
-                    <p>Available Features</p>
-                    <div className="w-full sm:px-10 flex flex-col justify-center items-center gap-2">
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
-                        <Image
-                          src="/icons/tick.svg"
-                          alt="tick"
-                          width={0}
-                          height={0}
-                          className="w-6 p-1 bg-tertiary rounded-sm"
-                        />
-                        <span>Pay as you learn</span>
-                      </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
-                        <Image
-                          src="/icons/tick.svg"
-                          alt="tick"
-                          width={0}
-                          height={0}
-                          className="w-6 p-1 bg-tertiary rounded-sm"
-                        />
-                        <span>Flexible monthly payments</span>
-                      </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
-                        <Image
-                          src="/icons/tick.svg"
-                          alt="tick"
-                          width={0}
-                          height={0}
-                          className="w-6 p-1 bg-tertiary rounded-sm"
-                        />
-                        <span>Cancel anytime</span>
-                      </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
-                        <Image
-                          src="/icons/tick.svg"
-                          alt="tick"
-                          width={0}
-                          height={0}
-                          className="w-6 p-1 bg-tertiary rounded-sm"
-                        />
-                        <span>Access to all current lessons</span>
-                      </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
-                        <Image
-                          src="/icons/tick.svg"
-                          alt="tick"
-                          width={0}
-                          height={0}
-                          className="w-6 p-1 bg-tertiary rounded-sm"
-                        />
-                        <span>Affordable for beginners</span>
-                      </span>
-                    </div>
-                  </CardContent>
-                  <CardFooter>
-                    <Button className="w-full bg-white text-primary hover:bg-muted">
-                      Get Started
-                    </Button>
-                  </CardFooter>
-                </Card>
-                <Card className="pb-0 rounded-sm bg-primary shadow-none border-muted/20">
-                  <CardHeader className="flezx justify-start items-center gap-4">
-                    <Button className="bg-background w-full rounded-sm text-xs text-tertiary-foreground hover:bg-background cursor-default shadow-none border border-muted/20">
-                      Module Plan
-                    </Button>
-                    <span className="drop-shadow-3xl">
-                      <span className="text-5xl font-semibold text-white">
-                        {country === "IN" ? "₹300" : "$300"}
-                      </span>
-                      <span className="text-sm text-white">/month</span>
-                    </span>
-                  </CardHeader>
-                  <CardContent className="pt-6 bg-primary text-white flex flex-col justify-center items-center gap-4">
-                    <p>Available Features</p>
-                    <div className="w-full sm:px-10 flex flex-col justify-center items-center gap-2">
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
-                        <Image
-                          src="/icons/tick.svg"
-                          alt="tick"
-                          width={0}
-                          height={0}
-                          className="w-6 p-1 bg-tertiary rounded-sm"
-                        />
-                        <span>One-time payment per module</span>
-                      </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
-                        <Image
-                          src="/icons/tick.svg"
-                          alt="tick"
-                          width={0}
-                          height={0}
-                          className="w-6 p-1 bg-tertiary rounded-sm"
-                        />
-                        <span>Save more with bulk purchase</span>
-                      </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
-                        <Image
-                          src="/icons/tick.svg"
-                          alt="tick"
-                          width={0}
-                          height={0}
-                          className="w-6 p-1 bg-tertiary rounded-sm"
-                        />
-                        <span>Full access for 3 months</span>
-                      </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
-                        <Image
-                          src="/icons/tick.svg"
-                          alt="tick"
-                          width={0}
-                          height={0}
-                          className="w-6 p-1 bg-tertiary rounded-sm"
-                        />
-                        <span>Progress at your own pace</span>
-                      </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
-                        <Image
-                          src="/icons/tick.svg"
-                          alt="tick"
-                          width={0}
-                          height={0}
-                          className="w-6 p-1 bg-tertiary rounded-sm"
-                        />
-                        <span>Ideal for committed learners</span>
-                      </span>
-                    </div>
-                  </CardContent>
-                  <CardFooter>
-                    <Button className="w-full bg-white text-primary hover:bg-muted">
-                      Get Started
-                    </Button>
-                  </CardFooter>
-                </Card>
-              </div>
-            </TabsContent>
-            <TabsContent value="yearly">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-6 md:gap-10 desktop:gap-x-28 desktop:gap-y-10">
-                <Card className="pb-0 rounded-sm bg-primary shadow-none border-muted/20">
-                  <CardHeader className="flezx justify-start items-center gap-4">
-                    <Button className="bg-background w-full rounded-sm text-xs text-tertiary-foreground hover:bg-background cursor-default shadow-none border border-muted/20">
-                      Yearly Plan
-                    </Button>
-                    <span className="drop-shadow-3xl">
-                      <span className="text-5xl font-semibold text-white">
-                        {country === "IN" ? "₹1200" : "$1200"}
-                      </span>
-                      <span className="text-sm text-white">/year</span>
-                    </span>
-                  </CardHeader>
-                  <CardContent className="pt-6 bg-primary text-white flex flex-col justify-center items-center gap-4">
-                    <p>Available Features</p>
-                    <div className="w-full sm:px-10 flex flex-col justify-center items-center gap-2">
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
-                        <Image
-                          src="/icons/tick.svg"
-                          alt="tick"
-                          width={0}
-                          height={0}
-                          className="w-6 p-1 bg-tertiary rounded-sm"
-                        />
-                        <span>Pay as you learn</span>
-                      </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
-                        <Image
-                          src="/icons/tick.svg"
-                          alt="tick"
-                          width={0}
-                          height={0}
-                          className="w-6 p-1 bg-tertiary rounded-sm"
-                        />
-                        <span>Flexible monthly payments</span>
-                      </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
-                        <Image
-                          src="/icons/tick.svg"
-                          alt="tick"
-                          width={0}
-                          height={0}
-                          className="w-6 p-1 bg-tertiary rounded-sm"
-                        />
-                        <span>Cancel anytime</span>
-                      </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
-                        <Image
-                          src="/icons/tick.svg"
-                          alt="tick"
-                          width={0}
-                          height={0}
-                          className="w-6 p-1 bg-tertiary rounded-sm"
-                        />
-                        <span>Access to all current lessons</span>
-                      </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
-                        <Image
-                          src="/icons/tick.svg"
-                          alt="tick"
-                          width={0}
-                          height={0}
-                          className="w-6 p-1 bg-tertiary rounded-sm"
-                        />
-                        <span>Affordable for beginners</span>
-                      </span>
-                    </div>
-                  </CardContent>
-                  <CardFooter>
-                    <Button className="w-full bg-white text-primary hover:bg-muted">
-                      Get Started
-                    </Button>
-                  </CardFooter>
-                </Card>
-                <Card className="pb-0 rounded-sm bg-primary shadow-none border-muted/20">
-                  <CardHeader className="flezx justify-start items-center gap-4">
-                    <Button className="bg-background w-full rounded-sm text-xs text-tertiary-foreground hover:bg-background cursor-default shadow-none border border-muted/20">
-                      Module Plan
-                    </Button>
-                    <span className="drop-shadow-3xl">
-                      <span className="text-5xl font-semibold text-white">
-                        {country === "IN" ? "₹1100" : "$1100"}
-                      </span>
-                      <span className="text-sm text-white">/month</span>
-                    </span>
-                  </CardHeader>
-                  <CardContent className="pt-6 bg-primary text-white flex flex-col justify-center items-center gap-4">
-                    <p>Available Features</p>
-                    <div className="w-full sm:px-10 flex flex-col justify-center items-center gap-2">
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
-                        <Image
-                          src="/icons/tick.svg"
-                          alt="tick"
-                          width={0}
-                          height={0}
-                          className="w-6 p-1 bg-tertiary rounded-sm"
-                        />
-                        <span>One-time payment per module</span>
-                      </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
-                        <Image
-                          src="/icons/tick.svg"
-                          alt="tick"
-                          width={0}
-                          height={0}
-                          className="w-6 p-1 bg-tertiary rounded-sm"
-                        />
-                        <span>Save more with bulk purchase</span>
-                      </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
-                        <Image
-                          src="/icons/tick.svg"
-                          alt="tick"
-                          width={0}
-                          height={0}
-                          className="w-6 p-1 bg-tertiary rounded-sm"
-                        />
-                        <span>Full access for 3 months</span>
-                      </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
-                        <Image
-                          src="/icons/tick.svg"
-                          alt="tick"
-                          width={0}
-                          height={0}
-                          className="w-6 p-1 bg-tertiary rounded-sm"
-                        />
-                        <span>Progress at your own pace</span>
-                      </span>
-                      <span className="w-full flex justify-start items-center gap-4 border border-muted/20 px-4 py-2 pointer-events-none cursor-default bg-transparent hover:bg-transparent shadow-none rounded-sm text-white text-sm">
-                        <Image
-                          src="/icons/tick.svg"
-                          alt="tick"
-                          width={0}
-                          height={0}
-                          className="w-6 p-1 bg-tertiary rounded-sm"
-                        />
-                        <span>Ideal for committed learners</span>
-                      </span>
-                    </div>
-                  </CardContent>
-                  <CardFooter>
-                    <Button className="w-full bg-white text-primary hover:bg-muted">
-                      Get Started
-                    </Button>
-                  </CardFooter>
-                </Card>
-              </div>
-            </TabsContent>
-          </CardContent>
-        </Tabs>
-      </Card>
+      {/* <PricingOld /> */}
+      <PricingNew />
       <Card className="w-full flex flex-col md:flex-row lg:gap-32 justify-between items-start bg-primary text-white shadow-none border-none mt-6 py-10 laptop:px-10">
         <CardHeader className="max-w-[340px]">
           <CardTitle className="text-3xl">Frequently Asked Questions</CardTitle>
@@ -1015,41 +512,6 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-// const courses = [
-//   {
-//     duration: "3 Months",
-//     level: "Beginner",
-//     instructor: "By Pandit Abhijit Banerjee",
-//     title: "Prathama (1st Year) : Module 1",
-//     description:
-//       "Begin your journey by mastering the fundamental strokes and hand techniques essential for playing Tabla. These basics will form the core of your future learning and performance skills.",
-//   },
-//   {
-//     duration: "3 Months",
-//     level: "Intermediate",
-//     instructor: "By Pandit Abhijit Banerjee",
-//     title: "Prathama (1st Year) : Module 2",
-//     description:
-//       "Explore key rhythmic patterns and basic compositions, honing your ability to play with precision and confidence. This module helps you understand how to apply rhythm in a musical context.",
-//   },
-//   {
-//     duration: "3 Months",
-//     level: "Intermediate",
-//     instructor: "By Pandit Abhijit Banerjee",
-//     title: "Prathama (1st Year) : Module 3",
-//     description:
-//       "Dive into the theoretical aspects of Tabla, learning its structure and significance in classical music. You'll gain a deeper understanding of rhythm and how to integrate it into your practice.",
-//   },
-//   {
-//     duration: "3 Months",
-//     level: "Advanced",
-//     instructor: "By Pandit Abhijit Banerjee",
-//     title: "Prathama (1st Year) : Module 4",
-//     description:
-//       "By the end of the first year, you'll be playing simple solo pieces and learning the basics of accompaniment with vocal music, setting the stage for more complex performances in the future.",
-//   },
-// ];
 
 const moduleFeatures = [
   {
