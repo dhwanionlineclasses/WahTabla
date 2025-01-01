@@ -65,7 +65,7 @@ const HomePage = () => {
           </p>
         </div>
         <div className="flex gap-2 pt-4">
-          <Link href="/#pricing">
+          <Link href="/buy-course">
             <Button>Buy Now</Button>
           </Link>
           <Link href="/#pricing">
@@ -279,7 +279,7 @@ const HomePage = () => {
       </div>
       <CaraousalCourseCard />
 
-      <Card className="w-full bg-transparent shadow-none border-none mt-6">
+      <Card id='module' className="w-full bg-transparent shadow-none border-none mt-6">
         <CardHeader className="px-0">
           <CardTitle className="text-2xl">Module Features</CardTitle>
         </CardHeader>
@@ -301,7 +301,7 @@ const HomePage = () => {
           ))}
         </CardContent>
       </Card>
-      <Card className="w-full bg-transparent shadow-none border-none mt-6">
+      <Card id='testimonials' className="w-full bg-transparent shadow-none border-none mt-6">
         <CardHeader className="px-0">
           <CardTitle className="text-2xl">Our Testimonials</CardTitle>
         </CardHeader>
@@ -378,7 +378,7 @@ const HomePage = () => {
       </Card>
       {/* <PricingOld /> */}
       <PricingNew />
-      <Card className="w-full flex flex-col md:flex-row lg:gap-32 justify-between items-start bg-primary text-white shadow-none border-none mt-6 py-10 laptop:px-10">
+      <Card id='faq' className="w-full flex flex-col md:flex-row lg:gap-32 justify-between items-start bg-primary text-white shadow-none border-none mt-6 py-10 laptop:px-10">
         <CardHeader className="max-w-[340px]">
           <CardTitle className="text-3xl">Frequently Asked Questions</CardTitle>
           <CardDescription className="flex flex-col justify-between items-start gap-2">

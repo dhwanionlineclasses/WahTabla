@@ -60,15 +60,15 @@ const Footer = () => {
           <div className='flex flex-col justify-start items-start gap-1 text-sm'>
             <Link href='/' className='text-lg pb-1 font-semibold'>Home</Link>
             <Link href='/#benefits' className='text-white'>Benefits</Link>
-            <Link href='/#benefits' className='text-white'>Our Modules</Link>
-            <Link href='/#benefits' className='text-white'>Our Testimonials</Link>
-            <Link href='/#benefits' className='text-white'>Our FAQ</Link>
+            <Link href='/#module' className='text-white'>Our Modules</Link>
+            <Link href='/#testimonials' className='text-white'>Our Testimonials</Link>
+            <Link href='/#faq' className='text-white'>Our FAQ</Link>
           </div>
           <div className='flex flex-col justify-start items-start gap-1 text-sm'>
             <Link href='/' className='text-lg pb-1 font-semibold'>About Us</Link>
-            <Link href='/#benefits' className='text-white'>TV Dhwani</Link>
-            <Link href='/#benefits' className='text-white'>Dhwani India</Link>
-            <Link href='/#benefits' className='text-white'>Dhwani US</Link>
+            <Link href='/' className='text-white'>TV Dhwani</Link>
+            <Link href='/' className='text-white'>Dhwani India</Link>
+            <Link href='/' className='text-white'>Dhwani US</Link>
           </div>
           <div className='flex flex-col justify-start items-start gap-1'>
             <Link href='/' className='text-lg pb-1 font-semibold'>Social Profiles</Link>
