@@ -21,7 +21,6 @@ type propsType = {
   name: string;
   lengthInYears: number;
 };
-const OPTIONS = ["month-wise", "module-wise", "year-wise", "full-course"];
 
 const BuyingOptions = ({ course }: { course: propsType }) => {
   const [selectedOption, setSelectedOption] = useState("");
