@@ -4,18 +4,18 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 
-import { getAllCourse } from "@/action/course/getAllCourses";
 import ProfileSidebar from "@/components/profile-sidebar";
 import ProfileModuleList from "@/components/profile-module-list";
 import Profile from "@/components/profile";
+import { getProfile } from "@/action/profile/getProfile";
 
 const ProfilePage = async () => {
   const queryClient = new QueryClient();
 
 
   await queryClient.prefetchQuery({
-    queryKey: ["getAllModule"],
-    queryFn: getAllCourse,
+    queryKey: ["getFullProfile"],
+    queryFn: getProfile,
   });
 
   return (

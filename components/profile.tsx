@@ -14,7 +14,6 @@ import { logout } from "@/action/auth/logout";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useState } from "react";
-import { getProfile } from "@/action/profile/getProfile";
 
 const Profile = () => {
   const session = useSession()
@@ -42,20 +41,6 @@ const Profile = () => {
     }
   }
 
-  const getProfileData = async() => {
-    try{
-      const res = await getProfile()
-
-      if(res.success) {
-        console.info(res.message)
-      } else {
-        console.warn(res.message)
-      }
-    }catch(err) {
-      console.error(err)
-    }
-  }
-
   return (
     <div className="desktop:max-w-[300px] desktop:min-w-[300px] w-full max-h-[92vh] min-h-[400px] h-full bg-white shadow-sm rounded-lg flex flex-col justify-between items-center p-4">
       <Card className="shadow-none border-none flex flex-col justify-center items-center">
@@ -78,9 +63,6 @@ const Profile = () => {
       <Button variant="secondary" className="w-full" onClick={() => handleLogout()}>
         <ExitIcon />
         <span>{loading ? 'Loading...' : 'Log Out'}</span>
-      </Button>
-      <Button onClick={getProfileData}>
-        Get Profile Data
       </Button>
     </div>
   );

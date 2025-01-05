@@ -3,6 +3,8 @@
 import { cookies } from "next/headers";
 import { decode } from "next-auth/jwt";
 import { RequestInit } from "next/dist/server/web/spec-extension/request";
+import { UserProfileApiResponseType } from "@/schema/types/user-profile-types";
+import { parseResponse } from "@/utils/parse-course";
 
 
 
@@ -45,16 +47,15 @@ export const getProfile = async () => {
 
   try {
     const response = await fetch(`${baseUrl}/profiles/getProfile`, options)
-
+    console.log(response.status)
     const data = await response.json()
 
     if (response.status === 200) {
 
-      console.dir(data, 7)
-
       return {
         success: true,
-        message: data,
+        message: 'Successfully recieved user data',
+        data: parseResponse(data) 
       }
     } else {
       return { success: false, message: data.message || 'Profile Fetching failed' }
