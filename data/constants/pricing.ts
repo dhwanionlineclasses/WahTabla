@@ -5,7 +5,7 @@ export const pricingModel = [
     plan: 'Module Wise',
     unit: '/module',
     priceDefault: '$330',
-    priceIn: '330',
+    priceIn: 'Rs 330',
     features: [
       'Access to a 3-month module containing 12 weekly lessons.',
       'Focused learning on a specific part of the curriculum.',
@@ -19,7 +19,7 @@ export const pricingModel = [
     plan: 'Month Wise',
     unit: '/month',
     priceDefault: '$120',
-    priceIn: '120',
+    priceIn: 'Rs 120',
     features: [
       'Gain access to 4 weekly lessons each month.',
       'Ideal for incremental progress with bite-sized learning.',
@@ -32,7 +32,7 @@ export const pricingModel = [
     plan: 'Year Wise',
     unit: '/year',
     priceDefault: '$1200',
-    priceIn: '1200',
+    priceIn: 'Rs 1200',
     features: [
       'Includes 48 lessons spread across a structured year-long curriculum.',
       'Facilitates consistent learning for deeper understanding.',
