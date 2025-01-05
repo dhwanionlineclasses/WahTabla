@@ -45,14 +45,14 @@ const ProfileSidebar = () => {
           className="w-full h-12 text-lg font-medium justify-start py-1"
         >
           <GearIcon className="w-12 h-12 text-black" />
-          <span>Setting</span>
+          <span>Settings</span>
         </Button>
         <Button
           variant="ghost"
           className="w-full h-12 text-lg font-medium justify-start py-1"
         >
           <ReaderIcon className="w-12 h-12 text-black" />
-          <span>Exam Marks</span>
+          <span>Exam</span>
         </Button>
         <Button
           variant="ghost"
