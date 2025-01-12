@@ -46,7 +46,7 @@ export const getProfile = async () => {
   console.log('calling profile endpoint')
   try {
     const response = await fetch(`${baseUrl}/profiles/getProfile`, options)
-    console.log(response)
+    console.log(response.status)
     const data = await response.json()
 
     if (response.status === 200) {

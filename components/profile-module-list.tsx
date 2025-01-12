@@ -10,6 +10,8 @@ const ProfileModuleList = () => {
 
   const { data: courses, isError, error, isPending } = useFullProfileDetails();
   if (isError || error) {
+    console.warn('isError: ', isError)
+    console.warn('error: ',error)
     return <span>No Data Found</span>;
   }
 
@@ -20,7 +22,7 @@ const ProfileModuleList = () => {
   }
 
   if(courses) {
-    console.log(courses.data)
+    console.log(courses)
   }
   return (
     <div className="min-w-[600px] w-full min-h-[92vh] bg-white rounded-lg flex justify-start items-start p-4 shadow-sm">
