@@ -43,10 +43,10 @@ export const getProfile = async () => {
     },
     credentials: "include", // Ensure cookies are included in the request
   };
-
+  console.log('calling profile endpoint')
   try {
     const response = await fetch(`${baseUrl}/profiles/getProfile`, options)
-    console.log(response.status)
+    console.log(response)
     const data = await response.json()
 
     if (response.status === 200) {
