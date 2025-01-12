@@ -12,7 +12,7 @@ const ProfileModuleList = () => {
   if (isError || error) {
     console.warn('isError: ', isError)
     console.warn('error: ',error)
-    return <span>No Data Found</span>;
+    return <span className="text-red-600">Some Error Occured. Please check console for more details.</span>;
   }
 
   if(isPending) {
@@ -21,9 +21,15 @@ const ProfileModuleList = () => {
     )
   }
 
-  if(courses) {
-    console.log(courses)
+  if(!courses.success) {
+    console.error('Error while fetching profile and course details: ', courses.message)
+    return(
+      <div className="w-full flex justify-center items-center">
+        <h1>Something Went Wrong!</h1>
+      </div>
+    )
   }
+
   return (
     <div className="min-w-[600px] w-full min-h-[92vh] bg-white rounded-lg flex justify-start items-start p-4 shadow-sm">
       {courses?.data ? (
@@ -32,12 +38,12 @@ const ProfileModuleList = () => {
             <span className="text-2xl font-semibold">
               Your Courses({Object.keys(courses?.data).length})
             </span>
-            <Button
+            {/* <Button
               variant="secondary"
               className="font-semibold shadow-none border-none hover:underline"
             >
               View All
-            </Button>
+            </Button> */}
           </div>
           {courses.data ? (
             <CoursesTable data={courses.data} />

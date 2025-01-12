@@ -1,4 +1,5 @@
 import { auth } from './auth';
+import { getToken } from 'next-auth/jwt';
 import {
   DEFAULT_LOGIN_ROUTE,
   apiAuthPrefix,
@@ -10,12 +11,22 @@ import {
 export default auth((req) => {
   const { nextUrl } = req;
 
+  const token = getToken({ req, secret: process.env.AUTH_SECRET! })
   const isLoggedIn = !!req.auth;
 
     const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
     const isApiStripeWebhookRoute = nextUrl.pathname.startsWith(apiStripeWebhook);
     const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
     const isAuthRoute = authRoutes.includes(nextUrl.pathname);
+
+    if(!token) {
+
+      // If token is invalid or expired, redirect to the login page
+      return Response.redirect(new URL(
+        `/auth/login`,
+        nextUrl
+      ));
+    }
 
      if (isApiStripeWebhookRoute) {
       return;
