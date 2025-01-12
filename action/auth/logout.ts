@@ -15,7 +15,7 @@ const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? 'http://localhost:5842'
 export const logout = async () => {
 
   const cookieStore = cookies()
-  const tokens = cookieStore.get('authjs.session-token')?.value ?? ''
+  const tokens = cookieStore.get(sessionTokenName)?.value ?? ''
 
   const session = await decode({
     token: tokens,
