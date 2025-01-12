@@ -5,7 +5,6 @@ import {
   apiAuthPrefix,
   authRoutes,
   publicRoutes,
-  apiStripeWebhook
 } from '@/lib/routes'
 
 export default auth(async (req) => {
@@ -15,28 +14,28 @@ export default auth(async (req) => {
   // const isLoggedIn = !!req.auth;
 
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
-  const isApiStripeWebhookRoute = nextUrl.pathname.startsWith(apiStripeWebhook);
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
   const isLoginPage = nextUrl.pathname === '/auth/login';
+  const isRegisterPage = nextUrl.pathname === '/auth/register';
 
   const isTokenExpired =
-    !token || (token.data?.validity?.valid_until && Date.now() / 1000 > token.data.validity.valid_until);
+    !token || (token.data.validity?.valid_until && Date.now() / 1000 > token.data.validity.valid_until);
 
 
-  if (isApiStripeWebhookRoute || isApiAuthRoute) {
+  if (isApiAuthRoute) {
     return;
   }
 
   if (isTokenExpired && !isPublicRoute) {
     console.log('Token expired or invalid');
-    if (!isLoginPage) {
+    if (!isLoginPage && !isRegisterPage) {
       return Response.redirect(new URL('/auth/login', nextUrl));
     }
   }
 
   if (isAuthRoute) {
-    if (!isTokenExpired) {
+    if (token && !isTokenExpired) {
       return Response.redirect(new URL(DEFAULT_LOGIN_ROUTE, nextUrl));
     }
 
@@ -44,8 +43,9 @@ export default auth(async (req) => {
   }
 
   if (!token && !isPublicRoute) {
-    if (!isLoginPage) {
-      return Response.redirect(new URL(`/auth/login`, nextUrl));
+    console.log('No token found, redirecting to login');
+    if (!isLoginPage && !isRegisterPage) {
+      return Response.redirect(new URL('/auth/login', nextUrl));
     }
   }
 

@@ -47,6 +47,8 @@ export const getProfile = async () => {
     credentials: "include", // Ensure cookies are included in the request
   };
   try {
+
+    console.log(options)
     const response = await fetch(`${baseUrl}/profiles/getProfile`, options)
     console.log(response.status)
     const data = await response.json()
