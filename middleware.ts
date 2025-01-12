@@ -35,7 +35,7 @@ export default auth(async (req) => {
   // }
 
   if (isAuthRoute) {
-    if (token && !isTokenExpired) {
+    if (token) {
       return Response.redirect(new URL(DEFAULT_LOGIN_ROUTE, nextUrl));
     }
 
