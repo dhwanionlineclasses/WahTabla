@@ -12,6 +12,7 @@ import type {
 import type { JWT } from "next-auth/jwt"
 import jwt from 'jsonwebtoken'
 import { AuthLoginApiResponseType } from "./schema/auth-schema"
+// import { refresh } from "./action/auth/refresh"
 // import { error } from "console"
 
 const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? 'http://localhost:5842'
@@ -19,17 +20,25 @@ const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? 'http://localhost:5842'
 
 // async function refreshAccessToken(nextAuthJWTCookie: JWT): Promise<JWT> {
 //   try {
+//     console.log('first: ', nextAuthJWTCookie)
 //     // Get a new access token from backend using the refresh token
-//     const res = await refresh(nextAuthJWTCookie.data.tokens.refresh);
-//     const accessToken: BackendAccessJWT = await res.json();
+//     const res = await refresh(nextAuthJWTCookie.data.tokens.access, nextAuthJWTCookie.data.tokens.refresh);
+//     if(!res.success || !res.tokens) {
+//       throw new Error(res.message)
+//     }
+//     const Tokens: BackendJWT = res.tokens;
 
-//     if (!res.ok) throw accessToken;
-//     const { exp }: DecodedJWT = jwt.decode(accessToken.access);
+//     if (!res.tokens) throw Tokens;
+//     const { exp: AccessExp }: DecodedJWT = jwt.decode(Tokens.access) as DecodedJWT;
+//     const { exp: RefreshExp }: DecodedJWT = jwt.decode(Tokens.refresh) as DecodedJWT;
 
+//     console.log('updating refreshtoken with: ', Tokens.refresh)
 //     // Update the token and validity in the next-auth cookie
-//     nextAuthJWTCookie.data.validity.valid_until = exp;
-//     nextAuthJWTCookie.data.tokens.access = accessToken.access;
-
+//     nextAuthJWTCookie.data.validity.valid_until = AccessExp;
+//     nextAuthJWTCookie.data.validity.refresh_until = RefreshExp
+//     nextAuthJWTCookie.data.tokens.access = Tokens.access;
+//     nextAuthJWTCookie.data.tokens.refresh = Tokens.refresh
+//     console.log('updated: ', nextAuthJWTCookie)
 //     return nextAuthJWTCookie;
 //   } catch (error) {
 //     console.debug(error);

@@ -1,10 +1,14 @@
 "use server"
+import { auth } from "@/auth";
+
+const base_url = process.env.NEXT_PUBLIC_BACKEND_URL!
 
 
-const base_url = process.env.BACKEND_URL!
+export const createStripeCheckoutSession = async(courseName: string, plan: string, type: string, amount: number) => {
+    const session = await auth();
 
+    console.log(session?.user)
 
-export const createStripeCheckoutSession = async(courseName: string, module: string, amount: number) => {
     const options = {
         method: 'POST',
         headers: {
@@ -15,7 +19,11 @@ export const createStripeCheckoutSession = async(courseName: string, module: str
           amount: amount,
           metadata: {
             course: courseName,
-            year: module
+            plan: plan,
+            type: type,
+            userId: session?.user.id,
+            email: session?.user.email,
+            username: session?.user.username
           }
         }),
     };

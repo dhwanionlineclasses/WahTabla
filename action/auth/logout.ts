@@ -53,7 +53,7 @@ export const logout = async () => {
     if (response.status === 200) {
 
       // Delete the cookie by setting it with an expiration date in the past
-      cookieStore.set('authjs.session-token', '', {
+      cookieStore.set(sessionTokenName, '', {
         path: '/', // Ensure the cookie is deleted across the entire site
         expires: new Date(0), // Set an expiration date in the past
       });

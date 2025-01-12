@@ -31,13 +31,15 @@ const BuyingOptionsNew = ({ course }: { course: propsType }) => {
   }, []);
   const handleCheckout = async (
     courseName: string,
-    module: string,
-    amount: number
+    plan: string,
+    amount: number,
+    type: string,
   ) => {
     try {
       const res = await createStripeCheckoutSession(
         courseName,
-        module,
+        plan,
+        type,
         amount
       );
 
@@ -51,7 +53,7 @@ const BuyingOptionsNew = ({ course }: { course: propsType }) => {
     }
   };
 
-  const coursePricing = pricing.find((c) => c.courseName === course.name);
+  const coursePricing = pricing.find((c) => `Dhwani ${c.courseName}` === course.name);
 
   if (!coursePricing) {
     <div>No pricing available for this course</div>;
@@ -90,7 +92,8 @@ const BuyingOptionsNew = ({ course }: { course: propsType }) => {
                           handleCheckout(
                             course.name,
                             priceModel.plan,
-                            priceModel.amount
+                            priceModel.amount,
+                            priceModel.type,
                           )
                         }
                         className="w-full bg-white text-primary hover:bg-muted"

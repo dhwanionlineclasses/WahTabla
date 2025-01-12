@@ -8,64 +8,55 @@ import {
   apiStripeWebhook
 } from '@/lib/routes'
 
-export default auth((req) => {
+export default auth(async (req) => {
   const { nextUrl } = req;
 
-  const token = getToken({ req, secret: process.env.AUTH_SECRET! })
-  const isLoggedIn = !!req.auth;
+  const token = await getToken({ req, secret: process.env.AUTH_SECRET! })
+  // const isLoggedIn = !!req.auth;
 
-    const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
-    const isApiStripeWebhookRoute = nextUrl.pathname.startsWith(apiStripeWebhook);
-    const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
-    const isAuthRoute = authRoutes.includes(nextUrl.pathname);
+  const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
+  const isApiStripeWebhookRoute = nextUrl.pathname.startsWith(apiStripeWebhook);
+  const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
+  const isAuthRoute = authRoutes.includes(nextUrl.pathname);
+  const isLoginPage = nextUrl.pathname === '/auth/login';
 
-    if(!token) {
+  const isTokenExpired =
+    !token || (token.data?.validity?.valid_until && Date.now() / 1000 > token.data.validity.valid_until);
 
-      // If token is invalid or expired, redirect to the login page
-      return Response.redirect(new URL(
-        `/auth/login`,
-        nextUrl
-      ));
+
+  if (isApiStripeWebhookRoute || isApiAuthRoute) {
+    return;
+  }
+
+  if (isTokenExpired && !isPublicRoute) {
+    console.log('Token expired or invalid');
+    if (!isLoginPage) {
+      return Response.redirect(new URL('/auth/login', nextUrl));
     }
+  }
 
-     if (isApiStripeWebhookRoute) {
-      return;
-    }
-
-    if (isApiAuthRoute) {
-      return;
-    }
-
-    if (isAuthRoute) {
-      if (isLoggedIn) {
-        return Response.redirect(new URL(DEFAULT_LOGIN_ROUTE, nextUrl));
-      }
-
-      return;
-    }
-
-    if (!isLoggedIn && !isPublicRoute) {
-
-      // let callbackUrl = nextUrl.pathname ;
-      // if(nextUrl.search) {
-      //   callbackUrl += nextUrl.search
-      // }
-
-      // const encodeCallbackUrl = encodeURIComponent(callbackUrl)
-      return Response.redirect(new URL(
-        `/auth/login`,
-        nextUrl
-      ));
+  if (isAuthRoute) {
+    if (!isTokenExpired) {
+      return Response.redirect(new URL(DEFAULT_LOGIN_ROUTE, nextUrl));
     }
 
     return;
+  }
+
+  if (!token && !isPublicRoute) {
+    if (!isLoginPage) {
+      return Response.redirect(new URL(`/auth/login`, nextUrl));
+    }
+  }
+
+  return;
 });
 
 export const config = {
-    matcher: [
-      // Skip Next.js internals and all static files, unless found in search params
-      '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
-      // Always run for API routes
-      '/(api|trpc)(.*)',
-    ],
-  };
+  matcher: [
+    // Skip Next.js internals and all static files, unless found in search params
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    // Always run for API routes
+    '/(api|trpc)(.*)',
+  ],
+};
