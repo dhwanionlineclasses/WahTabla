@@ -2,7 +2,7 @@
 
 import { AuthRegisterApiResponseType, SignupSchemaType } from "@/schema/auth-schema";
 
-const baseUrl = process.env.BACKEND_URL ?? 'http://localhost:5842'
+const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? 'http://localhost:5842'
 
 export async function register(values: SignupSchemaType) {
 

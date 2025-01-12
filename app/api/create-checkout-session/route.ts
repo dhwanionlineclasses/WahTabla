@@ -5,8 +5,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2024-12-18.acacia'
 });
 
-const SUCCESS_URL = `${process.env.NEXT_BASE_URL!}/profile`
-const CANCEL_URL = `${process.env.NEXT_BASE_URL!}/buy-course`
+const SUCCESS_URL = `${process.env.NEXT_PUBLIC_BASE_URL!}/profile`
+const CANCEL_URL = `${process.env.NEXT_PUBLIC_BASE_URL!}/buy-course`
 
 
 export async function POST(req: NextRequest) {

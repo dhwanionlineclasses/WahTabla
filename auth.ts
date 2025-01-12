@@ -14,7 +14,7 @@ import jwt from 'jsonwebtoken'
 import { AuthLoginApiResponseType } from "./schema/auth-schema"
 // import { error } from "console"
 
-const baseUrl = process.env.BACKEND_URL ?? 'http://localhost:5842'
+const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? 'http://localhost:5842'
 
 
 // async function refreshAccessToken(nextAuthJWTCookie: JWT): Promise<JWT> {

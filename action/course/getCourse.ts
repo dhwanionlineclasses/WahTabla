@@ -1,7 +1,7 @@
 "use server"
 
 import { GetCourseResponseType, GetCourseAPIResponse } from "@/schema/course";
-const base_url = process.env.BACKEND_URL
+const base_url = process.env.NEXT_PUBLIC_BACKEND_URL
 
 
 export const getCourse = async(moduleId: string):Promise<GetCourseAPIResponse> => {

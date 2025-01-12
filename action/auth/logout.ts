@@ -6,7 +6,7 @@ import { RequestInit } from "next/dist/server/web/spec-extension/request";
 
 
 
-const baseUrl = process.env.BACKEND_URL ?? 'http://localhost:5842'
+const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? 'http://localhost:5842'
 
 
 export const logout = async () => {
