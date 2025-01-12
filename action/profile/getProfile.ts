@@ -48,7 +48,7 @@ export const getProfile = async () => {
   };
   try {
 
-    console.log(options)
+    // console.log(options)
     const response = await fetch(`${baseUrl}/profiles/getProfile`, options)
     console.log(response.status)
     const data = await response.json()

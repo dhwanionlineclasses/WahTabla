@@ -53,7 +53,7 @@ const BuyingOptionsNew = ({ course }: { course: propsType }) => {
     }
   };
 
-  const coursePricing = pricing.find((c) => `Dhwani ${c.courseName}` === course.name);
+  const coursePricing = pricing.find((c) => c.courseName === course.name);
 
   if (!coursePricing) {
     <div>No pricing available for this course</div>;

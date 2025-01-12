@@ -8,17 +8,17 @@ export type CoursesType = {
 export const courses: CoursesType[] = [
   {
     id: 1,
-    name: "Dhwani Bhusan",
+    name: "Bhusan",
     lengthInYears: 2,
   },
   {
     id: 2,
-    name: "Dhwani Bibhusan",
+    name: "Bibhusan",
     lengthInYears: 3,
   },
   {
     id: 3,
-    name: "Dhwani Ratna",
+    name: "Ratna",
     lengthInYears: 2,
   },
 ];

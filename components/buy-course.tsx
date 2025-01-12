@@ -45,7 +45,7 @@ const BuyCourse = () => {
                   <CardContent className="flex justify-center items-center gap-4 py-2">
                     <RadioGroupItem value={course.name} id={course.name} />
                     <Label className="text-lg font-semibold cursor-pointer select-none">
-                      {course.name}
+                      Dhwani {course.name}
                     </Label>
                   </CardContent>
                 </Card>
