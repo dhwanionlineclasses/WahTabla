@@ -31,11 +31,11 @@ export default function CoursesTable({ data }: { data: ParsedResponse }) {
       <ScrollArea className="h-full max-h-[600px]">
         <Table>
           <TableHeader className="bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-10">
-            <TableRow>
-              <TableHead className="w-[200px]">Year</TableHead>
-              <TableHead>Module</TableHead>
+            {/* <TableRow> */}
+              {/* <TableHead className="w-[200px]">Year</TableHead> */}
+              {/* <TableHead>Module</TableHead> */}
               {/* <TableHead className="w-[200px]">Progress</TableHead> */}
-            </TableRow>
+            {/* </TableRow> */}
           </TableHeader>
           <TableBody>
             {Object.entries(data).map(([courseId, course]) => [
