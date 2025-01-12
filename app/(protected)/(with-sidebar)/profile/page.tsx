@@ -4,7 +4,7 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 
-import ProfileSidebar from "@/components/profile-sidebar";
+
 import ProfileModuleList from "@/components/profile-module-list";
 import Profile from "@/components/profile";
 import { getProfile } from "@/action/profile/getProfile";

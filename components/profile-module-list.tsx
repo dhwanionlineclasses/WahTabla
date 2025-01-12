@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { Button } from "./ui/button";
 import { Skeleton } from "./ui/skeleton";
 import { useFullProfileDetails } from "@/data/get-full-profile";
 import CoursesTable from "./course-table";
