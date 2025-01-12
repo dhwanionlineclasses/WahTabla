@@ -34,20 +34,20 @@ export default auth(async (req) => {
   //   }
   // }
 
-  if (isAuthRoute) {
-    if (token) {
-      return Response.redirect(new URL(DEFAULT_LOGIN_ROUTE, nextUrl));
-    }
+  // if (isAuthRoute) {
+  //   if (token) {
+  //     return Response.redirect(new URL(DEFAULT_LOGIN_ROUTE, nextUrl));
+  //   }
 
-    return;
-  }
+  //   return;
+  // }
 
-  if (!token && !isPublicRoute) {
-    console.log('No token found, redirecting to login');
-    if (!isLoginPage && !isRegisterPage) {
-      return Response.redirect(new URL('/auth/login', nextUrl));
-    }
-  }
+  // if (!token && !isPublicRoute) {
+  //   console.log('No token found, redirecting to login');
+  //   if (!isLoginPage && !isRegisterPage) {
+  //     return Response.redirect(new URL('/auth/login', nextUrl));
+  //   }
+  // }
 
   return;
 });
