@@ -4,7 +4,10 @@ import { cookies } from "next/headers";
 import { decode } from "next-auth/jwt";
 import { RequestInit } from "next/dist/server/web/spec-extension/request";
 
-
+const sessionTokenName =
+  process.env.NODE_ENV === 'production'
+    ? '__Secure-authjs.session-token'
+    : 'authjs.session-token';
 
 const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? 'http://localhost:5842'
 
@@ -17,7 +20,7 @@ export const logout = async () => {
   const session = await decode({
     token: tokens,
     secret: process.env.AUTH_SECRET!,
-    salt: 'authjs.session-token'
+    salt: sessionTokenName
   })
 
   if (!session) {

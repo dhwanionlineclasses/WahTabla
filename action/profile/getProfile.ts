@@ -5,7 +5,10 @@ import { decode } from "next-auth/jwt";
 import { RequestInit } from "next/dist/server/web/spec-extension/request";
 import { parseResponse } from "@/utils/parse-course";
 
-
+const sessionTokenName =
+  process.env.NODE_ENV === 'production'
+    ? '__Secure-authjs.session-token'
+    : 'authjs.session-token';
 
 const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? 'http://localhost:5842'
 
@@ -18,7 +21,7 @@ export const getProfile = async () => {
   const session = await decode({
     token: tokens,
     secret: process.env.AUTH_SECRET!,
-    salt: 'authjs.session-token'
+    salt: sessionTokenName
   })
 
   if (!session) {
