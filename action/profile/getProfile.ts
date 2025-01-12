@@ -3,7 +3,6 @@
 import { cookies } from "next/headers";
 import { decode } from "next-auth/jwt";
 import { RequestInit } from "next/dist/server/web/spec-extension/request";
-import { UserProfileApiResponseType } from "@/schema/types/user-profile-types";
 import { parseResponse } from "@/utils/parse-course";
 
 

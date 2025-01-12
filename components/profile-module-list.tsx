@@ -12,6 +12,16 @@ const ProfileModuleList = () => {
   if (isError || error) {
     return <span>No Data Found</span>;
   }
+
+  if(isPending) {
+    return(
+      <h1>Loading...</h1>
+    )
+  }
+
+  if(courses) {
+    console.log(courses.data)
+  }
   return (
     <div className="min-w-[600px] w-full min-h-[92vh] bg-white rounded-lg flex justify-start items-start p-4 shadow-sm">
       {courses?.data ? (
@@ -27,7 +37,7 @@ const ProfileModuleList = () => {
               View All
             </Button>
           </div>
-          {!isPending && courses.data ? (
+          {courses.data ? (
             <CoursesTable data={courses.data} />
           ) : (
             <div className="w-full flex flex-col gap-6">
