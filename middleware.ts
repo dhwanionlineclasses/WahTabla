@@ -27,12 +27,12 @@ export default auth(async (req) => {
     return;
   }
 
-  if (isTokenExpired && !isPublicRoute) {
-    console.log('Token expired or invalid');
-    if (!isLoginPage && !isRegisterPage) {
-      return Response.redirect(new URL('/auth/login', nextUrl));
-    }
-  }
+  // if (isTokenExpired && !isPublicRoute) {
+  //   console.log('Token expired or invalid');
+  //   if (!isLoginPage && !isRegisterPage) {
+  //     return Response.redirect(new URL('/auth/login', nextUrl));
+  //   }
+  // }
 
   if (isAuthRoute) {
     if (token && !isTokenExpired) {
