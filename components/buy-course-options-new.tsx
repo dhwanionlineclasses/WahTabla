@@ -74,7 +74,7 @@ const BuyingOptionsNew = ({ course }: { course: propsType }) => {
                   <div>
                     <CardHeader className="min-h-36 flex justify-start items-center gap-4">
                       <Button className="bg-primary w-full rounded-sm cursor-default shadow-none ">
-                        {priceModel.plan}
+                        {priceModel.name}
                       </Button>
                       <span className="drop-shadow-3xl">
                         <span className="text-4xl font-semibold">

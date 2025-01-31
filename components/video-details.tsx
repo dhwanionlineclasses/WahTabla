@@ -1,13 +1,16 @@
 import { Video } from "@/lib/types";
-import Link from 'next/link';
+import Link from "next/link";
 import { Button } from "./ui/button";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
+// import { useState } from "react";
 
 type VideoDetailsProps = {
   video: Video | null;
 };
 
 export function VideoDetails({ video }: VideoDetailsProps) {
+  // const [showPdf, setShowPdf] = useState(false);
+
   if (!video) {
     return (
       <div className="flex h-full items-center justify-center">
@@ -15,6 +18,12 @@ export function VideoDetails({ video }: VideoDetailsProps) {
       </div>
     );
   }
+
+  const openPdf = (url: string) => {
+    if (url) {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  };
 
   return (
     <div className="p-6">
@@ -37,7 +46,34 @@ export function VideoDetails({ video }: VideoDetailsProps) {
       <p className="mb-2 text-sm text-muted-foreground">
         Duration: {Math.floor(video.duration / 60)} minutes
       </p>
+      <div className="w-full flex justify-between items-center mb-4">
+        <h1>By Pandit Abhijit Banerjee</h1>
+        <div className="mt-6">
+          <Button
+            onClick={() =>
+              openPdf(
+                "https://74qwidbqes.ufs.sh/f/o3YfRzT9WCauDq0M6LSoVgRnyQLiADH6p4me8x2fYPzqXu0M"
+              )
+            }
+            variant="secondary"
+          >
+            {/* {showPdf ? 'Hide Notes' : 'View Lecture Notes'} */}
+            View Lecture Notes
+          </Button>
+        </div>
+      </div>
       <p className="text-muted-foreground">{video.description}</p>
+      {/* {showPdf && (
+            <div className="mt-4 w-full h-[1000px]">
+              <iframe
+                src={`https://74qwidbqes.ufs.sh/f/o3YfRzT9WCauDq0M6LSoVgRnyQLiADH6p4me8x2fYPzqXu0M#toolbar=0`}
+                width="100%"
+                height="100%"
+                style={{ border: 'none' }}
+                className="rounded-lg shadow-lg"
+              />
+            </div>
+          )} */}
     </div>
   );
 }

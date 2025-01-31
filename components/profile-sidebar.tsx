@@ -33,6 +33,17 @@ const ProfileSidebar = () => {
           variant="ghost"
           className={cn(
             "w-full h-12 text-lg font-medium justify-start py-1",
+            pathname === "/buy-course" ? "bg-accent" : ""
+          )}
+          onClick={() => router.push("/buy-course")}
+        >
+          <CardStackPlusIcon className="w-12 h-12 text-black" />
+          <span>Buy Course</span>
+        </Button>
+        <Button
+          variant="ghost"
+          className={cn(
+            "w-full h-12 text-lg font-medium justify-start py-1",
             pathname === "/doubt-clearing" ? "bg-accent" : ""
           )}
           onClick={() => router.push("/doubt-clearing")}
@@ -53,17 +64,6 @@ const ProfileSidebar = () => {
         >
           <ReaderIcon className="w-12 h-12 text-black" />
           <span>Exam</span>
-        </Button>
-        <Button
-          variant="ghost"
-          className={cn(
-            "w-full h-12 text-lg font-medium justify-start py-1",
-            pathname === "/buy-course" ? "bg-accent" : ""
-          )}
-          onClick={() => router.push("/buy-course")}
-        >
-          <CardStackPlusIcon className="w-12 h-12 text-black" />
-          <span>Buy Course</span>
         </Button>
       </div>
     </section>
