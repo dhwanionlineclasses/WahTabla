@@ -33,7 +33,7 @@ const BuyingOptionsNew = ({ course }: { course: propsType }) => {
     courseName: string,
     plan: string,
     amount: number,
-    type: string,
+    type: string
   ) => {
     try {
       const res = await createStripeCheckoutSession(
@@ -69,22 +69,65 @@ const BuyingOptionsNew = ({ course }: { course: propsType }) => {
               return (
                 <Card
                   key={index}
-                  className="w-full pb-0 flex flex-col justify-between rounded-sm bg-primary text-white shadow-none border border-muted/20"
+                  className="relative w-full pb-0 flex flex-col justify-between rounded-sm bg-primary text-white shadow-none border border-muted/20"
                 >
-                  <div>
-                    <CardHeader className="min-h-36 flex justify-start items-center gap-4">
-                      <Button className="bg-primary w-full rounded-sm cursor-default shadow-none ">
-                        {priceModel.name}
-                      </Button>
+                  {priceModel.billedType === 'Full Course' && (
+                    <span
+                      className="absolute left-2 -top-2 w-12 px-1 pt-2 pb-4 rounded-sm bg-yellow-500 text-xs text-center font-bold text-[#111111]"
+                      style={{
+                        clipPath:
+                          "polygon(0% 0%, 100% 0%, 100% 80%, 50% 100%, 0% 80%)",
+                      }}
+                    >
+                      Best Value
+                    </span>
+                  )}
+                  {priceModel.billedType === 'Monthly' && (
+                    <span
+                      className="absolute left-2 -top-2 w-12 px-1 pt-2 pb-4 rounded-sm bg-yellow-500 text-xs text-center font-bold text-[#111111]"
+                      style={{
+                        clipPath:
+                          "polygon(0% 0%, 100% 0%, 100% 80%, 50% 100%, 0% 80%)",
+                      }}
+                    >
+                      Most Popular
+                    </span>
+                  )}
+                  <CardHeader className="flex justify-start items-center gap-4">
+                    <Button className="bg-primary w-32 rounded-sm cursor-default shadow-none text-2xl text-wrap font-semibold uppercase">
+                      {/* {priceModel.name} */}
+                      {priceModel.billedType}
+                    </Button>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-col justify-center items-center gap-2">
+                      {priceModel.originalPrice && priceModel.save && (
+                        <span className="flex flex-col justify-center items-center text-white opacity-60">
+                          <span className="line-through">
+                            ${priceModel.originalPrice}
+                          </span>
+                          <span className="text-xs">
+                            You save ${priceModel.save}
+                          </span>
+                        </span>
+                      )}
                       <span className="drop-shadow-3xl">
                         <span className="text-4xl font-semibold">
                           {country === "IN"
                             ? priceModel.priceIn
                             : `${priceModel.priceDefault}`}
                         </span>
+                        {priceModel.type !== "Course" && (
+                          <span className="lowercase text-base">
+                            /{priceModel.type}
+                          </span>
+                        )}
                       </span>
-                    </CardHeader>
-                  </div>
+                      <span className="text-white opacity-60">
+                        {priceModel.billedAs}
+                      </span>
+                    </div>
+                  </CardContent>
                   <CardFooter>
                     <Link href="/buy-course" className="w-full">
                       <Button
@@ -93,12 +136,12 @@ const BuyingOptionsNew = ({ course }: { course: propsType }) => {
                             course.name,
                             priceModel.plan,
                             priceModel.amount,
-                            priceModel.type,
+                            priceModel.type
                           )
                         }
                         className="w-full bg-white text-primary hover:bg-muted"
                       >
-                        Get it Now
+                        Join Now
                       </Button>
                     </Link>
                   </CardFooter>
