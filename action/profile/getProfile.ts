@@ -3,7 +3,7 @@
 import { cookies } from "next/headers";
 import { decode } from "next-auth/jwt";
 import { RequestInit } from "next/dist/server/web/spec-extension/request";
-import { parseResponse } from "@/utils/parse-course";
+import { ParsedResponse, parseResponse } from "@/utils/parse-course";
 
 const sessionTokenName =
   process.env.NODE_ENV === 'production'
@@ -58,7 +58,7 @@ export const getProfile = async () => {
       return {
         success: true,
         message: 'Successfully recieved user data',
-        data: parseResponse(data) 
+        data: data.orders as ParsedResponse
       }
     } else {
       return { success: false, message: data.message || 'Profile Fetching failed' }

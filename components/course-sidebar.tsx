@@ -49,6 +49,8 @@ export function CourseSidebar({
     );
   };
 
+  // console.log(year)
+
   return (
     <div className="hidden md:block relative h-[calc(100vh-4rem)] w-80 border-r p-1 pl-0">
       <ScrollArea className="h-[calc(100vh-7rem)] w-full">

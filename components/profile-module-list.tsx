@@ -29,6 +29,8 @@ const ProfileModuleList = () => {
     )
   }
 
+  // console.log(courses)
+
   return (
     <div className="min-w-[600px] w-full min-h-[92vh] bg-white rounded-lg flex justify-start items-start p-4 shadow-sm">
       {courses?.data ? (
