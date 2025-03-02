@@ -1,0 +1,43 @@
+export const weeklyNotesLinks = {
+  "week-1": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSVbSaB2K9mj5bhH4wuiIRzfea3n0ZscNClOMJ",
+  "week-2": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSTPCEZ1ULxPncA3lY4zt82QopehjW50HCGNOI",
+  "week-3": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSBmXwHLRVkIcO5S3vKtp6jM4HJP0QaF1YDfyR",
+  "week-4": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSrqh2aONudXkxS0LPDVwcgEenCTqHhs65f23N",
+  "week-5": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSQiOFMt5F2Ea4j76TUORZiGpQSDBKWyVw89zn",
+  "week-6": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSltMz2G4u4MUm6tJXe5972xbI0sYAfyGgdjNW",
+  "week-7": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujS7ubbh8PW0fTWQDj8GSIuL2dU5NcXmlJsr9kz",
+  "week-8": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSCYdoF03BMCzdFK7UbgjcYx9NiueGaVZTs2ow",
+  "week-9": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSHNDvJq9DBXFgA12Ocd4SqiKYRx3mJMpyTlzI",
+  "week-10": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSyWchqTZaunWKRPC2xUVcb7YS659fZIN4wM1z",
+  "week-11": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSv7rzINGKstymaRLJVrBHOgIEZ9iu8kh0QWYp",
+  "week-12": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSOm1s6DhDnIkq4PjaWOH2X6S0xbRCw587tVig",
+  "week-13": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSW47N4qMzn9EZDsTSLtRbgHvFjedXBC7qKc1o",
+  "week-14": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSCR6Dr03BMCzdFK7UbgjcYx9NiueGaVZTs2ow",
+  "week-15": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSAwDOcdJSjVIOdTJ6vZBrLbxDmUna9hyoucE0",
+  "week-16": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSN7VL3FMYeScGWEt2KLy7klnwD0Y9q8FBJZjh",
+  "week-17": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSOxmjMgdhDnIkq4PjaWOH2X6S0xbRCw587tVi",
+  "week-18": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSJOcuYg87RBvhzXW0acGfl3D8rkmYECiVwxn4",
+  "week-19": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSb5WXlrksM8135q9yxBFr4bfZCGIRYTaHvjgz",
+  "week-20": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSMLyUbGuG2kA0eRHQwOPhWmC83Fg14V67xn9q",
+  "week-21": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSzmmAxWO7L6lwskuAIOy1EXnKa3xtFPdhSN8e",
+  "week-22": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSCPJJL7W3BMCzdFK7UbgjcYx9NiueGaVZTs2o",
+  "week-23": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSc6KxSm76xQRkMgudjVJTpzfSLBDwoC8FGn3H",
+  "week-24": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSVj9MBOK9mj5bhH4wuiIRzfea3n0ZscNClOMJ",
+  "week-25": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSg0JKt6nFmR9yzJPWG1hBvbspkAXCxMua6NT2"
+};
+
+
+export const theoryLinks = {
+  "month-1-theory": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSe73vTsQ3iGVnDxgvuNOIFW0YHckqhZ9bs2le",
+  "month-2-theory": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSe73vTsQ3iGVnDxgvuNOIFW0YHckqhZ9bs2le",
+  "month-3-theory": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSdYG8QsVrgb4TSrC59emLJZ6v8kws1czQBpNh",
+  "month-4-theory": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSdYG8QsVrgb4TSrC59emLJZ6v8kws1czQBpNh",
+  "month-5-theory": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSJUbzTe87RBvhzXW0acGfl3D8rkmYECiVwxn4",
+  "month-6-theory": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSJUbzTe87RBvhzXW0acGfl3D8rkmYECiVwxn4",
+  "month-7-theory": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSNBXW8ZYeScGWEt2KLy7klnwD0Y9q8FBJZjhX",
+  "month-8-theory": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSNBXW8ZYeScGWEt2KLy7klnwD0Y9q8FBJZjhX",
+  "month-9-theory": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSpJMzkPSRelGuD8HcQg96yoZ34sv5jVO0mkWn",
+  "month-10-theory": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSpJMzkPSRelGuD8HcQg96yoZ34sv5jVO0mkWn",
+  "month-11-theory": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSQ7CIww5F2Ea4j76TUORZiGpQSDBKWyVw89zn",
+  "month-12-theory": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSQ7CIww5F2Ea4j76TUORZiGpQSDBKWyVw89zn",
+};

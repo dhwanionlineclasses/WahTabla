@@ -2,6 +2,7 @@ import { Video } from "@/lib/types";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
+import { getTheoryLink, getThisWeekNoteLink } from "@/utils/get-notes";
 // import { useState } from "react";
 
 type VideoDetailsProps = {
@@ -19,10 +20,9 @@ export function VideoDetails({ video }: VideoDetailsProps) {
     );
   }
 
-  const openPdf = (url: string) => {
-    if (url) {
-      window.open(url, "_blank", "noopener,noreferrer");
-    }
+  const openPdf = (url: string | null) => {
+    if (!url) return
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -48,12 +48,19 @@ export function VideoDetails({ video }: VideoDetailsProps) {
       </p>
       <div className="w-full flex justify-between items-center mb-4">
         <h1>By Pandit Abhijit Banerjee</h1>
-        <div className="mt-6">
+        <div className="flex justify-center items-center gap-2 mt-6">
           <Button
             onClick={() =>
-              openPdf(
-                "https://74qwidbqes.ufs.sh/f/o3YfRzT9WCauDq0M6LSoVgRnyQLiADH6p4me8x2fYPzqXu0M"
-              )
+              openPdf(getTheoryLink(video.videoTitle))
+            }
+            variant="secondary"
+          >
+            {/* {showPdf ? 'Hide Notes' : 'View Lecture Notes'} */}
+            View Theory
+          </Button>
+          <Button
+            onClick={() =>
+              openPdf(getThisWeekNoteLink(video.videoTitle))
             }
             variant="secondary"
           >

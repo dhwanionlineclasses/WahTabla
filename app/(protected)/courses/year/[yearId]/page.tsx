@@ -8,7 +8,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 export default function YearPage({ params }: { params: { yearId: string } }) {
   const { data: courseData, error, isPending } = useFullProfileDetails();
 
-  console.log(courseData)
+  // console.log(courseData)
   try {
     const yearId = parseInt(params.yearId);
     let yearData = null;
