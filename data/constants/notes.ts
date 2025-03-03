@@ -23,7 +23,29 @@ export const weeklyNotesLinks = {
   "week-22": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSCPJJL7W3BMCzdFK7UbgjcYx9NiueGaVZTs2o",
   "week-23": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSc6KxSm76xQRkMgudjVJTpzfSLBDwoC8FGn3H",
   "week-24": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSVj9MBOK9mj5bhH4wuiIRzfea3n0ZscNClOMJ",
-  "week-25": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSg0JKt6nFmR9yzJPWG1hBvbspkAXCxMua6NT2"
+  "week-25": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSg0JKt6nFmR9yzJPWG1hBvbspkAXCxMua6NT2",
+  "week-26": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSYW7T83LcX5aPkOwMTGUb9tqEFDV8L7eiuNI0",
+  "week-27": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSYW7T83LcX5aPkOwMTGUb9tqEFDV8L7eiuNI0",
+  "week-28": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSOxM3XtchDnIkq4PjaWOH2X6S0xbRCw587tVi",
+  "week-29": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSkTqPTkaXqTzfjIYLOiWGuJEo97plZvaPrksA",
+  "week-30": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujS0OONIioRjxMzpqhsu5IoHUkVJ7yAaNGZPm1K",
+  "week-31": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujS91YT1Hz1lb6caLRHYe8rsiCUKVuPZ0JAyD4h",
+  "week-32": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSQkQbqq5F2Ea4j76TUORZiGpQSDBKWyVw89zn",
+  "week-33": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSkv9BPdXqTzfjIYLOiWGuJEo97plZvaPrksAH",
+  "week-34": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujS1cnPJ4wNS4f6eY1k5rodmn7QzLVGKbptZgAX",
+  "week-35": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSTgPcTaULxPncA3lY4zt82QopehjW50HCGNOI",
+  "week-36": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSJs3fxA87RBvhzXW0acGfl3D8rkmYECiVwxn4",
+  "week-37": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSFb9VWntGbxUK1Xal7iCB8QIek5w02nPcZRNr",
+  "week-38": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSWk4QeMzn9EZDsTSLtRbgHvFjedXBC7qKc1oi",
+  "week-39": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSupbScBvKEZyonT26rI1BpR5Ce84M93hcxSXv",
+  "week-40": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSkUqGzYXqTzfjIYLOiWGuJEo97plZvaPrksAH",
+  "week-41": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSXUD79OtswpGSMBRTDW7uLh8oec4ZiOPs610J",
+  "week-42": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSO12Il7hDnIkq4PjaWOH2X6S0xbRCw587tVig",
+  "week-43": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSTo1D7qULxPncA3lY4zt82QopehjW50HCGNOI",
+  "week-45": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujS8NcGCRzd4QVwa7bOcPmNK3Dg2Ev9uAMFLSeT",
+  "week-46": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSWO0ia5Mzn9EZDsTSLtRbgHvFjedXBC7qKc1o",
+  "week-47": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujS7rjBKxW0fTWQDj8GSIuL2dU5NcXmlJsr9kzR",
+  "week-48": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSGWtJ4Z6yiVK7g3u0saoN2xkMnrEHzWBvdtq1"
 };
 
 
