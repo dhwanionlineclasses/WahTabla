@@ -25,7 +25,7 @@ export const weeklyNotesLinks = {
   "week-24": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSVj9MBOK9mj5bhH4wuiIRzfea3n0ZscNClOMJ",
   "week-25": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSg0JKt6nFmR9yzJPWG1hBvbspkAXCxMua6NT2",
   "week-26": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSYW7T83LcX5aPkOwMTGUb9tqEFDV8L7eiuNI0",
-  "week-27": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSYW7T83LcX5aPkOwMTGUb9tqEFDV8L7eiuNI0",
+  "week-27": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujS8W2Cogd4QVwa7bOcPmNK3Dg2Ev9uAMFLSeTC",
   "week-28": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSOxM3XtchDnIkq4PjaWOH2X6S0xbRCw587tVi",
   "week-29": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujSkTqPTkaXqTzfjIYLOiWGuJEo97plZvaPrksA",
   "week-30": "https://4km4irv40c.ufs.sh/f/SKuCPsgirujS0OONIioRjxMzpqhsu5IoHUkVJ7yAaNGZPm1K",
