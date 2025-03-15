@@ -1,23 +1,35 @@
 import { weeklyNotesLinks, theoryLinks } from "@/data/constants/notes";
 
-export function getThisWeekNoteLink(videoTitle: string): string | null {
-  const match = videoTitle.match(/week\s*(\d+)/i);
-  if (!match) return null; // Return null if no valid week number is found
+export const getThisWeekNoteLink = (selectedWeek: string, yearName: string): string | null => {
+  // Extract the numeric values from the string inputs
+  const weekNumber = parseInt(selectedWeek.replace("Week ", ""), 10);
+  const yearNumber = parseInt(yearName.replace("Year ", ""), 10);
 
-  const weekKey = `week-${parseInt(match[1], 10)}` as keyof typeof weeklyNotesLinks;
-  return weeklyNotesLinks[weekKey] || null; // Return the corresponding link or null if not found
-}
+  if (isNaN(weekNumber) || isNaN(yearNumber) || weekNumber < 1 || weekNumber > 52) {
+    return null; // Return null for invalid inputs
+  }
 
-export const getTheoryLink = (videoTitle: string): string | null => {
-  // Extract the week number from the title
-  const match = videoTitle.match(/\d+/);
-  if (!match) return null; // No number found, return null
+  // Construct the key based on the extracted year and week
+  const key = `year-${yearNumber}-week-${weekNumber}` as keyof typeof weeklyNotesLinks;
 
-  const weekNumber = parseInt(match[0], 10);
-  const monthNumber = Math.ceil(weekNumber / 4);
+  return weeklyNotesLinks[key] || null; // Return the corresponding link or null if not found
+};
 
-  // Create the key and assert it as a valid key of theoryLinks
-  const key = `month-${monthNumber}-theory` as keyof typeof theoryLinks;
 
-  return theoryLinks[key] || null;
+export const getTheoryLink = (selectedWeek: string, yearName: string): string | null => {
+  // Extract the numeric values from the string inputs
+  const weekNumber = parseInt(selectedWeek.replace("Week ", ""), 10);
+  const yearNumber = parseInt(yearName.replace("Year ", ""), 10);
+
+  if (isNaN(weekNumber) || isNaN(yearNumber) || weekNumber < 1 || weekNumber > 52) {
+    return null; // Return null for invalid inputs
+  }
+
+  // Determine the corresponding month (each month has ~4.33 weeks)
+  const month = Math.ceil(weekNumber / 4.33);
+
+  // Construct the key based on the extracted year and month
+  const key = `year-${yearNumber}-month-${month}-theory` as keyof typeof theoryLinks;
+
+  return theoryLinks[key] || null; // Return the corresponding link or null if not found
 };

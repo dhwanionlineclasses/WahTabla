@@ -7,10 +7,11 @@ import { getTheoryLink, getThisWeekNoteLink } from "@/utils/get-notes";
 
 type VideoDetailsProps = {
   video: Video | null;
+  yearName: string;
   selectedWeek: string;
 };
 
-export function VideoDetails({ video, selectedWeek }: VideoDetailsProps) {
+export function VideoDetails({ video, yearName, selectedWeek }: VideoDetailsProps) {
   // const [showPdf, setShowPdf] = useState(false);
   // console.log("VideoDetails: Week:", selectedWeek, "Video:", video);
 
@@ -24,14 +25,14 @@ export function VideoDetails({ video, selectedWeek }: VideoDetailsProps) {
             </Button>
             <div className="flex justify-center items-center gap-2 mt-6">
               <Button
-                onClick={() => openPdf(getTheoryLink(selectedWeek))}
+                onClick={() => openPdf(getTheoryLink(selectedWeek, yearName))}
                 variant="secondary"
               >
                 {/* {showPdf ? 'Hide Notes' : 'View Lecture Notes'} */}
                 View Theory
               </Button>
               <Button
-                onClick={() => openPdf(getThisWeekNoteLink(selectedWeek))}
+                onClick={() => openPdf(getThisWeekNoteLink(selectedWeek, yearName))}
                 variant="secondary"
               >
                 {/* {showPdf ? 'Hide Notes' : 'View Lecture Notes'} */}
@@ -78,14 +79,14 @@ export function VideoDetails({ video, selectedWeek }: VideoDetailsProps) {
         <h1>By Pandit Abhijit Banerjee</h1>
         <div className="flex justify-center items-center gap-2 mt-6">
           <Button
-            onClick={() => openPdf(getTheoryLink(video.videoTitle))}
+            onClick={() => openPdf(getTheoryLink(selectedWeek, yearName))}
             variant="secondary"
           >
             {/* {showPdf ? 'Hide Notes' : 'View Lecture Notes'} */}
             View Theory
           </Button>
           <Button
-            onClick={() => openPdf(getThisWeekNoteLink(video.videoTitle))}
+            onClick={() => openPdf(getThisWeekNoteLink(selectedWeek, yearName))}
             variant="secondary"
           >
             {/* {showPdf ? 'Hide Notes' : 'View Lecture Notes'} */}

@@ -61,7 +61,7 @@ export function YearContent({ year }: YearContentProps) {
     return match ? `Week ${match[0]}` : "Unknown Week";
   };
 
-  console.log(allVideos);
+  console.log(year.yearName);
 
   return (
     <div className="flex h-[calc(100vh-4rem)]">
@@ -77,7 +77,7 @@ export function YearContent({ year }: YearContentProps) {
         selectedVideo={selectedVideo}
       />
       <main className="flex-1 overflow-y-auto">
-        <VideoDetails video={selectedVideo} selectedWeek={selectedWeek} />
+        <VideoDetails video={selectedVideo} yearName={year.yearName} selectedWeek={selectedWeek} />
         <div className="mt-4 flex justify-between p-4">
           <Button
             onClick={handlePrevVideo}
