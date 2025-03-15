@@ -15,6 +15,12 @@ export function VideoDetails({ video, yearName, selectedWeek }: VideoDetailsProp
   // const [showPdf, setShowPdf] = useState(false);
   // console.log("VideoDetails: Week:", selectedWeek, "Video:", video);
 
+    const openPdf = (url: string | null) => {
+    if (!url) return;
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
+  
   if (!video) {
     return (
       <div className="flex h-4/5 items-center justify-center">
@@ -49,10 +55,6 @@ export function VideoDetails({ video, yearName, selectedWeek }: VideoDetailsProp
     );
   }
 
-  const openPdf = (url: string | null) => {
-    if (!url) return;
-    window.open(url, "_blank", "noopener,noreferrer");
-  };
 
   return (
     <div className="p-6">
