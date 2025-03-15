@@ -13,25 +13,36 @@ type YearContentProps = {
 export function YearContent({ year }: YearContentProps) {
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
   const [selectedVideoIndex, setSelectedVideoIndex] = useState<number>(-1);
+  const [selectedWeek, setSelectedWeek] = useState<string>("");
 
   const allVideos = year.modules
     .flatMap((module) => module.months)
     .flatMap((month) => month.videos)
-    .sort((a, b) => a.videoTitle.localeCompare(b.videoTitle))
+    .sort((a, b) => {
+      // Extract week number from the videoTitle
+      const getWeekNumber = (title: string) => {
+        const match = title.match(/\d+/);
+        return match ? parseInt(match[0], 10) : 999; // Default high number if no match
+      };
+
+      return getWeekNumber(a.videoTitle) - getWeekNumber(b.videoTitle);
+    });
 
   // Set the first video as default, but only if no video is selected
   useEffect(() => {
-    if (allVideos.length > 0 && selectedVideo === null) {
+    if (allVideos.length > 0 && selectedVideo === null && selectedWeek === "") {
       setSelectedVideo(allVideos[0]);
       setSelectedVideoIndex(0);
+      setSelectedWeek("Week 1");
     }
-  }, [year, allVideos, selectedVideo]);
+  }, [year, allVideos, selectedWeek, selectedVideo]);
 
   const handlePrevVideo = () => {
     if (selectedVideoIndex > 0) {
       const prevVideo = allVideos[selectedVideoIndex - 1];
       setSelectedVideo(prevVideo);
       setSelectedVideoIndex(selectedVideoIndex - 1);
+      setSelectedWeek(getWeekTitle(prevVideo.videoTitle));
     }
   };
 
@@ -40,21 +51,33 @@ export function YearContent({ year }: YearContentProps) {
       const nextVideo = allVideos[selectedVideoIndex + 1];
       setSelectedVideo(nextVideo);
       setSelectedVideoIndex(selectedVideoIndex + 1);
+      setSelectedWeek(getWeekTitle(nextVideo.videoTitle));
     }
   };
+
+  // Helper function to extract week title
+  const getWeekTitle = (videoTitle: string) => {
+    const match = videoTitle.match(/\d+/);
+    return match ? `Week ${match[0]}` : "Unknown Week";
+  };
+
+  console.log(allVideos);
 
   return (
     <div className="flex h-[calc(100vh-4rem)]">
       <CourseSidebar
         year={year}
-        onVideoSelect={(video, index) => {
+        selectedWeek={selectedWeek}
+        onVideoSelect={(video, index, weekTitle) => {
           setSelectedVideo(video);
           setSelectedVideoIndex(index);
+          setSelectedWeek(weekTitle);
+          // console.log("Selected Video:", video, "setSelectedVideoIndex", index, "Selected Week:", weekTitle);
         }}
         selectedVideo={selectedVideo}
       />
       <main className="flex-1 overflow-y-auto">
-        <VideoDetails video={selectedVideo} />
+        <VideoDetails video={selectedVideo} selectedWeek={selectedWeek} />
         <div className="mt-4 flex justify-between p-4">
           <Button
             onClick={handlePrevVideo}

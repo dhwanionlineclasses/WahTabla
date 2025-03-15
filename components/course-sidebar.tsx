@@ -15,15 +15,21 @@ import Link from "next/link";
 
 type CourseSidebarProps = {
   year: Year;
-  onVideoSelect: (video: Video, index: number) => void;
+  selectedWeek: string | null;
+  onVideoSelect: (
+    video: Video | null,
+    index: number,
+    weekTitle: string
+  ) => void;
   selectedVideo: Video | null;
 };
 
 export function CourseSidebar({
   year,
+  selectedWeek,
   onVideoSelect,
-  selectedVideo,
-}: CourseSidebarProps) {
+}:
+CourseSidebarProps) {
   const [openModules, setOpenModules] = useState<number[]>(() =>
     year.modules.map((module) => module.moduleId)
   );
@@ -32,6 +38,8 @@ export function CourseSidebar({
       module.months.map((month) => month.monthId)
     )
   );
+
+  let weekCounter = 1;
 
   const toggleModule = (moduleId: number) => {
     setOpenModules((prev) =>
@@ -74,57 +82,120 @@ export function CourseSidebar({
                 </Button>
               </CollapsibleTrigger>
               <CollapsibleContent className="w-full">
-                {module.months.map((month) => (
-                  <Collapsible
-                    key={month.monthId}
-                    open={openMonths.includes(month.monthId)}
-                    onOpenChange={() => toggleMonth(month.monthId)}
-                  >
-                    <CollapsibleTrigger asChild>
-                      <Button
-                        variant="ghost"
-                        className="ml-4 w-full justify-start"
-                      >
-                        {openMonths.includes(month.monthId) ? (
-                          <ChevronDown className="mr-2 h-4 w-4" />
-                        ) : (
-                          <ChevronRight className="mr-2 h-4 w-4" />
-                        )}
-                        {month.monthName}
-                      </Button>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent className="w-full">
-                      {month.videos
-                        .sort((a, b) => a.videoTitle.localeCompare(b.videoTitle))
-                        .map((video, index) => (
-                          <Button
-                            key={video.videoId}
-                            variant="ghost"
-                            className={cn(
-                              "ml-8 w-full justify-start",
-                              selectedVideo?.videoId === video.videoId
-                                ? "bg-white"
-                                : ""
-                            )}
-                            onClick={() => onVideoSelect(video, index)}
-                          >
-                            <VideoIcon className="mr-2 h-4 w-4" />
-                            {video.videoTitle}
-                          </Button>
-                        ))}
-                    </CollapsibleContent>
-                  </Collapsible>
-                ))}
+                {module.months.map((month) => {
+                  const totalWeeks = 4; // Each month has 4 weeks
+                  const allWeeks = Array.from(
+                    { length: totalWeeks },
+                    () => `Week ${weekCounter++}`
+                  );
+
+                  // Normalize video titles for correct matching
+                  const videoMap = new Map(
+                    month.videos.map((video) => {
+                      const normalizedTitle = video.videoTitle
+                        .toLowerCase()
+                        .replace(/\.(mp4|mov|avi)$/i, "") // Remove file extensions
+                        .replace(/(:| - ).*$/, "") // Remove descriptions after ":" or " - "
+                        .replace(/\b(\d+)(st|nd|rd|th)\b/, "$1") // Remove ordinal suffixes (1st, 2nd, 3rd, 4th, etc.)
+                        .replace(/&.*/, "") // Remove everything after "&" to keep only the first number
+
+                      return [normalizedTitle, video];
+                    })
+                  );
+                  // console.log(videoMap);
+                  return (
+                    <Collapsible
+                      key={month.monthId}
+                      open={openMonths.includes(month.monthId)}
+                      onOpenChange={() => toggleMonth(month.monthId)}
+                    >
+                      <CollapsibleTrigger asChild>
+                        <Button
+                          variant="ghost"
+                          className="ml-4 w-full justify-start"
+                        >
+                          {openMonths.includes(month.monthId) ? (
+                            <ChevronDown className="mr-2 h-4 w-4" />
+                          ) : (
+                            <ChevronRight className="mr-2 h-4 w-4" />
+                          )}
+                          {month.monthName}
+                        </Button>
+                      </CollapsibleTrigger>
+                      {/* <CollapsibleContent className="w-full">
+                        {month.videos
+                          .sort((a, b) =>
+                            a.videoTitle.localeCompare(b.videoTitle)
+                          )
+                          .map((video, index) => (
+                            <Button
+                              key={video.videoId}
+                              variant="ghost"
+                              className={cn(
+                                "ml-8 w-full justify-start",
+                                selectedVideo?.videoId === video.videoId
+                                  ? "bg-white"
+                                  : ""
+                              )}
+                              onClick={() => onVideoSelect(video, index)}
+                            >
+                              <VideoIcon className="mr-2 h-4 w-4" />
+                              {video.videoTitle}
+                            </Button>
+                          ))}
+                      </CollapsibleContent> */}
+                      <CollapsibleContent className="w-full">
+                        {allWeeks.map((weekTitle, index) => {
+                          const normalizedWeekTitle = weekTitle.toLowerCase();
+                          const video = videoMap.get(normalizedWeekTitle);
+                          const isSelected = selectedWeek === weekTitle;
+                          // const isSelected = selectedVideo?.videoTitle === video?.videoTitle;
+
+                          const weekNumberMatch = weekTitle.match(/\d+/);
+                          const weekNumber = weekNumberMatch
+                            ? parseInt(weekNumberMatch[0], 10)
+                            : index + 1;
+
+                          return (
+                            <Button
+                              key={index}
+                              variant="ghost"
+                              className={cn(
+                                "ml-8 w-full justify-start",
+                                isSelected ? "bg-white" : ""
+                              )}
+                              onClick={() => {
+                                onVideoSelect(
+                                  video || null,
+                                  weekNumber - 1,
+                                  weekTitle
+                                );
+                                console.log("Week index Clicked:", weekNumber);
+                              }}
+                            >
+                              {video ? (
+                                <VideoIcon className="mr-2 h-4 w-4" />
+                              ) : (
+                                <span className="mr-2 h-4 w-4" /> // Placeholder to align text properly
+                              )}
+                              {weekTitle}
+                            </Button>
+                          );
+                        })}
+                      </CollapsibleContent>
+                    </Collapsible>
+                  );
+                })}
               </CollapsibleContent>
             </Collapsible>
           ))}
         </div>
       </ScrollArea>
-        <Link href='/profile' className="absolute bottom-0 left-0 w-full">
-          <Button variant='outline' className="w-full bg-white">
-            Profile
-          </Button>
-        </Link>
+      <Link href="/profile" className="absolute bottom-0 left-0 w-full">
+        <Button variant="outline" className="w-full bg-white">
+          Profile
+        </Button>
+      </Link>
     </div>
   );
 }

@@ -7,21 +7,49 @@ import { getTheoryLink, getThisWeekNoteLink } from "@/utils/get-notes";
 
 type VideoDetailsProps = {
   video: Video | null;
+  selectedWeek: string;
 };
 
-export function VideoDetails({ video }: VideoDetailsProps) {
+export function VideoDetails({ video, selectedWeek }: VideoDetailsProps) {
   // const [showPdf, setShowPdf] = useState(false);
+  // console.log("VideoDetails: Week:", selectedWeek, "Video:", video);
 
   if (!video) {
     return (
-      <div className="flex h-full items-center justify-center">
-        <p className="text-muted-foreground">Select a video to view details</p>
+      <div className="flex h-4/5 items-center justify-center">
+        {selectedWeek ? (
+          <div className="flex flex-col justify-center items-center gap-8">
+            <Button variant="outline" className="rounded-full">
+              📅 {selectedWeek} (No Video Available)
+            </Button>
+            <div className="flex justify-center items-center gap-2 mt-6">
+              <Button
+                onClick={() => openPdf(getTheoryLink(selectedWeek))}
+                variant="secondary"
+              >
+                {/* {showPdf ? 'Hide Notes' : 'View Lecture Notes'} */}
+                View Theory
+              </Button>
+              <Button
+                onClick={() => openPdf(getThisWeekNoteLink(selectedWeek))}
+                variant="secondary"
+              >
+                {/* {showPdf ? 'Hide Notes' : 'View Lecture Notes'} */}
+                View Lecture Notes
+              </Button>
+            </div>
+          </div>
+        ) : (
+          <p className="text-muted-foreground">
+            Select a video to view details
+          </p>
+        )}
       </div>
     );
   }
 
   const openPdf = (url: string | null) => {
-    if (!url) return
+    if (!url) return;
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
@@ -50,18 +78,14 @@ export function VideoDetails({ video }: VideoDetailsProps) {
         <h1>By Pandit Abhijit Banerjee</h1>
         <div className="flex justify-center items-center gap-2 mt-6">
           <Button
-            onClick={() =>
-              openPdf(getTheoryLink(video.videoTitle))
-            }
+            onClick={() => openPdf(getTheoryLink(video.videoTitle))}
             variant="secondary"
           >
             {/* {showPdf ? 'Hide Notes' : 'View Lecture Notes'} */}
             View Theory
           </Button>
           <Button
-            onClick={() =>
-              openPdf(getThisWeekNoteLink(video.videoTitle))
-            }
+            onClick={() => openPdf(getThisWeekNoteLink(video.videoTitle))}
             variant="secondary"
           >
             {/* {showPdf ? 'Hide Notes' : 'View Lecture Notes'} */}
@@ -70,17 +94,6 @@ export function VideoDetails({ video }: VideoDetailsProps) {
         </div>
       </div>
       <p className="text-muted-foreground">{video.description}</p>
-      {/* {showPdf && (
-            <div className="mt-4 w-full h-[1000px]">
-              <iframe
-                src={`https://74qwidbqes.ufs.sh/f/o3YfRzT9WCauDq0M6LSoVgRnyQLiADH6p4me8x2fYPzqXu0M#toolbar=0`}
-                width="100%"
-                height="100%"
-                style={{ border: 'none' }}
-                className="rounded-lg shadow-lg"
-              />
-            </div>
-          )} */}
     </div>
   );
 }
