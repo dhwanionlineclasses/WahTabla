@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import {
   Card,
@@ -13,33 +13,49 @@ import { useSession } from "next-auth/react";
 import { logout } from "@/action/auth/logout";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Profile = () => {
-  const session = useSession()
-  const router = useRouter()
-  const [ loading, setLoading ] = useState(false)
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [sessionRefreshed, setSessionRefreshed] = useState(false);
+  const { data: session, status, update } = useSession();
 
-  const handleLogout = async() => {
-    setLoading(true)
-    try {
-      const res = await logout()
-      console.log(res)
-      if (res.success) {
-        toast('Successfully logged out!')
-        router.push('/')
-      } else {
-        toast(res.message)
-      }
-    }catch(err) {
-      toast('Something went wrong',{
-        description: 'Check console for more details'
-      })
-      console.log(err)
-    } finally{
-      setLoading(false)
+  useEffect(() => {
+    if (!sessionRefreshed) {
+      const refreshSession = async () => {
+        try {
+          await update();
+          setSessionRefreshed(true);
+        } catch (error) {
+          console.error("Failed to refresh session:", error);
+        }
+      };
+
+      refreshSession();
     }
-  }
+  }, [sessionRefreshed]);
+
+  const handleLogout = async () => {
+    setLoading(true);
+    try {
+      const res = await logout();
+      console.log(res);
+      if (res.success) {
+        toast("Successfully logged out!");
+        router.push("/");
+      } else {
+        toast(res.message);
+      }
+    } catch (err) {
+      toast("Something went wrong", {
+        description: "Check console for more details",
+      });
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="desktop:max-w-[300px] desktop:min-w-[300px] w-full max-h-[92vh] min-h-[400px] h-full bg-white shadow-sm rounded-lg flex flex-col justify-between items-center p-4">
@@ -53,16 +69,25 @@ const Profile = () => {
         />
         <CardHeader className="flex justify-center items-center">
           <CardTitle className="text-3xl font-semibold">
-            {session.data?.user.username ? (session.data.user.username): 'Full Name'}
+            {status === "loading"
+              ? "Loading..."
+              : session?.user?.username
+              ? session.user.username
+              : "Full Name"}
           </CardTitle>
           <CardDescription className="text-muted-foreground/50">
             Student
           </CardDescription>
         </CardHeader>
       </Card>
-      <Button variant="secondary" className="w-full" onClick={() => handleLogout()}>
+      <Button
+        variant="secondary"
+        className="w-full"
+        onClick={handleLogout}
+        disabled={loading || status === "loading"}
+      >
         <ExitIcon />
-        <span>{loading ? 'Loading...' : 'Log Out'}</span>
+        <span>{loading ? "Loading..." : "Log Out"}</span>
       </Button>
     </div>
   );
