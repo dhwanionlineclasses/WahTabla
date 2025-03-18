@@ -1,56 +1,32 @@
+import { NextRequest, NextResponse } from 'next/server';
 import { auth } from './auth';
-import { getToken } from 'next-auth/jwt';
-import {
-  DEFAULT_LOGIN_ROUTE,
-  apiAuthPrefix,
-  authRoutes,
-  publicRoutes,
-} from '@/lib/routes'
+import { publicRoutes, protectedRoutes } from './lib/routes';
 
-export default auth(async (req) => {
-  const { nextUrl } = req;
+export default async function middleware(request: NextRequest) {
 
-  const token = await getToken({ req, secret: process.env.AUTH_SECRET! })
-  // const isLoggedIn = !!req.auth;
+  const { nextUrl } = request;
+  const pathname = nextUrl.pathname;
 
-  const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
-  const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
-  const isAuthRoute = authRoutes.includes(nextUrl.pathname);
-  const isLoginPage = nextUrl.pathname === '/auth/login';
-  const isRegisterPage = nextUrl.pathname === '/auth/register';
+  const session = await auth();
+  const isAuthenticated = !!session;
 
-  const isTokenExpired =
-    !token || (token.data.validity?.valid_until && Date.now() / 1000 > token.data.validity.valid_until);
+  const isPublicRoute = publicRoutes.includes(pathname);
+  const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route));
 
 
-  if (isApiAuthRoute) {
-    return;
+  if (isPublicRoute && isAuthenticated) {
+    return NextResponse.redirect(new URL('/profile', nextUrl.origin));
   }
 
-  // if (isTokenExpired && !isPublicRoute) {
-  //   console.log('Token expired or invalid');
-  //   if (!isLoginPage && !isRegisterPage) {
-  //     return Response.redirect(new URL('/auth/login', nextUrl));
-  //   }
-  // }
 
-  // if (isAuthRoute) {
-  //   if (token) {
-  //     return Response.redirect(new URL(DEFAULT_LOGIN_ROUTE, nextUrl));
-  //   }
+  if (isProtectedRoute && !isAuthenticated) {
+    const redirectUrl = encodeURIComponent(pathname);
+    return NextResponse.redirect(new URL(`/auth/login?callbackUrl=${redirectUrl}`, nextUrl.origin));
+  }
 
-  //   return;
-  // }
+  return NextResponse.next();
+}
 
-  // if (!token && !isPublicRoute) {
-  //   console.log('No token found, redirecting to login');
-  //   if (!isLoginPage && !isRegisterPage) {
-  //     return Response.redirect(new URL('/auth/login', nextUrl));
-  //   }
-  // }
-
-  return;
-});
 
 export const config = {
   matcher: [
