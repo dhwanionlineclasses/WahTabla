@@ -9,6 +9,17 @@ const sessionTokenName =
     ? '__Secure-authjs.session-token'
     : 'authjs.session-token';
 
+
+const csrfTokenName = 
+  process.env.NODE_ENV === 'production'
+    ? '__Host-authjs.csrf-token'
+    : 'authjs.csrf-token';
+
+const callbackUrlName =
+  process.env.NODE_ENV === 'production'
+    ? '__Secure-authjs.callback-url'
+    : 'authjs.callback-url';
+
 const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? 'http://localhost:5842'
 
 
@@ -31,12 +42,12 @@ export const logout = async () => {
     })
 
     if (!session) {
-      cookieStore.delete(sessionTokenName);
+      deleteAuthCookies(cookieStore);
       return { success: false, message: 'Access token not found in cookies' };
     }
 
     if (!session?.data?.tokens?.access || !session?.data?.tokens?.refresh) {
-      cookieStore.delete(sessionTokenName);
+      deleteAuthCookies(cookieStore);
       return { success: false, message: 'Access or refresh token not found in session' };
     }
 
@@ -60,30 +71,79 @@ export const logout = async () => {
 
     if (response.status === 200) {
 
-      cookieStore.delete(sessionTokenName);
-
-      const otherCookies = ['authjs.callback-url', 'authjs.csrf-token', '__Host-authjs.csrf-token', '__Secure-authjs.callback-url'];
-      for (const cookieName of otherCookies) {
-        if (cookieStore.has(cookieName)) {
-          cookieStore.delete(cookieName);
-        }
-      }
-
+      deleteAuthCookies(cookieStore);
       return {
         success: true,
         message: data.message || "Logout Successful",
       }
     } else {
-      cookieStore.delete(sessionTokenName);
+      deleteAuthCookies(cookieStore);
       return { success: false, message: data.message || 'Logout failed on server' }
     }
 
 
   } catch (error) {
     console.error('Login Error:', error)
-    cookieStore.delete(sessionTokenName);
+    deleteAuthCookies(cookieStore);
     // Use a type guard to check if error is an instance of Error
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred'
     return { success: false, message: errorMessage }
+  }
+}
+
+
+
+// Helper function to delete all auth-related cookies
+function deleteAuthCookies(cookieStore: ReturnType<typeof cookies>) {
+  // For production secure cookies, we need to specify the correct options
+  if (process.env.NODE_ENV === 'production') {
+    // Session token cookie
+    cookieStore.set(sessionTokenName, '', {
+      expires: new Date(0),
+      path: '/',
+      secure: true,
+      httpOnly: true,
+      sameSite: 'lax'
+    });
+    
+    // CSRF token cookie
+    if (cookieStore.has(csrfTokenName)) {
+      cookieStore.set(csrfTokenName, '', {
+        expires: new Date(0),
+        path: '/',
+        secure: true,
+        httpOnly: true,
+        sameSite: 'lax'
+      });
+    }
+    
+    // Callback URL cookie
+    if (cookieStore.has(callbackUrlName)) {
+      cookieStore.set(callbackUrlName, '', {
+        expires: new Date(0),
+        path: '/',
+        secure: true,
+        sameSite: 'lax'
+      });
+    }
+  } else {
+    // In development, we can use the simpler delete method
+    cookieStore.delete(sessionTokenName);
+    
+    if (cookieStore.has(csrfTokenName)) {
+      cookieStore.delete(csrfTokenName);
+    }
+    
+    if (cookieStore.has(callbackUrlName)) {
+      cookieStore.delete(callbackUrlName);
+    }
+  }
+  
+  // Delete any other potential NextAuth cookies
+  const otherCookies = ['next-auth.callback-url', 'next-auth.csrf-token', 'next-auth.session-token', 'authjs.callback-url', 'authjs.csrf-token', '__Host-authjs.csrf-token', '__Secure-authjs.callback-url'];
+  for (const cookieName of otherCookies) {
+    if (cookieStore.has(cookieName)) {
+      cookieStore.delete(cookieName);
+    }
   }
 }
