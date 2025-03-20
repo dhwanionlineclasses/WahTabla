@@ -7,9 +7,9 @@ export const pricingModel = [
     priceDefault: '$330',
     priceIn: 'Rs 330',
     features: [
-      'Access to a 3-month module containing 12 weekly lessons.',
+      'Access to one 3-month module containing 12 weekly lessons.',
       'Focused learning on a specific part of the curriculum.',
-      'Designed for learners or those with specific goals.',
+      'Designed for those with specific goals.',
       'Flexible and concise, catering to busy schedules.',
       'A great introduction to the course\'s teaching style and content.',
       'Enabling probability to become an accredited teacher of Dhwani Academy.'
@@ -43,16 +43,16 @@ export const pricingModel = [
   },
   {
     plan: 'Full Course',
-    unit: '',
-    priceDefault: 'Flexible',
-    priceIn: 'Flexible',
+    unit: 'starting from',
+    priceDefault: '$2200',
+    priceIn: 'Rs 2200',
     features: [
       'Complete access to all course lessons.',
       'Covers the entire curriculum from basics to advanced skills.',
       'Offers the best value for committed learners aiming for mastery.',
       'Flexible access throughout the duration to revisit lessons.',
       'Ideal for building a strong foundation and advanced expertise.',
-      'Focussed to complete the whole session sooner to achieve the desired goal.'
+      'Focused to complete the whole curriculum sooner to achieve the desired goal.'
     ]
   },
 ]

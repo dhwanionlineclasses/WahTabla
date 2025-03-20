@@ -120,7 +120,7 @@ const DhwaniBhusanCourse = () => {
                 Introduction to Tabla: Overview of its history.
               </li>
               <li className="pl-4">
-                Detailed exploration of the components, materials, and tuning
+                Detailed exploration of the components, materials, tuning
                 methods and sitting postures.
               </li>
               <li className="pl-4">
@@ -129,13 +129,13 @@ const DhwaniBhusanCourse = () => {
               </li>
               <li className="pl-4">
                 Introduction to basic rhythmic cycles and examples of expandable
-                and non-expandable(fixed) compositions. E.g. Dadra (6 beats)
-                Keharwa (8 beats) Jhaptaa(10Beats),l Teentaal( 16 Beats)
+                and non-expandable (fixed) compositions. E.g. Dadra (6 Beats),
+                Keharwa (8 Beats), Jhaptaa(10 Beats), l Teentaal(16 Beats).
               </li>
-              <span>
+              <li>
                 Practice Drills: Structured exercises to build hand
                 coordination, strength, and precision.
-              </span>
+              </li>
               <span className="text-lg font-medium">Learning Outcomes </span>
               <br></br>
               <li className="pl-4 font-medium">
@@ -145,7 +145,7 @@ const DhwaniBhusanCourse = () => {
               <li className="pl-4">
                 Learn the subject with its basic theory and its history.
               </li>
-              <li className="pl-4">Can start accompanying basic songs</li>
+              <li className="pl-4">Can start accompanying basic songs.</li>
             </ul>
           </div>
         </div>

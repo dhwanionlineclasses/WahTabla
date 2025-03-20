@@ -110,7 +110,7 @@ const HomePage = () => {
             Dhwani&apos;s curated tabla course is designed uniquely with the
             meticulous guidance needed to make you a full-fledged tabla player
             and nurture your musical talent. The course is made up of 20
-            modules, designed to be completed over 5 years (roughly 4 modules
+            modules, designed to be completed over 7 years (roughly 4 modules
             per year). After completing this course, you will learn the theory
             of tabla and will be able to play to your satisfaction.
             <br></br>
@@ -259,11 +259,10 @@ const HomePage = () => {
           </div>
           <div className="relative min-w-[300px] w-full min-h-[240px] rounded-lg flex flex-col justify-start items-center gap-4 px-6 py-10 text-center text-white bg-primary">
             <p className="text-2xl font-semibold max-w-[300px]">
-              No preconception of Tabla is necessary.
+              Learn at your own pace and comfort.
             </p>
             <p className="text-xs max-w-[250px]">
-              Students can pursue this course even if they have no prior
-              knowledge of Tabla.
+              Students can practice and progress at their convenience with flexible learning modules.
             </p>
             <span className="absolute -bottom-6 w-20 h-20 rounded-full bg-background flex justify-center items-center">
               <Image
@@ -384,17 +383,17 @@ const HomePage = () => {
           <CardDescription className="flex flex-col justify-between items-start gap-2">
             <span className="max-w-[700px] text-primary-foreground">
               Still you have any questions? Contact our Team via
-              courses@dhwaniacademy.net
+              onlineclasses@dhwaniacademy.org
             </span>
-            <Button variant="outline" className="mt-6 bg-white text-primary">
+            {/* <Button variant="outline" className="mt-6 bg-white text-primary">
               See All FAQ&apos;s
-            </Button>
+            </Button> */}
           </CardDescription>
         </CardHeader>
         <CardContent className="w-full">
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1">
-              <AccordionTrigger className="pb-6 text-base text-left hover:no-underline">
+              <AccordionTrigger className="pb-4 text-base text-left hover:no-underline">
                 Can I buy multiple modules at once?
               </AccordionTrigger>
               <AccordionContent className="flex flex-col justify-start items-start gap-6 pt-6 text-white">
@@ -416,13 +415,13 @@ const HomePage = () => {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">
-              <AccordionTrigger className="pb-6 border-b border-b-muted text-base text-left hover:no-underline">
+              <AccordionTrigger className="pb-4 text-base text-left hover:no-underline">
                 What kind of support can I expect from instructors?
               </AccordionTrigger>
               <AccordionContent className="flex flex-col justify-start items-start gap-6 pt-6 text-white">
                 Absolutely! You can buy all the modules or a selected number of
                 modules at the same time and access them at your convenience.
-                <Button
+                {/* <Button
                   variant="secondary"
                   className="w-full flex justify-between items-center px-4 py-8"
                 >
@@ -434,18 +433,18 @@ const HomePage = () => {
                     height={0}
                     className="w-8 p-2 bg-white text-primary rounded-full"
                   />
-                </Button>
+                </Button> */}
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
-              <AccordionTrigger className="pb-6 border-b border-b-muted text-base text-left hover:no-underline">
+              <AccordionTrigger className="pb-4 text-base text-left hover:no-underline">
                 Are the courses self-paced or do they have specific start and
                 end dates?
               </AccordionTrigger>
               <AccordionContent className="flex flex-col justify-start items-start gap-6 pt-6 text-white">
                 Absolutely! You can buy all the modules or a selected number of
                 modules at the same time and access them at your convenience.
-                <Button
+                {/* <Button
                   variant="secondary"
                   className="w-full flex justify-between items-center px-4 py-8"
                 >
@@ -457,17 +456,17 @@ const HomePage = () => {
                     height={0}
                     className="w-8 p-2 bg-white text-primary rounded-full"
                   />
-                </Button>
+                </Button> */}
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-4">
-              <AccordionTrigger className="pb-6 border-b border-b-muted text-base text-left hover:no-underline">
+              <AccordionTrigger className="pb-4 text-base text-left hover:no-underline">
                 Are there any prerequisites for the courses?
               </AccordionTrigger>
               <AccordionContent className="flex flex-col justify-start items-start gap-6 pt-6 text-white">
                 Absolutely! You can buy all the modules or a selected number of
                 modules at the same time and access them at your convenience.
-                <Button
+                {/* <Button
                   variant="secondary"
                   className="w-full flex justify-between items-center px-4 py-8"
                 >
@@ -479,17 +478,17 @@ const HomePage = () => {
                     height={0}
                     className="w-8 p-2 bg-white text-primary rounded-full"
                   />
-                </Button>
+                </Button> */}
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-5">
-              <AccordionTrigger className="pb-6 border-b border-b-muted text-base text-left hover:no-underline">
+              <AccordionTrigger className="pb-4 text-base text-left hover:no-underline">
                 Can I download the course materials for offline access?
               </AccordionTrigger>
               <AccordionContent className="flex flex-col justify-start items-start gap-6 pt-6 text-white">
                 Absolutely! You can buy all the modules or a selected number of
                 modules at the same time and access them at your convenience.
-                <Button
+                {/* <Button
                   variant="secondary"
                   className="w-full flex justify-between items-center px-4 py-8"
                 >
@@ -501,7 +500,7 @@ const HomePage = () => {
                     height={0}
                     className="w-8 p-2 bg-white text-primary rounded-full"
                   />
-                </Button>
+                </Button> */}
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -524,7 +523,7 @@ const moduleFeatures = [
   },
   {
     icon: "/icons/feature-3.svg",
-    name: "Theoritical Text",
+    name: "Theoretical Text",
   },
   {
     icon: "/icons/feature-4.svg",
@@ -563,12 +562,12 @@ const benefits = [
   {
     icon: "/benefits/benefit-1.jpg",
     description:
-      "Learn Basics to bachelors standard in five years with theory and practical knowledge.",
+      "Learn basics to bachelors standard in five years with theory and practical knowledge.",
   },
   {
     icon: "/benefits/benefit-2.jpg",
     description:
-      "Experience the stage shows with group performances after two years of learning our courses.",
+      "Experience stage shows with group performances after two years of learning our courses.",
   },
   {
     icon: "/benefits/benefit-3.jpg",
@@ -588,6 +587,6 @@ const benefits = [
   {
     icon: "/benefits/benefit-6.jpg",
     description:
-      "All the course materials are available as downloadable PDFs and recordings.",
+      "All the course materials are available as downloadable PDFs and video recordings.",
   },
 ];

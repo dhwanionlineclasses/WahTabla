@@ -28,15 +28,15 @@ const Navbar = () => {
 
   return (
     <div className="w-full flex flex-col justify-start items-center gap-2">
-      <Button className="w-full flex justify-center items-center py-0 px-4 rounded-none bg-primary text-white text-xs">
-        <span>20% OFF 🌟 Sale Ends Soon! </span>
+      <Button className="w-full flex justify-center items-center py-0 px-4 rounded-none bg-primary hover:bg-primary text-white text-xs pointer-events-none">
+        {/* <span>20% OFF 🌟 Sale Ends Soon! </span>
         <Image
           src="/icons/arrow-right.svg"
           alt="arrow"
           width={0}
           height={0}
           className="w-3"
-        />
+        /> */}
       </Button>
       <nav className="max-w-[1517px] w-full flex justify-between items-center px-4">
         <div className="flex justify-start items-center gap-6">
