@@ -73,7 +73,7 @@ const DhwaniBhusanCourse = () => {
           <Card className="h-full bg-transparent border-none shadow-none w-full py-0">
             <CardHeader className="flex justify-center items-center">
               <Image
-                src="/course-thumbnail.png"
+                src="/dhwani-bhushan-thumbnail.png"
                 alt="arrow"
                 width={0}
                 height={0}
@@ -162,7 +162,7 @@ const DhwaniBibhusanCourse = () => {
           <Card className="h-full bg-transparent border-none shadow-none w-full py-0">
             <CardHeader className="flex justify-center items-center">
               <Image
-                src="/course-thumbnail.png"
+                src="/dhwani-bibhushan-thumbnail.png"
                 alt="arrow"
                 width={0}
                 height={0}
@@ -257,7 +257,7 @@ const DhwaniRatnaCourse = () => {
           <Card className="h-full bg-transparent border-none shadow-none w-full py-0">
             <CardHeader className="flex justify-center items-center">
               <Image
-                src="/course-thumbnail.png"
+                src="/dhwani-ratna-thumbnail.png"
                 alt="arrow"
                 width={0}
                 height={0}
