@@ -77,7 +77,7 @@ const DhwaniBhusanCourse = () => {
                 alt="arrow"
                 width={0}
                 height={0}
-                className="z-10 w-full bg-primary p-10 py-16 sm:p-12 md:p-20 desktop:px-32 rounded-sm border border-muted/20"
+                className="z-10 w-full bg-primary rounded-sm border border-muted/20"
               />
             </CardHeader>
             <CardContent className="py-0 text-white">
@@ -166,7 +166,7 @@ const DhwaniBibhusanCourse = () => {
                 alt="arrow"
                 width={0}
                 height={0}
-                className="z-10 w-full bg-primary p-10 py-16 sm:p-12 md:p-20 desktop:px-32 rounded-sm border border-muted/20"
+                className="z-10 w-full bg-primary rounded-sm border border-muted/20"
               />
             </CardHeader>
             <CardContent className="py-0 text-white">
@@ -261,7 +261,7 @@ const DhwaniRatnaCourse = () => {
                 alt="arrow"
                 width={0}
                 height={0}
-                className="z-10 w-full bg-primary p-10 py-16 sm:p-12 md:p-20 desktop:px-32 rounded-sm border border-muted/20"
+                className="z-10 w-full bg-primary rounded-sm border border-muted/20"
               />
             </CardHeader>
             <CardContent className="py-0 text-white">
