@@ -560,32 +560,32 @@ const testimonials = [
 
 const benefits = [
   {
-    icon: "/benefits/benefit-1.jpg",
+    icon: "/benefits/benefit-1.png",
     description:
       "Learn basics to bachelors standard in five years with theory and practical knowledge.",
   },
   {
-    icon: "/benefits/benefit-2.jpg",
+    icon: "/benefits/benefit-2.png",
     description:
       "Experience stage shows with group performances after two years of learning our courses.",
   },
   {
-    icon: "/benefits/benefit-3.jpg",
+    icon: "/benefits/benefit-3.png",
     description:
       "Doubt-clearing sessions that offer personalized support to answer all your questions .",
   },
   {
-    icon: "/benefits/benefit-4.jpg",
+    icon: "/benefits/benefit-4.png",
     description:
       "Get the opportunity to attend workshops in different locations and one-on-one help to perfect your artistry.",
   },
   {
-    icon: "/benefits/benefit-5.jpg",
+    icon: "/benefits/benefit-5.png",
     description:
       "Be a teacher with Dhwani's certificate and associate yourself with us to teach, perform, and earn.",
   },
   {
-    icon: "/benefits/benefit-6.jpg",
+    icon: "/benefits/benefit-6.png",
     description:
       "All the course materials are available as downloadable PDFs and video recordings.",
   },
