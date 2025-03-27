@@ -69,10 +69,10 @@ CourseSidebarProps) {
               key={module.moduleId}
               open={openModules.includes(module.moduleId)}
               onOpenChange={() => toggleModule(module.moduleId)}
-              className="w-full"
+              className="w-full py-1"
             >
               <CollapsibleTrigger asChild>
-                <Button variant="ghost" className="w-full justify-start">
+                <Button variant="default" className="w-full justify-start">
                   {openModules.includes(module.moduleId) ? (
                     <ChevronDown className="mr-2 h-4 w-4" />
                   ) : (
@@ -112,7 +112,7 @@ CourseSidebarProps) {
                       <CollapsibleTrigger asChild>
                         <Button
                           variant="ghost"
-                          className="ml-4 w-full justify-start"
+                          className="ml-4 w-full border border-black justify-start"
                         >
                           {openMonths.includes(month.monthId) ? (
                             <ChevronDown className="mr-2 h-4 w-4" />
