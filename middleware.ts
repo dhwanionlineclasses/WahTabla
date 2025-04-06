@@ -14,7 +14,7 @@ export default async function middleware(request: NextRequest) {
   const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route));
 
 
-  if (isPublicRoute && isAuthenticated) {
+  if (isPublicRoute && isAuthenticated && (pathname === '/auth/login' || pathname === '/auth/register')) {
     return NextResponse.redirect(new URL('/profile', nextUrl.origin));
   }
 
