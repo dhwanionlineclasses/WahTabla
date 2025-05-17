@@ -104,7 +104,7 @@ const Footer = () => {
           </div>
           </div>
         </div>
-        <p className='w-full flex justify-center items-center text-white text-sm'>© 2024 Abhijit Banerjee. All rights reserved.</p>
+        <p className='w-full flex justify-center items-center text-white text-sm'>© 2025 Abhijit Banerjee. All rights reserved.</p>
       </div>
     // </div>
   )
