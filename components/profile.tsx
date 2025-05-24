@@ -9,32 +9,23 @@ import {
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ExitIcon } from "@radix-ui/react-icons";
-import { useSession } from "next-auth/react";
 import { logout } from "@/action/auth/logout";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useProfileData } from "@/data/get-profile-data";
 
 const Profile = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const [sessionRefreshed, setSessionRefreshed] = useState(false);
-  const { data: session, status, update } = useSession();
+  const { data: profileData, isError, isPending, error } = useProfileData();
 
-  useEffect(() => {
-    if (!sessionRefreshed) {
-      const refreshSession = async () => {
-        try {
-          await update();
-          setSessionRefreshed(true);
-        } catch (error) {
-          console.error("Failed to refresh session:", error);
-        }
-      };
-
-      refreshSession();
-    }
-  }, [sessionRefreshed]);
+  if (isPending) {
+    console.log("Loding your profile data.");
+  }
+  if (isError) {
+    console.log("Error: ", error);
+  }
 
   const handleLogout = async () => {
     setLoading(true);
@@ -69,10 +60,10 @@ const Profile = () => {
         />
         <CardHeader className="flex justify-center items-center">
           <CardTitle className="text-3xl font-semibold">
-            {status === "loading"
+            {isPending
               ? "Loading..."
-              : session?.user?.username
-              ? session.user.username
+              : profileData?.data?.username
+              ? profileData.data.username
               : "Full Name"}
           </CardTitle>
           <CardDescription className="text-muted-foreground/50">
@@ -84,7 +75,7 @@ const Profile = () => {
         variant="secondary"
         className="w-full"
         onClick={handleLogout}
-        disabled={loading || status === "loading"}
+        disabled={loading || isPending }
       >
         <ExitIcon />
         <span>{loading ? "Loading..." : "Log Out"}</span>

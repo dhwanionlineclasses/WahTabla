@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -38,38 +38,28 @@ import { useChangePassword } from "@/data/change-password";
 import { changePasswordSchema } from "@/schema/profile";
 import { UserSchema } from "@/schema/profile";
 
-
 type UserFormData = z.infer<typeof UserSchema>;
 type PasswordFormData = z.infer<typeof changePasswordSchema>;
 
 export default function ProfileCard() {
   const [showOldPassword, setShowOldPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
-  const [hasProfileChanges, setHasProfileChanges] = useState(false);
-  const [hasPasswordChanges, setHasPasswordChanges] = useState(false);
   const [isProfileLoading, setIsProfileLoading] = useState(false);
   const [isPasswordLoading, setIsPasswordLoading] = useState(false);
   const { toast } = useToast();
   const updateProfileMutation = useUpdateProfile();
   const changePassword = useChangePassword();
+  const { data: profileData, isError, isPending, error } = useProfileData();
 
-  const [originalProfileData, setOriginalProfileData] = useState<UserFormData | null>(null);
-  const {data: profileData, isError, isPending, error } = useProfileData()
-
-  if(isPending) {
-    console.log("Loding your profile data.")
+  if (isPending) {
+    console.log("Loding your profile data.");
   }
-  if(isError) {
-    console.log("Error: ", error)
+  if (isError) {
+    console.log("Error: ", error);
   }
 
   // console.log(profileData)
 
-    useEffect(() => {
-    if (profileData?.data) {
-      setOriginalProfileData(profileData.data);
-    }
-  }, [profileData]);
   // Profile form
   const profileForm = useForm<UserFormData>({
     resolver: zodResolver(UserSchema),
@@ -85,33 +75,8 @@ export default function ProfileCard() {
     },
   });
 
-    // Watch profile changes with callback (no re-renders)
-  useEffect(() => {
-    const subscription = profileForm.watch((values) => {
-      if (!originalProfileData) {
-        setHasProfileChanges(false);
-        return;
-      }
-
-      const hasChanges = Object.keys(originalProfileData).some((key) => {
-        const typedKey = key as keyof UserFormData;
-        return values[typedKey] !== originalProfileData[typedKey];
-      });
-      
-      setHasProfileChanges(hasChanges);
-    });
-    
-    return () => subscription.unsubscribe();
-  }, [profileForm, originalProfileData]);
-
-    useEffect(() => {
-    const subscription = passwordForm.watch((values) => {
-      const hasChanges = Boolean(values.oldPassword || values.newPassword);
-      setHasPasswordChanges(hasChanges);
-    });
-    
-    return () => subscription.unsubscribe();
-  }, [passwordForm]);
+  const { isDirty: isProfileDirty } = profileForm.formState;
+  const { isDirty: isPasswordDirty } = passwordForm.formState;
 
   const onProfileSubmit = async (data: UserFormData) => {
     setIsProfileLoading(true);
@@ -120,18 +85,16 @@ export default function ProfileCard() {
       console.log("Updating profile:", data);
 
       // Simulate API call
-      await updateProfileMutation.mutateAsync(data)
+      await updateProfileMutation.mutateAsync(data);
 
       toast({
         title: "Profile updated successfully",
         description: "Your profile information has been saved.",
       });
 
-       profileForm.reset(data);
-
-      setHasProfileChanges(false);
+      profileForm.reset(data);
     } catch (error) {
-      console.log(error)
+      console.log(error);
       toast({
         title: "Update failed",
         description: "Failed to update profile. Please try again.",
@@ -152,7 +115,7 @@ export default function ProfileCard() {
       });
 
       // Simulate API call
-      await changePassword.mutateAsync(data)
+      await changePassword.mutateAsync(data);
 
       toast({
         title: "Password changed successfully",
@@ -161,9 +124,8 @@ export default function ProfileCard() {
 
       // Reset form
       passwordForm.reset();
-      setHasPasswordChanges(false);
     } catch (error) {
-      console.log(error)
+      console.log(error);
       toast({
         title: "Password change failed",
         description: "Failed to change password. Please try again.",
@@ -316,7 +278,7 @@ export default function ProfileCard() {
                     <div className="pt-4">
                       <Button
                         type="submit"
-                        disabled={!hasProfileChanges || isProfileLoading}
+                        disabled={!isProfileDirty || isProfileLoading}
                         className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:from-gray-300 disabled:to-gray-400 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 disabled:cursor-not-allowed"
                       >
                         {isProfileLoading ? (
@@ -324,7 +286,7 @@ export default function ProfileCard() {
                             <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                             Updating...
                           </div>
-                        ) : hasProfileChanges ? (
+                        ) : isProfileDirty ? (
                           <div className="flex items-center gap-2">
                             <Save className="h-4 w-4" />
                             Update Profile
@@ -438,7 +400,7 @@ export default function ProfileCard() {
                     <div className="pt-4">
                       <Button
                         type="submit"
-                        disabled={!hasPasswordChanges || isPasswordLoading}
+                        disabled={!isPasswordDirty || isPasswordLoading}
                         className="w-full h-12 bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 disabled:from-gray-300 disabled:to-gray-400 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 disabled:cursor-not-allowed"
                       >
                         {isPasswordLoading ? (
@@ -446,7 +408,7 @@ export default function ProfileCard() {
                             <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                             Changing...
                           </div>
-                        ) : hasPasswordChanges ? (
+                        ) : isPasswordDirty ? (
                           <div className="flex items-center gap-2">
                             <Lock className="h-4 w-4" />
                             Change Password
