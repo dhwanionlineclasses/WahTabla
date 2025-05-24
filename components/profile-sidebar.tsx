@@ -53,7 +53,11 @@ const ProfileSidebar = () => {
         </Button>
         <Button
           variant="ghost"
-          className="w-full h-12 text-lg font-medium justify-start py-1"
+          className={cn(
+            "w-full h-12 text-lg font-medium justify-start py-1",
+            pathname === "/settings" ? "bg-accent" : ""
+          )}
+          onClick={() => router.push("/settings")}
         >
           <GearIcon className="w-12 h-12 text-black" />
           <span>Settings</span>
