@@ -51,13 +51,23 @@ const Profile = () => {
   return (
     <div className="desktop:max-w-[300px] desktop:min-w-[300px] w-full max-h-[92vh] min-h-[400px] h-full bg-white shadow-sm rounded-lg flex flex-col justify-between items-center p-4">
       <Card className="shadow-none border-none flex flex-col justify-center items-center">
-        <Image
-          src="/profile-pfp.png"
-          alt="profile-pfp"
-          width={0}
-          height={0}
-          className="w-40 h-40 md:w-60 md:h-60 p-10 border border-black rounded-full"
-        />
+        {profileData?.data?.gender && profileData.data.gender === "female" ? (
+          <Image
+            src="/avatar-female.png"
+            alt="profile-pfp"
+            width={0}
+            height={0}
+            className="w-40 h-40 md:w-60 md:h-60 p-8 border border-black rounded-full"
+          />
+        ) : (
+          <Image
+            src="/avatar-male.png"
+            alt="profile-pfp"
+            width={0}
+            height={0}
+            className="w-40 h-40 md:w-60 md:h-60 p-8 border border-black rounded-full"
+          />
+        )}
         <CardHeader className="flex justify-center items-center">
           <CardTitle className="text-3xl font-semibold">
             {isPending
@@ -75,7 +85,7 @@ const Profile = () => {
         variant="secondary"
         className="w-full"
         onClick={handleLogout}
-        disabled={loading || isPending }
+        disabled={loading || isPending}
       >
         <ExitIcon />
         <span>{loading ? "Loading..." : "Log Out"}</span>
