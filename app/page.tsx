@@ -82,7 +82,7 @@ const HomePage = () => {
         {/* <AspectRatio ratio={16 / 9} className="pointer-events-none max-h-[800px] rounded-sm flex items-start justify-center"> */}
         <div className="relative w-[80%] max-w-[800px] max-h-[800px] bg-black h-full aspect-video my-8">
           <iframe
-            src="https://player.vimeo.com/video/1025477798?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;mute=1&amp;controls=0&amp;showinfo=0"
+            src="https://player.vimeo.com/video/1091617987?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;mute=1&amp;controls=1&amp;showinfo=0"
             allow="autoplay"
             className="absolute top-0 left-0 w-full h-full"
             title="Pexels Videos 1851190"
