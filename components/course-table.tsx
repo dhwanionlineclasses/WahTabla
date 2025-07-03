@@ -51,7 +51,7 @@ export default function CoursesTable({ data }: { data: ParsedResponse }) {
               ...(course.years?.map((year) => (
                 <TableRow
                   key={`${courseId}-${year.yearId}`}
-                  onClick={() => router.push(`/courses/year/${year.yearId}`)}
+                  onClick={() => router.push(`/courses/${courseId}/year/${year.yearId}`)}
                   className="hover:bg-blue-200 cursor-pointer"
                 >
                   <TableCell className="align-top font-medium">

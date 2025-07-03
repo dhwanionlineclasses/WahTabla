@@ -5,12 +5,13 @@ import { YearContent } from "@/components/year-content";
 import { useFullProfileDetails } from "@/data/get-full-profile";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export default function YearPage({ params }: { params: { yearId: string } }) {
+export default function YearPage({ params }: { params: { courseId: string, yearId: string } }) {
   const { data: courseData, error, isPending } = useFullProfileDetails();
 
   // console.log(courseData)
   try {
     const yearId = parseInt(params.yearId);
+    const courseId = parseInt(params.courseId)
     let yearData = null;
     if (isPending) {
       return (
@@ -31,7 +32,7 @@ export default function YearPage({ params }: { params: { yearId: string } }) {
       );
     }
 
-    if (error) {
+    if (error || !courseData.data) {
       return (
         <div className="w-full min-h-screen flex justify-center items-center p-10" >
           <h1>No data found.</h1>
@@ -52,7 +53,7 @@ export default function YearPage({ params }: { params: { yearId: string } }) {
       notFound();
     }
 
-    return <YearContent year={yearData} />;
+    return <YearContent year={yearData} courseId={courseId} />;
   } catch (error) {
     console.error("Error fetching year data:", error);
     notFound();
