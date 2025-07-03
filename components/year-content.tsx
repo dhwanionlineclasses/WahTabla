@@ -8,9 +8,10 @@ import { Button } from "./ui/button";
 
 type YearContentProps = {
   year: Year;
+  courseId: number;
 };
 
-export function YearContent({ year }: YearContentProps) {
+export function YearContent({ year, courseId }: YearContentProps) {
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
   const [selectedVideoIndex, setSelectedVideoIndex] = useState<number>(-1);
   const [selectedWeek, setSelectedWeek] = useState<string>("");
@@ -77,7 +78,7 @@ export function YearContent({ year }: YearContentProps) {
         selectedVideo={selectedVideo}
       />
       <main className="flex-1 overflow-y-auto">
-        <VideoDetails video={selectedVideo} yearName={year.yearName} selectedWeek={selectedWeek} />
+        <VideoDetails video={selectedVideo} yearName={year.yearName} selectedWeek={selectedWeek} courseId={courseId} yearId={year.yearId} />
         <div className="mt-4 flex justify-between p-4">
           <Button
             onClick={handlePrevVideo}
