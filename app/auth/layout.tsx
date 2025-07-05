@@ -24,7 +24,7 @@ export default function AuthLayout({
             alt='logo'
             width={0}
             height={0}
-            className="w-72 text-transparent"
+            className="w-72 text-transparent rounded-md"
         />
         </span>
       </div>
