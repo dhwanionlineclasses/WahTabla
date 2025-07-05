@@ -3,7 +3,7 @@
 import { cookies } from "next/headers";
 import { decode } from "next-auth/jwt";
 import { RequestInit } from "next/dist/server/web/spec-extension/request";
-import { McqExamSubmitServerResponse, McqExamSubmitType } from "@/types/exam";
+import { McqExamSubmitServerResponse, McqExamSubmitType } from "@/types/exam/mcq-exam";
 
 const sessionTokenName =
   process.env.NODE_ENV === 'production'

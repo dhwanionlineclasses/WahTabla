@@ -3,7 +3,7 @@
 import { cookies } from "next/headers";
 import { decode } from "next-auth/jwt";
 import { RequestInit } from "next/dist/server/web/spec-extension/request";
-import { McqExamParams, McqExamResponse } from "@/types/exam/mcq-exam";
+import { SAQExamParams, SAQExamResponse } from "@/types/exam/saq-exam";
 
 const sessionTokenName =
   process.env.NODE_ENV === 'production'
@@ -12,7 +12,7 @@ const sessionTokenName =
 
 const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? 'http://localhost:5842'
 
-export const getMcqQuestionsData = async (params: McqExamParams) => {
+export const getSaqQuestionsData = async (params: SAQExamParams) => {
 
   const cookieStore = cookies()
   const tokens = cookieStore.get(sessionTokenName)?.value ?? ''
@@ -47,7 +47,7 @@ export const getMcqQuestionsData = async (params: McqExamParams) => {
   };
   try {
 
-    const url = `${baseUrl}/exams/exam?courseId=${params.courseId}&yearId=${params.yearId}&weekNumber=${params.weekNumber}&type=mcq`
+    const url = `${baseUrl}/exams/exam?courseId=${params.courseId}&yearId=${params.yearId}&weekNumber=${params.weekNumber}&type=assignment`
     console.log(url)
     
     const response = await fetch(url, options)
@@ -59,11 +59,11 @@ export const getMcqQuestionsData = async (params: McqExamParams) => {
 
       return {
         success: true,
-        message: 'Successfully recieved Mcq Question data',
-        data: data as McqExamResponse
+        message: 'Successfully recieved SAQ Question data',
+        data: data as SAQExamResponse
       }
     } else {
-      return { success: false, message: data.message || 'MCQ Questions Fetching failed' }
+      return { success: false, message: data.message || 'SAQ Questions Fetching failed' }
     }
 
 

@@ -3,7 +3,7 @@
 import { cookies } from "next/headers";
 import { decode } from "next-auth/jwt";
 import { RequestInit } from "next/dist/server/web/spec-extension/request";
-import { McqExamParams, McqExamResponse } from "@/types/exam/mcq-exam";
+import { SAQSubmissionRequest, SAQSubmissionResponse } from "@/types/exam/saq-exam";
 
 const sessionTokenName =
   process.env.NODE_ENV === 'production'
@@ -12,7 +12,7 @@ const sessionTokenName =
 
 const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? 'http://localhost:5842'
 
-export const getMcqQuestionsData = async (params: McqExamParams) => {
+export const submitSaqQuestionsData = async (values: SAQSubmissionRequest): Promise<SAQSubmissionResponse> => {
 
   const cookieStore = cookies()
   const tokens = cookieStore.get(sessionTokenName)?.value ?? ''
@@ -38,34 +38,37 @@ export const getMcqQuestionsData = async (params: McqExamParams) => {
   const cookieHeader = `accessToken=${accessToken}; refreshToken=${refreshToken}; Path=/; HttpOnly; Secure`;
 
   const options: RequestInit = {
-    method: "GET",
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
       Cookie: cookieHeader, // Add cookies to the request
     },
     credentials: "include", // Ensure cookies are included in the request
+    body: JSON.stringify(values)
   };
   try {
 
-    const url = `${baseUrl}/exams/exam?courseId=${params.courseId}&yearId=${params.yearId}&weekNumber=${params.weekNumber}&type=mcq`
+    const url = `${baseUrl}/exams/assignment/submit`
     console.log(url)
     
     const response = await fetch(url, options)
     // console.log(response.status)
-    const data = await response.json()
-    // console.log(data, response.status)
+    const responseData = await response.json()
+    // console.dir(values)
+    // console.log(responseData, response.status)
 
     if (response.status === 200) {
-
       return {
         success: true,
-        message: 'Successfully recieved Mcq Question data',
-        data: data as McqExamResponse
+        message: responseData.message || 'SAQ exam submitted and graded successfully',
+        data: responseData.data
       }
     } else {
-      return { success: false, message: data.message || 'MCQ Questions Fetching failed' }
+      return { 
+        success: false, 
+        message: responseData.message || 'SAQ exam submission failed' 
+      }
     }
-
 
   } catch (error) {
     console.error('Login Error:', error)

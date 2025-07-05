@@ -25,12 +25,12 @@ export async function register(values: SignupSchemaType) {
                 user: data.data.user,
             }
         } else {
-            return { success: false, message: data.message || 'Login failed' }
+            return { success: false, message: data.message || 'Signup failed' }
         }
 
 
     } catch (error) {
-        console.error('Login Error:', error)
+        console.error('Signup Error:', error)
         // Use a type guard to check if error is an instance of Error
         const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred'
         return { success: false, message: errorMessage }
