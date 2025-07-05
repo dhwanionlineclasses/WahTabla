@@ -10,11 +10,10 @@ const Footer = () => {
   const pathname = usePathname();
 
   if (!pathname || pathname.startsWith("/auth")) {
-    return;
+    return null;
   }
 
   return (
-    // <div className='w-full bg-white py-4 px-8 flex justify-center'>
     <div className="w-full flex flex-col justify-between items-center bg-primary text-white gap-12 mt-10 px-4 pt-12 pb-4">
       <div className="max-w-[1517px] w-full flex flex-col sm:flex-row justify-between items-start sm:items-center">
         <div className="flex flex-col justify-start items-start gap-2 pb-6">
@@ -129,6 +128,7 @@ const Footer = () => {
         </Link>
       </div>
     </div>
-    // </div>
   );
 };
+
+export default Footer;
