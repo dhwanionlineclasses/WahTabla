@@ -122,7 +122,7 @@ const Footer = () => {
       </div>
       <div className="w-full flex flex-col justify-center items-center gap-2 text-white text-sm">
         <p className="w-full flex justify-center items-center text-white text-sm">
-          © 2024 Abhijit Banerjee. All rights reserved.
+          © 2025 Abhijit Banerjee. All rights reserved.
         </p>
         <Link href='https://sidahq.com/'>
           <p>Designed and Developed by SIDA Technologies</p>
@@ -132,5 +132,3 @@ const Footer = () => {
     // </div>
   );
 };
-
-export default Footer;
