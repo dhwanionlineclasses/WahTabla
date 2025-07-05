@@ -3,8 +3,7 @@
 import { cookies } from "next/headers";
 import { decode } from "next-auth/jwt";
 import { RequestInit } from "next/dist/server/web/spec-extension/request";
-import { SAQSubmissionRequest, SAQSubmissionResponse } from "@/types/exam/saq-exam";
-
+import { FinalExamSubmitRequest, FinalExamSubmitResponse } from "@/types/exam/final-exam";
 const sessionTokenName =
   process.env.NODE_ENV === 'production'
     ? '__Secure-authjs.session-token'
@@ -12,7 +11,7 @@ const sessionTokenName =
 
 const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? 'http://localhost:5842'
 
-export const submitSaqQuestionsData = async (values: SAQSubmissionRequest): Promise<SAQSubmissionResponse> => {
+export const submitFinalExam = async (values: FinalExamSubmitRequest): Promise<FinalExamSubmitResponse> => {
 
   const cookieStore = cookies()
   const tokens = cookieStore.get(sessionTokenName)?.value ?? ''
@@ -48,7 +47,7 @@ export const submitSaqQuestionsData = async (values: SAQSubmissionRequest): Prom
   };
   try {
 
-    const url = `${baseUrl}/exams/assignment/submit`
+    const url = `${baseUrl}/exams/final/submit`
     console.log(url)
     
     const response = await fetch(url, options)
@@ -60,18 +59,18 @@ export const submitSaqQuestionsData = async (values: SAQSubmissionRequest): Prom
     if (response.status === 200) {
       return {
         success: true,
-        message: responseData.message || 'SAQ exam submitted and graded successfully',
+        message: responseData.message || 'Final exam submitted and graded successfully',
         data: responseData.data
       }
     } else {
       return { 
         success: false, 
-        message: responseData.message || 'SAQ exam submission failed' 
+        message: responseData.message || 'Final exam submission failed' 
       }
     }
 
   } catch (error) {
-    console.error('SAQ Exam Submission Error:', error)
+    console.error('Final Exam Submission Error:', error)
     // Use a type guard to check if error is an instance of Error
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred'
     return { success: false, message: errorMessage }

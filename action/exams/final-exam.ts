@@ -3,7 +3,7 @@
 import { cookies } from "next/headers";
 import { decode } from "next-auth/jwt";
 import { RequestInit } from "next/dist/server/web/spec-extension/request";
-import { SAQSubmissionRequest, SAQSubmissionResponse } from "@/types/exam/saq-exam";
+import { FinalExamResponse, FinalExamParams } from "@/types/exam/final-exam";
 
 const sessionTokenName =
   process.env.NODE_ENV === 'production'
@@ -12,7 +12,7 @@ const sessionTokenName =
 
 const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? 'http://localhost:5842'
 
-export const submitSaqQuestionsData = async (values: SAQSubmissionRequest): Promise<SAQSubmissionResponse> => {
+export const getFinalExamData = async (params: FinalExamParams) => {
 
   const cookieStore = cookies()
   const tokens = cookieStore.get(sessionTokenName)?.value ?? ''
@@ -38,40 +38,38 @@ export const submitSaqQuestionsData = async (values: SAQSubmissionRequest): Prom
   const cookieHeader = `accessToken=${accessToken}; refreshToken=${refreshToken}; Path=/; HttpOnly; Secure`;
 
   const options: RequestInit = {
-    method: "POST",
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
       Cookie: cookieHeader, // Add cookies to the request
     },
     credentials: "include", // Ensure cookies are included in the request
-    body: JSON.stringify(values)
   };
   try {
 
-    const url = `${baseUrl}/exams/assignment/submit`
-    console.log(url)
+    const url = `${baseUrl}/exams/exam?courseId=${params.courseId}&yearId=${params.yearId}&weekNumber=${params.weekNumber}&type=final`
+
+    console.log('Final Exam Url', url)
     
     const response = await fetch(url, options)
     // console.log(response.status)
-    const responseData = await response.json()
-    // console.dir(values)
-    // console.log(responseData, response.status)
+    const data = await response.json()
+    // console.log(data, response.status)
 
     if (response.status === 200) {
+
       return {
         success: true,
-        message: responseData.message || 'SAQ exam submitted and graded successfully',
-        data: responseData.data
+        message: 'Successfully recieved Final Exam Question data',
+        data: data as FinalExamResponse
       }
     } else {
-      return { 
-        success: false, 
-        message: responseData.message || 'SAQ exam submission failed' 
-      }
+      return { success: false, message: data.message || 'Final Exam Questions Fetching failed' }
     }
 
+
   } catch (error) {
-    console.error('SAQ Exam Submission Error:', error)
+    console.error('Login Error:', error)
     // Use a type guard to check if error is an instance of Error
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred'
     return { success: false, message: errorMessage }

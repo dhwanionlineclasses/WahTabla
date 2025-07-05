@@ -62,7 +62,7 @@ export function SaqExamFormContainer({
 
   if (isLoading) {
     return (
-      <div className="container mx-auto py-8 space-y-6">
+      <div className="container max-w-4xl mx-auto py-8 space-y-6">
         <Card>
           <CardContent className="pt-6">
             <div className="space-y-4">
@@ -82,8 +82,8 @@ export function SaqExamFormContainer({
 
   if (error) {
     return (
-      <div className="container mx-auto py-8">
-        <Alert variant="destructive">
+      <div className="container max-w-4xl mx-auto py-8">
+        <Alert variant="destructive" className="bg-white">
           <AlertDescription>
             Failed to load SAQ exam: {error.message}
           </AlertDescription>
@@ -94,8 +94,8 @@ export function SaqExamFormContainer({
 
   if (!examResponse?.data) {
     return (
-      <div className="container mx-auto py-8">
-        <Alert>
+      <div className="container max-w-4xl mx-auto py-8">
+        <Alert variant='destructive' className="bg-white">
           <AlertDescription>No SAQ exam data found.</AlertDescription>
         </Alert>
       </div>
