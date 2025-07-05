@@ -67,6 +67,7 @@ export function YearContent({ year, courseId }: YearContentProps) {
   return (
     <div className="flex h-[calc(100vh-4rem)]">
       <CourseSidebar
+        courseId={courseId}
         year={year}
         selectedWeek={selectedWeek}
         onVideoSelect={(video, index, weekTitle) => {

@@ -45,7 +45,7 @@ const Navbar = () => {
             alt="logo"
             width={0}
             height={0}
-            className="w-10"
+            className="w-10 rounded-md"
           />
           <div className="hidden tablet:flex justify-center items-center gap-4 font-light">
             {navigation.map((item, index) => {

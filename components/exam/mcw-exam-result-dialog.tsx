@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { CheckCircle, XCircle, Clock, RotateCcw } from 'lucide-react';
-import { McqExamSubmitResponse } from '@/types/exam';
+import { McqExamSubmitResponse } from '@/types/exam/mcq-exam';
 
 interface McqExamResultDialogProps {
   open: boolean;

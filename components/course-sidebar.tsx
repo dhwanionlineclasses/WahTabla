@@ -12,8 +12,10 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Year, Video } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type CourseSidebarProps = {
+  courseId: number;
   year: Year;
   selectedWeek: string | null;
   onVideoSelect: (
@@ -25,11 +27,11 @@ type CourseSidebarProps = {
 };
 
 export function CourseSidebar({
+  courseId,
   year,
   selectedWeek,
   onVideoSelect,
-}:
-CourseSidebarProps) {
+}: CourseSidebarProps) {
   const [openModules, setOpenModules] = useState<number[]>(() =>
     year.modules.map((module) => module.moduleId)
   );
@@ -38,6 +40,8 @@ CourseSidebarProps) {
       module.months.map((month) => month.monthId)
     )
   );
+
+  const router = useRouter();
 
   let weekCounter = 1;
 
@@ -97,7 +101,7 @@ CourseSidebarProps) {
                         .replace(/\.(mp4|mov|avi)$/i, "") // Remove file extensions
                         .replace(/(:| - ).*$/, "") // Remove descriptions after ":" or " - "
                         .replace(/\b(\d+)(st|nd|rd|th)\b/, "$1") // Remove ordinal suffixes (1st, 2nd, 3rd, 4th, etc.)
-                        .replace(/&.*/, "") // Remove everything after "&" to keep only the first number
+                        .replace(/&.*/, ""); // Remove everything after "&" to keep only the first number
 
                       return [normalizedTitle, video];
                     })
@@ -189,6 +193,17 @@ CourseSidebarProps) {
               </CollapsibleContent>
             </Collapsible>
           ))}
+          <Button
+            variant="destructive"
+            onClick={() =>
+              router.push(
+                `/exam/final/courses/${courseId}/year/${year.yearId}/week/52`
+              )
+            }
+            className="w-full mt-2"
+          >
+            Final Exam
+          </Button>
         </div>
       </ScrollArea>
       <Link href="/profile" className="absolute bottom-0 left-0 w-full">

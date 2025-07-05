@@ -1,15 +1,15 @@
 import { useMutation } from '@tanstack/react-query'; // Update path as needed
-import { McqExamSubmitType, McqExamSubmitServerResponse, McqExamSubmitResponse } from '@/types/exam/mcq-exam';
+import { SAQSubmissionRequest, SAQSubmissionResponse, SAQSubmissionResponseData } from '@/types/exam/saq-exam';
 import { toast } from 'sonner'; // or your preferred toast library
 import { useState } from 'react';
-import { submitMcqQuestionsData } from '@/action/exams/submit-mcq';
+import { submitSaqQuestionsData } from '@/action/exams/submit-saq';
 
-export const useSubmitMcqExam = () => {
+export const useSubmitSaqExam = () => {
   const [showResultDialog, setShowResultDialog] = useState(false);
-  const [examResult, setExamResult] = useState<McqExamSubmitResponse | null>(null);
+  const [examResult, setExamResult] = useState<SAQSubmissionResponseData | null>(null);
 
-  const mutation = useMutation<McqExamSubmitServerResponse, Error, McqExamSubmitType>({
-    mutationFn: async (values: McqExamSubmitType) => await submitMcqQuestionsData(values),
+  const mutation = useMutation<SAQSubmissionResponse, Error, SAQSubmissionRequest>({
+    mutationFn: async (values: SAQSubmissionRequest) => await submitSaqQuestionsData(values),
    onSuccess: (data) => {
       if (data.success && data.data) {
         setExamResult(data.data);
@@ -20,7 +20,7 @@ export const useSubmitMcqExam = () => {
       }
     },
     onError: (error) => {
-      toast.error(error.message || 'Failed to submit exam');
+      toast.error(error.message || 'Failed to submit SAQ exam');
     },
   });
 

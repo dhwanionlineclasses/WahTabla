@@ -31,7 +31,7 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import { McqExamData, McqExamSubmitType } from "@/types/exam";
+import { McqExamData, McqExamSubmitType } from "@/types/exam/mcq-exam";
 
 // Form schema
 const examFormSchema = z.object({

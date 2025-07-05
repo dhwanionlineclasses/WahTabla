@@ -75,8 +75,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           const res = await fetch(`${baseUrl}/users/login`, options)
           const data: AuthLoginApiResponseType = await res.json()
 
-          if(res.status !== 200 || !data || !data.data || !data.success) throw Error(data.message)
-          
+          console.log(data)
+
+          if(res.status !== 200 || !data || !data.data || !data.success) {
+            console.log("error while signin:", data.message)
+            // throw Error(data.message)
+            throw new Error(`BACKEND_ERROR:${data.message}`)
+            // return Error(data.message)
+          }
           const tokens: BackendJWT = {
             access: data.data.accessToken,
             refresh: data.data.refreshToken

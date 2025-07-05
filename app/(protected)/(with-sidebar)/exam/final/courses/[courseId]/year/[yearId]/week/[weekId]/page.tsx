@@ -1,4 +1,4 @@
-import { SaqExamFormContainer } from "@/components/exam/saq-exam-form-container";
+import { FinalExamContainer } from "@/components/exam/final-exam-form-container";
 import React from "react";
 
 const Page = ({
@@ -13,11 +13,11 @@ const Page = ({
   // console.log(yearId, courseId, weekId)
   return (
     <div className="w-full min-h-screen flex flex-col justify-start items-center mx-auto overflow-scroll">
-      <SaqExamFormContainer
+      <FinalExamContainer
         courseId={courseId}
         weekNumber={weekId}
         yearId={yearId}
-        type="assignment"
+        type="final"
       />
     </div>
   );

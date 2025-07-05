@@ -1,67 +1,58 @@
 "use client";
-
-import { useMcqQuestionsData } from "@/data/exams/get-mcq-exam";
-import McqExamForm from "./exam-form";
-import { ExamFormValues } from "@/lib/validations/exam";
+import { useFinalExamData } from "@/data/exams/get-final-exam";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useState } from "react";
-import { McqExamSubmitType } from "@/types/exam/mcq-exam";
-import { useSubmitMcqExam } from "@/data/exams/submit-mcq-exam";
-import { McqExamResultDialog } from "./mcw-exam-result-dialog";
+import { FinalExamSubmitRequest } from "@/types/exam/final-exam";
+import { useSubmitFinalExam } from "@/data/exams/submit-final-exam";
+import { toast } from "sonner";
+import FinalExamForm from "./final-exam-form";
+import { FinalExamResultDialog } from "./final-exam-result-dialog";
 
-interface ExamFormContainerProps {
+interface FinalExamContainerProps {
   courseId: number;
   yearId: number;
   weekNumber: number;
   type: string;
 }
 
-export function ExamFormContainer({
+export function FinalExamContainer({
   courseId,
   yearId,
   weekNumber,
   type,
-}: ExamFormContainerProps) {
+}: FinalExamContainerProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {
     data: examResponse,
     isLoading,
     error,
-  } = useMcqQuestionsData({
+  } = useFinalExamData({
     courseId,
     yearId,
     weekNumber,
     type,
   });
+
   const {
     mutate,
     isPending,
     showResultDialog,
     setShowResultDialog,
     examResult,
-  } = useSubmitMcqExam();
+  } = useSubmitFinalExam();
 
-  const handleSubmit = async (data: McqExamSubmitType) => {
+  const handleSubmit = async (data: FinalExamSubmitRequest) => {
     setIsSubmitting(true);
     try {
-      // Handle form submission here
-      console.log("Exam submitted:", data);
-
+      console.log("Final Exam submitted:", data);
       mutate(data);
-      // Example API call:
-      // const response = await submitExam({
-      //   examId: examResponse?.data.examId,
-      //   answers: data.answers,
-      // });
-
-      // Show success message or redirect
-      console.log("Exam submitted successfully!");
+      console.log("Final Exam submitted successfully!");
     } catch (error) {
-      console.error("Failed to submit exam:", error);
-      alert("Failed to submit exam. Please try again.");
+      console.error("Failed to submit Final exam:", error);
+      toast.error("Failed to submit Final exam. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -69,7 +60,7 @@ export function ExamFormContainer({
 
   if (isLoading) {
     return (
-      <div className="container mx-auto py-8 space-y-6">
+      <div className="container max-w-4xl mx-auto py-8 space-y-6">
         <Card>
           <CardContent className="pt-6">
             <div className="space-y-4">
@@ -92,7 +83,7 @@ export function ExamFormContainer({
       <div className="container max-w-4xl mx-auto py-8">
         <Alert variant="destructive" className="bg-white">
           <AlertDescription>
-            Failed to load exam: {error.message}
+            Failed to load Final exam: {error.message}
           </AlertDescription>
         </Alert>
       </div>
@@ -103,33 +94,31 @@ export function ExamFormContainer({
     return (
       <div className="container max-w-4xl mx-auto py-8">
         <Alert variant="destructive" className="bg-white">
-          <AlertDescription>No exam data found.</AlertDescription>
+          <AlertDescription>No Final exam data found.</AlertDescription>
         </Alert>
       </div>
     );
   }
 
   const handleRetry = () => {
-    // Reset form or redirect to retry
-    window.location.reload(); // or your preferred retry logic
+    window.location.reload();
   };
 
   return (
-    <>
-      <McqExamForm
+    <div className="w-full mx-auto">
+      <FinalExamForm
         examData={examResponse.data.data}
         onSubmit={handleSubmit}
         isSubmitting={isSubmitting}
       />
-
       {examResult && (
-        <McqExamResultDialog
+        <FinalExamResultDialog
           open={showResultDialog}
           onOpenChange={setShowResultDialog}
           result={examResult}
           onRetry={handleRetry}
         />
       )}
-    </>
+    </div>
   );
 }
