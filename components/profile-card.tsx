@@ -57,14 +57,7 @@ export default function ProfileCard() {
   if (isError) {
     console.log("Error: ", error);
   }
-
-  if(!profileData?.data) {
-    return(
-      <div>
-        No Data Found.
-      </div>
-    )
-  }
+ 
 
   // console.log(profileData)
 
@@ -72,11 +65,11 @@ export default function ProfileCard() {
   const profileForm = useForm<UserFormData>({
     resolver: zodResolver(UserSchema),
     defaultValues: {
-      userId: profileData.data.userId,
-      username: profileData.data.username,
-      email: profileData.data.email,
-      fullName: profileData.data?.fullName,
-      gender: profileData.data?.gender,
+      userId: profileData?.data?.userId,
+      username: profileData?.data?.username,
+      email: profileData?.data?.email,
+      fullName: profileData?.data?.fullName,
+      gender: profileData?.data?.gender,
     },
   });
 
