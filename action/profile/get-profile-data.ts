@@ -3,6 +3,7 @@
 import { cookies } from "next/headers";
 import { decode } from "next-auth/jwt";
 import { RequestInit } from "next/dist/server/web/spec-extension/request";
+import { BackendProfileResponse, ProfileDataResponse } from "@/types/profile";
 
 const sessionTokenName =
   process.env.NODE_ENV === 'production'
@@ -12,7 +13,7 @@ const sessionTokenName =
 const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? 'http://localhost:5842'
 
 
-export const getProfileData = async () => {
+export const getProfileData = async (): Promise<ProfileDataResponse> => {
 
   const cookieStore = cookies()
   const tokens = cookieStore.get(sessionTokenName)?.value ?? ''
@@ -50,7 +51,7 @@ export const getProfileData = async () => {
     // console.log(options)
     const response = await fetch(`${baseUrl}/profiles`, options)
     // console.log(response.status)
-    const data = await response.json()
+    const data: BackendProfileResponse = await response.json()
     // console.log(data)
 
     if (response.status === 200) {
@@ -63,11 +64,12 @@ export const getProfileData = async () => {
           username: data.user.username,
           email: data.user.email,
           fullName: data.user.profile ? data.user.profile.fullName : undefined,
-          gender: data.user.profile ? data.user.profile.gender : undefined
+          gender: data.user.profile ? data.user.profile.gender : undefined,
+          courses: data.courses
         }
       }
     } else {
-      return { success: false, message: data.message || 'Profile Fetching failed' }
+      return { success: false, message: (data as any).message || 'Profile Fetching failed' }
     }
 
 
