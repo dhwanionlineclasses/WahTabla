@@ -1,6 +1,11 @@
 "use client";
 
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { X, Loader2 } from "lucide-react";
 import { useState } from "react";
@@ -12,7 +17,12 @@ interface PdfModalProps {
   title?: string;
 }
 
-export function PdfModal({ isOpen, onClose, pdfUrl, title = "PDF Viewer" }: PdfModalProps) {
+export function PdfModal({
+  isOpen,
+  onClose,
+  pdfUrl,
+  title = "PDF Viewer",
+}: PdfModalProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
@@ -37,17 +47,12 @@ export function PdfModal({ isOpen, onClose, pdfUrl, title = "PDF Viewer" }: PdfM
   };
 
   // You can still use the toolbar parameters if needed
-  const pdfUrlWithParams = `${pdfUrl}#toolbar=0&navpanes=0&scrollbar=1`;
+  const pdfUrlWithParams = `${pdfUrl}#toolbar=0&navpanes=0&scrollbar=1&view=FitH&disableRange=true&disableAutoFetch=true`;
 
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       <DialogContent className="max-w-4xl w-full max-h-[70%] h-full p-0">
-        <DialogHeader className="p-6 pb-0">
-          <DialogTitle className="flex items-center justify-between">
-            {title}
-          </DialogTitle>
-        </DialogHeader>
-        <div className="flex-1 p-6 pt-0">
+        <div className="p-6 pt-0">
           {/* Loading Indicator */}
           {isLoading && (
             <div className="absolute inset-0 flex items-center justify-center bg-white z-10 rounded-md">
@@ -66,8 +71,8 @@ export function PdfModal({ isOpen, onClose, pdfUrl, title = "PDF Viewer" }: PdfM
                   <X className="h-8 w-8 mx-auto mb-2" />
                   <p className="text-sm">Failed to load PDF</p>
                 </div>
-                <Button 
-                  onClick={() => window.open(pdfUrl, '_blank')}
+                <Button
+                  onClick={() => window.open(pdfUrl, "_blank")}
                   variant="outline"
                   size="sm"
                 >
@@ -84,7 +89,9 @@ export function PdfModal({ isOpen, onClose, pdfUrl, title = "PDF Viewer" }: PdfM
             title="PDF Viewer"
             onLoad={handleIframeLoad}
             onError={handleIframeError}
-            style={{ display: isLoading ? 'none' : 'block' }}
+            style={{ display: isLoading ? "none" : "block" }}
+            sandbox="allow-scripts allow-same-origin"
+            onContextMenu={(e) => e.preventDefault()}
           />
         </div>
       </DialogContent>
