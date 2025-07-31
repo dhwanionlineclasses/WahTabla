@@ -1,3 +1,5 @@
+"use client";
+
 import { Video } from "@/lib/types";
 import Link from "next/link";
 import { Button } from "./ui/button";
@@ -5,6 +7,8 @@ import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { getTheoryLink, getThisWeekNoteLink } from "@/utils/get-notes";
 import WeekWiseExam from "./exam/week-wise-exam";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { PdfModal } from "./pdf-modal";
 // import { useState } from "react";
 
 type VideoDetailsProps = {
@@ -12,7 +16,7 @@ type VideoDetailsProps = {
   yearName: string;
   selectedWeek: string;
   courseId: number;
-  yearId: number
+  yearId: number;
 };
 
 export function VideoDetails({
@@ -20,15 +24,24 @@ export function VideoDetails({
   yearName,
   selectedWeek,
   courseId,
-  yearId
+  yearId,
 }: VideoDetailsProps) {
   // const [showPdf, setShowPdf] = useState(false);
   // console.log("VideoDetails: Week:", selectedWeek, "Video:", video);
+  const [isPdfModalOpen, setIsPdfModalOpen] = useState(false);
+  const [currentPdfUrl, setCurrentPdfUrl] = useState<string | null>(null);
   const router = useRouter();
 
   const openPdf = (url: string | null) => {
     if (!url) return;
-    window.open(url, "_blank", "noopener,noreferrer");
+    setCurrentPdfUrl(url);
+    setIsPdfModalOpen(true);
+    // window.open(url, "_blank", "noopener,noreferrer");
+  };
+
+  const closePdfModal = () => {
+    setIsPdfModalOpen(false);
+    setCurrentPdfUrl(null);
   };
 
   if (!video) {
@@ -39,24 +52,38 @@ export function VideoDetails({
           ["Week 13", "Week 26", "Week 39"].includes(selectedWeek) ? (
             <div>
               <div className="flex flex-col justify-center items-center gap-8">
-              <Button variant="outline" className="rounded-full">
-                📅 {selectedWeek} (Exam Week)
-              </Button>
-              <div className="flex justify-center items-center gap-2 mt-6">
-                <Button
-                  onClick={() => router.push(`/exam/mcq/courses/${courseId}/year/${yearId}/week/${selectedWeek.replace('Week ', '')}`)}
-                  variant="secondary"
-                >
-                  MCQ Exam
+                <Button variant="outline" className="rounded-full">
+                  📅 {selectedWeek} (Exam Week)
                 </Button>
-                <Button
-                  onClick={() => router.push(`/exam/saq/courses/${courseId}/year/${yearId}/week/${selectedWeek.replace('Week ', '')}`)}
-                  variant="secondary"
-                >
-                  SAQ Exam
-                </Button>
+                <div className="flex justify-center items-center gap-2 mt-6">
+                  <Button
+                    onClick={() =>
+                      router.push(
+                        `/exam/mcq/courses/${courseId}/year/${yearId}/week/${selectedWeek.replace(
+                          "Week ",
+                          ""
+                        )}`
+                      )
+                    }
+                    variant="secondary"
+                  >
+                    MCQ Exam
+                  </Button>
+                  <Button
+                    onClick={() =>
+                      router.push(
+                        `/exam/saq/courses/${courseId}/year/${yearId}/week/${selectedWeek.replace(
+                          "Week ",
+                          ""
+                        )}`
+                      )
+                    }
+                    variant="secondary"
+                  >
+                    SAQ Exam
+                  </Button>
+                </div>
               </div>
-            </div>
             </div>
           ) : (
             <div className="flex flex-col justify-center items-center gap-8">
@@ -133,6 +160,12 @@ export function VideoDetails({
         </div>
       </div>
       <p className="text-muted-foreground">{video.description}</p>
+      <PdfModal
+        isOpen={isPdfModalOpen}
+        onClose={closePdfModal}
+        pdfUrl={currentPdfUrl}
+        title="Document Viewer"
+      />
     </div>
   );
 }
