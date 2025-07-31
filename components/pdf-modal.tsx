@@ -9,6 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { X, Loader2 } from "lucide-react";
 import { useState } from "react";
+import { DialogDescription } from "@radix-ui/react-dialog";
 
 interface PdfModalProps {
   isOpen: boolean;
@@ -47,11 +48,19 @@ export function PdfModal({
   };
 
   // You can still use the toolbar parameters if needed
-  const pdfUrlWithParams = `${pdfUrl}#toolbar=0&navpanes=0&scrollbar=1`;
+  const pdfUrlWithParams = `${pdfUrl}#toolbar=0&statusbar=0&messages=0&navpanes=0&scrollbar=1`;
 
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
-      <DialogContent className="max-w-4xl w-full max-h-[70%] h-full p-0">
+      <DialogContent className="max-w-4xl w-full max-h-[70%] h-full pt-8">
+        <DialogHeader className="sr-only">
+          <DialogTitle>
+            Document Viewer
+          </DialogTitle>
+          <DialogDescription>
+            Dhwani pdf Viewer
+          </DialogDescription>
+        </DialogHeader>
         <div className="p-6 pt-0">
           {/* Loading Indicator */}
           {isLoading && (
@@ -90,7 +99,6 @@ export function PdfModal({
             onLoad={handleIframeLoad}
             onError={handleIframeError}
             style={{ display: isLoading ? "none" : "block" }}
-            sandbox="allow-scripts allow-same-origin"
             onContextMenu={(e) => e.preventDefault()}
           />
         </div>
