@@ -2,16 +2,19 @@
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { X, Loader2, ChevronLeft, ChevronRight } from "lucide-react";
+import { Loader2, ChevronLeft, ChevronRight } from "lucide-react";
 import { Document, Page, pdfjs } from 'react-pdf';
 import { useState } from 'react';
 import { DialogDescription } from "@radix-ui/react-dialog";
 
 // Configure PDF.js worker
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.mjs',
-  import.meta.url,
-).toString();
+// pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+//   'pdfjs-dist/build/pdf.worker.min.mjs',
+//   import.meta.url,
+// ).toString();
+
+// With this CDN approach:
+pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 interface PdfModalProps {
   isOpen: boolean;
@@ -91,7 +94,7 @@ export function PdfModal({ isOpen, onClose, pdfUrl, title = "PDF Viewer" }: PdfM
               </Button> */}
             </div>
           </DialogTitle>
-          <DialogDescription>Pdf description</DialogDescription>
+          <DialogDescription className="sr-only">Pdf description</DialogDescription>
         </DialogHeader>
 
         <div className="flex-1 overflow-auto p-6 flex justify-center relative">
