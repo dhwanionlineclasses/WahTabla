@@ -47,6 +47,12 @@ export function PdfModal({
     setHasError(true);
   };
 
+   const handleOverlayInteraction = (e: React.MouseEvent | React.TouchEvent | React.KeyboardEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  };
+
   // You can still use the toolbar parameters if needed
   const pdfUrlWithParams = `${pdfUrl}#toolbar=0&statusbar=0&messages=0&navpanes=0&scrollbar=1`;
 
@@ -99,8 +105,28 @@ export function PdfModal({
             onLoad={handleIframeLoad}
             onError={handleIframeError}
             style={{ display: isLoading ? "none" : "block" }}
-            onContextMenu={(e) => e.preventDefault()}
+            onContextMenu={handleOverlayInteraction}
           />
+
+          {!isLoading && !hasError && (
+            <div
+              className="absolute inset-0 z-10 cursor-default"
+              onContextMenu={handleOverlayInteraction}
+              onMouseDown={handleOverlayInteraction}
+              onMouseUp={handleOverlayInteraction}
+              onClick={handleOverlayInteraction}
+              onDoubleClick={handleOverlayInteraction}
+              onTouchStart={handleOverlayInteraction}
+              onTouchEnd={handleOverlayInteraction}
+              onDragStart={handleOverlayInteraction}
+              onDrop={handleOverlayInteraction}
+              onKeyDown={handleOverlayInteraction}
+              style={{
+                backgroundColor: 'transparent',
+                pointerEvents: 'auto', // Capture all pointer events
+              }}
+            />
+          )}
         </div>
       </DialogContent>
     </Dialog>
