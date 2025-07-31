@@ -47,8 +47,7 @@ export function PdfModal({ isOpen, onClose, pdfUrl, title = "PDF Viewer" }: PdfM
             {title}
           </DialogTitle>
         </DialogHeader>
-        
-        <div className="flex-1 p-6 pt-0 relative">
+        <div className="flex-1 p-6 pt-0">
           {/* Loading Indicator */}
           {isLoading && (
             <div className="absolute inset-0 flex items-center justify-center bg-white z-10 rounded-md">
