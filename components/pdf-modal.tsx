@@ -47,7 +47,7 @@ export function PdfModal({
   };
 
   // You can still use the toolbar parameters if needed
-  const pdfUrlWithParams = `${pdfUrl}#toolbar=0&navpanes=0&scrollbar=1&view=FitH&disableRange=true&disableAutoFetch=true`;
+  const pdfUrlWithParams = `${pdfUrl}#toolbar=0&navpanes=0&scrollbar=1`;
 
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
