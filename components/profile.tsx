@@ -36,12 +36,14 @@ const Profile = () => {
         toast("Successfully logged out!");
         router.push("/");
       } else {
+        router.push("/");
         toast(res.message);
       }
     } catch (err) {
       toast("Something went wrong", {
         description: "Check console for more details",
       });
+      router.push("/");
       console.log(err);
     } finally {
       setLoading(false);

@@ -57,13 +57,20 @@ export default function ProfileCard() {
   if (isError) {
     console.log("Error: ", error);
   }
+ 
 
   // console.log(profileData)
 
   // Profile form
   const profileForm = useForm<UserFormData>({
     resolver: zodResolver(UserSchema),
-    defaultValues: profileData?.data,
+    defaultValues: {
+      userId: profileData?.data?.userId,
+      username: profileData?.data?.username,
+      email: profileData?.data?.email,
+      fullName: profileData?.data?.fullName,
+      gender: profileData?.data?.gender,
+    },
   });
 
   // Password form

@@ -58,6 +58,7 @@ const Footer = () => {
             </span> */}
         </div>
         <div className="flex flex-col sm:flex-row justify-start items-start gap-6 sm:gap-2 md:gap-20">
+          
           <div className="flex flex-col justify-start items-start gap-1 text-sm">
             <Link href="/" className="text-lg pb-1 font-semibold">
               Home
@@ -87,6 +88,23 @@ const Footer = () => {
             </Link>
             <Link href="https://dhwaniacademy.us/" className="text-white">
               Dhwani US
+            </Link>
+          </div>
+          <div className="flex flex-col justify-start items-start gap-1 text-sm">
+            <Link href="/" className="text-lg pb-1 font-semibold">
+              Legal
+            </Link>
+            <Link href="/legal/privacy-policy" className="text-white">
+              Privacy Policy
+            </Link>
+            <Link href="/legal/terms-and-conditions" className="text-white">
+              Terms and Conditions
+            </Link>
+            <Link href="/legal/refund-policy" className="text-white">
+              Refund Policy
+            </Link>
+            <Link href="/legal/cancellation-policy" className="text-white">
+              Cancellation Policy
             </Link>
           </div>
           <div className="flex flex-col justify-start items-start gap-1">
