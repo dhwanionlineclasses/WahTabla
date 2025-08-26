@@ -8,13 +8,13 @@ import { AuthError } from 'next-auth';
 
 export async function login(values: LoginSchemaType) {
   try {
-    const signin = await signIn('credentials', {
+    await signIn('credentials', {
       email: values.email,
       password: values.password,
       redirect: false,
     })
 
-    console.log("signinnnnn", signin)
+    // console.log("signinnnnn", signin)
 
     return { success: true, message: 'Successfully login' }
   } catch (error) {

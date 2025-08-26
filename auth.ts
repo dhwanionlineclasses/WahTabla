@@ -75,7 +75,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           const res = await fetch(`${baseUrl}/users/login`, options)
           const data: AuthLoginApiResponseType = await res.json()
 
-          console.log(data)
+          // console.log(data)
 
           if(res.status !== 200 || !data || !data.data || !data.success) {
             console.log("error while signin:", data.message)

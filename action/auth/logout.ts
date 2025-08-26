@@ -83,7 +83,7 @@ export const logout = async () => {
 
 
   } catch (error) {
-    console.error('Login Error:', error)
+    console.error('Logout Error:', error)
     deleteAuthCookies(cookieStore);
     // Use a type guard to check if error is an instance of Error
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred'
